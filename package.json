@@ -48,6 +48,5 @@
     "typescript": "^5",
     "vite-plugin-stylex-dev": "^0.2.4",
     "vitest": "^1.2.1"
-  },
-  "type": "module"
+  }
 }
