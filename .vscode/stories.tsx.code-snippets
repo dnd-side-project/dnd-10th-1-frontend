@@ -1,0 +1,24 @@
+{
+  "Storybook Snippet": {
+    "prefix": "dndStory",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react';",
+      "import ${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}} from './${2:${TM_FILENAME/(.*).stories.[t|j]sx/${1}/}}';"
+      "",    
+      "const meta: Meta<typeof ${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}}> = {",
+      "  title: 'Components/${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}}',",
+      "  component: ${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}},",
+      "  tags: ['autodocs'],"
+      "};",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof ${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}}>;",
+      "",
+      "export const Primary: Story = {",
+      "  render: () => <${1:${TM_FILENAME/(.*).stories.[t|j]sx/${1:/capitalize}/}} />,",
+      "};",
+      "",
+    ],
+    "description": "기본 스토리북 스니펫"
+  }
+}
