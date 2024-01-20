@@ -1,5 +1,8 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
   "plugins": ["@stylexjs"],
   "rules": {
     // The Eslint rule still needs work, but you can

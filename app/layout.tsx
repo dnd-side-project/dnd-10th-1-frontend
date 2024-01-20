@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import * as stylex from "@stylexjs/stylex";
 import "./globals.css";
+import QueryProvider from "@/providers/query-provider";
 
 export const metadata: Metadata = {
   title: "dnd 10th-1 fe",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html {...stylex.props(styles.reset)} lang="ko">
-      <body>{children}</body>
+      <QueryProvider>
+        <body>{children}</body>
+      </QueryProvider>
     </html>
   );
 }
