@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
-import * as stylex from "@stylexjs/stylex";
-import "./globals.css";
-import QueryProvider from "@/providers/query-provider";
+import "./globals.css"
+
+import * as stylex from "@stylexjs/stylex"
+import type { Metadata } from "next"
+
+import QueryProvider from "../providers/query-provider"
 
 export const metadata: Metadata = {
   title: "dnd 10th-1 fe",
   description: "dnd 10th-1 fe",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html {...stylex.props(styles.reset)} lang="ko">
@@ -19,7 +21,7 @@ export default function RootLayout({
         <body>{children}</body>
       </QueryProvider>
     </html>
-  );
+  )
 }
 
 const styles = stylex.create({
@@ -28,4 +30,4 @@ const styles = stylex.create({
     margin: 0,
     padding: 0,
   },
-});
+})

@@ -1,5 +1,6 @@
-import { queryOptions } from "@tanstack/react-query";
-import tempAPI from "./api";
+import { queryOptions } from "@tanstack/react-query"
+
+import tempAPI from "./api"
 
 const tempOptions = {
   default: ["temp"] as const,
@@ -9,5 +10,5 @@ const tempOptions = {
       queryKey: [...tempOptions.default, "users"],
       queryFn: tempAPI.getUsers,
     }),
-};
-export default tempOptions;
+}
+export default tempOptions
