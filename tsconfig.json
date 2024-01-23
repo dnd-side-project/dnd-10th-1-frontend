@@ -12,6 +12,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowUnreachableCode": false ,
+    "allowUnusedLabels": false ,
+    "alwaysStrict": true ,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true ,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true ,
     "plugins": [
       {
         "name": "next"
