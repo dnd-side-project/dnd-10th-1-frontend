@@ -1,8 +1,7 @@
 import "./globals.css"
 
+import * as stylex from "@stylexjs/stylex"
 import type { Metadata } from "next"
-
-import Providers from "./_components/provider/providers"
 
 export const metadata: Metadata = {
   title: "dnd 10th-1 fe",
@@ -15,10 +14,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+    <html {...stylex.props(styles.reset)} lang="ko">
+      <body>{children}</body>
     </html>
   )
 }
+
+const styles = stylex.create({
+  reset: {
+    minHeight: "100%",
+    margin: 0,
+    padding: 0,
+  },
+})
