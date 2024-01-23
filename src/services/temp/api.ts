@@ -1,8 +1,14 @@
+import axiosInstance from "@/libs/axios/axiosInstance"
+
 type User = {
   userId: number
   id: number
   title: string
   body: string
+}
+
+type Temp = {
+  message: string
 }
 
 const tempAPI = {
@@ -11,6 +17,12 @@ const tempAPI = {
     const data = await res.json()
 
     return data
+  },
+
+  getTemp: async (): Promise<Temp> => {
+    const res = await axiosInstance.get("/test")
+
+    return res.data
   },
 }
 

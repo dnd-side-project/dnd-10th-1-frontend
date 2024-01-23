@@ -1,6 +1,6 @@
 "use client"
 
-import { useGetUsers } from "../services/temp/hook"
+import { useGetUsers } from "@/services/temp/hook"
 
 export default function TempUsers() {
   const { data: users } = useGetUsers()

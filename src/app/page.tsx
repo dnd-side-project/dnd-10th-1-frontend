@@ -1,18 +1,10 @@
-import * as stylex from "@stylexjs/stylex"
-
+import Button from "./_components/button/button"
 import TempUsers from "./temp-users"
-
 export default async function Home() {
   return (
     <main>
       <TempUsers />
-      <button {...stylex.props(styles.button)}>dnd-10-1 fe</button>
+      <Button>dnd-10-1 fe</Button>
     </main>
   )
 }
-
-const styles = stylex.create({
-  button: {
-    background: "red",
-  },
-})

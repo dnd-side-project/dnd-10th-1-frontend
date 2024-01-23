@@ -27,6 +27,7 @@
   "dependencies": {
     "@stylexjs/stylex": "^0.4.1",
     "@tanstack/react-query": "^5.17.15",
+    "axios": "^1.6.5",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
@@ -68,5 +69,10 @@
     "typescript": "^5",
     "vite-plugin-stylex-dev": "^0.2.4",
     "vitest": "^1.2.1"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
