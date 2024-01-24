@@ -8,7 +8,7 @@ const tempOptions = {
   users: () =>
     queryOptions({
       queryKey: [...tempOptions.default, "users"],
-      queryFn: tempAPI.getUsers,
+      queryFn: tempAPI.getClientTemp,
     }),
 }
 export default tempOptions

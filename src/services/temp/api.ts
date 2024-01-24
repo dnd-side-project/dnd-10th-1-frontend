@@ -1,28 +1,31 @@
-import axiosInstance from "@/libs/axios/axiosInstance"
-
-type User = {
-  userId: number
-  id: number
-  title: string
-  body: string
-}
+import { END_POINT } from "@/constants/apis"
+import { clientInstance, serverInstance } from "@/libs/axios/instance"
 
 type Temp = {
   message: string
 }
 
 const tempAPI = {
-  getUsers: async (): Promise<User> => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users/5")
-    const data = await res.json()
-
-    return data
+  getClientTemp: async () => {
+    try {
+      const res = await clientInstance.get<Temp>(END_POINT.temp)
+      return res.data
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+    }
   },
 
-  getTemp: async (): Promise<Temp> => {
-    const res = await axiosInstance.get("/test")
-
-    return res.data
+  getServerTemp: async () => {
+    try {
+      const res = await serverInstance.get<Temp>(END_POINT.temp)
+      return res.data
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+    }
   },
 }
 

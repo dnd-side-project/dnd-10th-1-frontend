@@ -13,8 +13,7 @@
     "unused-imports",
     "simple-import-sort",
     "react",
-    "react-hooks",
-    "@stylexjs"
+    "react-hooks"
   ],
   "rules": {
     "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
@@ -30,7 +29,6 @@
     ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "@stylexjs/valid-styles": "error",
     "ft-flow/space-after-type-colon": 0,
     "ft-flow/no-types-missing-file-annotation": 0,
     "ft-flow/generic-spacing": 0

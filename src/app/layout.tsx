@@ -1,6 +1,11 @@
 import "./globals.css"
 
-import * as stylex from "@stylexjs/stylex"
+import { Inter } from "next/font/google"
+
+import Providers from "./_component/provider"
+
+const inter = Inter({ subsets: ["latin"] })
+
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -14,16 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html {...stylex.props(styles.reset)} lang="ko">
-      <body>{children}</body>
+    <html lang="ko">
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
-
-const styles = stylex.create({
-  reset: {
-    minHeight: "100%",
-    margin: 0,
-    padding: 0,
-  },
-})

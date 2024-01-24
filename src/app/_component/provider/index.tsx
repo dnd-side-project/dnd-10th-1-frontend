@@ -1,7 +1,13 @@
 "use client"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { PropsWithChildren } from "react"
+import React, { PropsWithChildren } from "react"
+
+import mockEnable from "@/libs/msw/mock-enable"
+
+if (process.env.NEXT_PUBLIC_API_MOCKING === "enable") {
+  mockEnable()
+}
 
 const Providers = ({ children }: PropsWithChildren) => {
   const queryClient = new QueryClient({
