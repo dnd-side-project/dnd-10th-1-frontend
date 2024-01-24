@@ -33,7 +33,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.49.3",
     "tailwind-merge": "^2.2.1",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.10",
