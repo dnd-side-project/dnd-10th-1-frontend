@@ -1,13 +1,34 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "next/core-web-vitals",
     "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
-  "plugins": ["@stylexjs"],
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "unused-imports",
+    "simple-import-sort",
+    "react",
+    "react-hooks"
+  ],
   "rules": {
-    // The Eslint rule still needs work, but you can
-    // enable it to test things out.
-    "@stylexjs/valid-styles": "error",
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "ft-flow/space-after-type-colon": 0,
     "ft-flow/no-types-missing-file-annotation": 0,
     "ft-flow/generic-spacing": 0

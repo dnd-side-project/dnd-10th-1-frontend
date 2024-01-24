@@ -12,15 +12,24 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowUnreachableCode": false ,
+    "allowUnusedLabels": false ,
+    "alwaysStrict": true ,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true ,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true ,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js"],
   "exclude": ["node_modules"]
 }
