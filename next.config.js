@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    instrumentationHook: true,
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
       // next server build => ignore msw/browser

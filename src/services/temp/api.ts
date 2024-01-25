@@ -1,5 +1,3 @@
-import axios from "axios"
-
 import { END_POINT } from "@/constants/apis"
 import { mswInstance } from "@/libs/axios/instance"
 
@@ -21,8 +19,7 @@ const tempAPI = {
 
   getServerTemp: async () => {
     try {
-      // const res = await mswInstance.get<Temp>(END_POINT.temp)
-      const res = await axios("https://jsonplaceholder.typicode.com/todos/1")
+      const res = await mswInstance.get<Temp>(END_POINT.temp)
       return res.data
     } catch (err) {
       if (err instanceof Error) {
