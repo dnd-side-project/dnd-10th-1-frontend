@@ -1,11 +1,7 @@
 import axios from "axios"
 
-import { BACK_URL, CLIENT_URL } from "@/constants/apis"
+import { BACK_URL } from "@/constants/apis"
 
-export const mswInstance = axios.create({
-  baseURL: CLIENT_URL,
-})
-
-export const apiInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: BACK_URL,
 })
