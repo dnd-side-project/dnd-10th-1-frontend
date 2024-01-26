@@ -2,11 +2,11 @@ import "./globals.css"
 
 import { Inter } from "next/font/google"
 
-import Providers from "./_component/provider"
-
 const inter = Inter({ subsets: ["latin"] })
 
 import type { Metadata } from "next"
+
+import Providers from "@/components/provider"
 
 export const metadata: Metadata = {
   title: "dnd 10th-1 fe",

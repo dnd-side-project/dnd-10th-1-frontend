@@ -1,5 +1,6 @@
-import { END_POINT } from "@/constants/apis"
-import { mswInstance } from "@/libs/axios/instance"
+import axios from "axios"
+
+import { BACK_URL, END_POINT } from "@/constants/apis"
 
 type Temp = {
   message: string
@@ -8,18 +9,8 @@ type Temp = {
 const tempAPI = {
   getClientTemp: async () => {
     try {
-      const res = await mswInstance.get<Temp>(END_POINT.temp)
-      return res.data
-    } catch (err) {
-      if (err instanceof Error) {
-        throw new Error(err.message)
-      }
-    }
-  },
+      const res = await axios.get<Temp>(BACK_URL + END_POINT.temp)
 
-  getServerTemp: async () => {
-    try {
-      const res = await mswInstance.get<Temp>(END_POINT.temp)
       return res.data
     } catch (err) {
       if (err instanceof Error) {
