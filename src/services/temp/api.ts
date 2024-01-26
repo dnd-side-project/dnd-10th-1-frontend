@@ -10,6 +10,7 @@ const tempAPI = {
   getClientTemp: async () => {
     try {
       const res = await axios.get<Temp>(BACK_URL + END_POINT.temp)
+
       return res.data
     } catch (err) {
       if (err instanceof Error) {

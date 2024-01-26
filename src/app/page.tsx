@@ -2,6 +2,8 @@ import Button from "@/components/button"
 
 import TempClient from "./_component/temp-client"
 
+export const dynamic = "force-dynamic"
+
 export default async function Home() {
   return (
     <main>
