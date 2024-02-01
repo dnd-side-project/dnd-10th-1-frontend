@@ -1,4 +1,4 @@
-import Button from "@/components/button"
+import { Button } from "@/components/button"
 
 import TempClient from "./_component/temp-client"
 
