@@ -9,9 +9,3 @@
     margin: 0;
   }
 }
-
-@layer components {
-  .temp-btn {
-      @apply relative top-4 bg-amber-100 rounded-md p-2 m-2.5 font-bold text-white hover:bg-blue-300
-  }
-}
