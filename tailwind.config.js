@@ -48,38 +48,34 @@ module.exports = {
       addComponents({
         ".h1": {
           fontSize: "1.875rem",
-          fontWight: "Bold",
-          lineHeight: "Auto",
+          fontWeight: 700,
         },
         ".h2": {
           fontSize: "1.625rem",
-          fontWight: "Bold",
-          lineHeight: "Auto",
+          fontWeight: 700,
         },
         ".t1": {
           fontSize: "1.125rem",
-          fontWight: "Bold",
-          lineHeight: "Auto",
+          fontWeight: 700,
         },
         ".t2": {
           fontSize: "1rem",
-          fontWight: "Regular",
-          lineHeight: "24px",
+          fontWeight: 400,
+          lineHeight: "1.5rem",
         },
         ".t3": {
           fontSize: "0.875rem",
-          fontWight: "SemiBold",
-          lineHeight: "Auto",
+          fontWeight: 600,
         },
         ".t4": {
           fontSize: "0.75rem",
-          fontWight: "Regular",
-          lineHeight: "18px",
+          fontWeight: 400,
+          lineHeight: "1.125rem",
         },
         ".t4-bold": {
           fontSize: "0.75rem",
-          fontWight: "Bold",
-          lineHeight: "18px",
+          fontWeight: 700,
+          lineHeight: "1.125rem",
         },
       })
     }),
