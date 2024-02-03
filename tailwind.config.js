@@ -42,14 +42,6 @@ module.exports = {
       ],
       sementic: [{ error: "#E1322D" }, { positive: "#008A3D" }, { warning: "#FA9200" }],
     },
-    fontSize: {
-      h1: "1.875rem",
-      h2: "1.625rem",
-      t1: "1.125rem",
-      t2: "1rem",
-      t3: "0.875rem",
-      t4: "0.75rem",
-    },
   },
   plugins: [
     plugin(function ({ addComponents }) {
