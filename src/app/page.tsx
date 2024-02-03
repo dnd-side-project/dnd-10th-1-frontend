@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <main>
       <TempClient />
-      <Button className={cn("bg-gray-4-600 text-t2 text-sementic-2-warning")}>dnd-10-1 fe</Button>
+      <Button className={cn("t2 bg-primary-3-200")}>dnd-10-1 fe</Button>
     </main>
   )
 }

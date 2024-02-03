@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin")
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
@@ -50,5 +51,46 @@ module.exports = {
       t4: "0.75rem",
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        ".h1": {
+          fontSize: "1.875rem",
+          fontWight: "Bold",
+          lineHeight: "Auto",
+        },
+        ".h2": {
+          fontSize: "1.625rem",
+          fontWight: "Bold",
+          lineHeight: "Auto",
+        },
+        ".t1": {
+          fontSize: "1.125rem",
+          fontWight: "Bold",
+          lineHeight: "Auto",
+        },
+        ".t2": {
+          fontSize: "1rem",
+          fontWight: "Regular",
+          lineHeight: "24px",
+        },
+        ".t3": {
+          fontSize: "0.875rem",
+          fontWight: "SemiBold",
+          lineHeight: "Auto",
+        },
+        ".t4": {
+          fontSize: "0.75rem",
+          fontWight: "Regular",
+          lineHeight: "18px",
+        },
+        ".t4-bold": {
+          fontSize: "0.75rem",
+          fontWight: "Bold",
+          lineHeight: "18px",
+        },
+      })
+    }),
+    require("tailwindcss-animate"),
+  ],
 }
