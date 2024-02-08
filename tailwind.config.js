@@ -41,6 +41,8 @@ module.exports = {
         { 500: "#0FB49D" },
       ],
       sementic: [{ error: "#E1322D" }, { positive: "#008A3D" }, { warning: "#FA9200" }],
+      white: "#FFFFFF",
+      black: "#000000",
     },
   },
   plugins: [

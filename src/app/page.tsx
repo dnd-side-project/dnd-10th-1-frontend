@@ -1,15 +1,29 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 import { Button } from "@/components/button"
+import Splash from "@/components/splash"
 import { cn } from "@/libs/tailwind/cn"
 
-import TempClient from "./_component/temp-client"
+export default function Home() {
+  const [loading, setLoading] = useState(true)
 
-export const dynamic = "force-dynamic"
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+  }, [])
 
-export default async function Home() {
   return (
-    <main>
-      <TempClient />
-      <Button className={cn("t2 bg-primary-3-200")}>dnd-10-1 fe</Button>
+    <main className="relative">
+      {loading ? (
+        <Splash />
+      ) : (
+        <>
+          <Button className={cn("t2 bg-primary-3-200")}>dnd-10-1 fe</Button>
+        </>
+      )}
     </main>
   )
 }
