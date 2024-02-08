@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={cn(inter.className, "bg-gray-1-100")}>
+      <body className={cn(inter.className, "bg-gray-100")}>
         <Providers>
           <div className={cn("relative mx-auto min-h-screen max-w-md bg-white")}>{children}</div>
         </Providers>
