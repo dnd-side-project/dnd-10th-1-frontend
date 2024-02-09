@@ -21,7 +21,7 @@ export default function Home() {
         <Splash />
       ) : (
         <>
-          <Button className={cn("t2 bg-primary-3-200")}>dnd-10-1 fe</Button>
+          <Button className={cn("t2 bg-primary-200")}>dnd-10-1 fe</Button>
         </>
       )}
     </main>
