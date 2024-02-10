@@ -1,0 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/react"
+
+import SecondScreen from "./second-screen"
+
+const meta: Meta<typeof SecondScreen> = {
+  title: "Onboarding/SecondScreen",
+  component: SecondScreen,
+  tags: ["autodocs"],
+}
+
+export default meta
+type Story = StoryObj<typeof SecondScreen>
+
+export const Primary: Story = {
+  render: () => <SecondScreen onClick={() => {}} />,
+}
