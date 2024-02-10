@@ -1,29 +1,29 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
-import { Button } from "@/components/button"
 import Splash from "@/components/splash"
-import { cn } from "@/libs/tailwind/cn"
+
+import { OnboardingStack } from "./_onboarding/onboarding-stackflow"
+import { ProfileStack } from "./_profile/profile-stackflow"
+import { useFlowMachine } from "./flow-machine"
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
+  const { flow, changeOnboarding, isFirstVisit } = useFlowMachine()
 
   useEffect(() => {
+    if (!isFirstVisit) return
+
     setTimeout(() => {
-      setLoading(false)
+      changeOnboarding()
     }, 1500)
-  }, [])
+  }, [changeOnboarding, isFirstVisit])
 
   return (
-    <main className="relative">
-      {loading ? (
-        <Splash />
-      ) : (
-        <>
-          <Button className={cn("t2 bg-primary-200")}>dnd-10-1 fe</Button>
-        </>
-      )}
+    <main>
+      {flow === "SPLASH" && <Splash />}
+      {flow === "ONBOARDING" && <OnboardingStack />}
+      {flow === "PROFILE" && <ProfileStack />}
     </main>
   )
 }
