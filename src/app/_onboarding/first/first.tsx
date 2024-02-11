@@ -7,13 +7,17 @@ import { useFlow } from "../../stackflow"
 import FirstScreen from "./first-screen"
 
 const First: ActivityComponentType = () => {
-  const { push } = useFlow()
+  const { push, replace, pop } = useFlow()
 
   return (
     <AppScreen>
       <FirstScreen
         onClick={() => {
           push("OnboardingSecond", {})
+        }}
+        onSkipClick={() => {
+          pop()
+          replace("Profile", {}, { animate: false })
         }}
       />
     </AppScreen>
