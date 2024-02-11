@@ -26,6 +26,10 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
+    "@stackflow/core": "^1.0.10",
+    "@stackflow/plugin-basic-ui": "^1.5.2",
+    "@stackflow/plugin-renderer-basic": "^1.1.7",
+    "@stackflow/react": "^1.1.7",
     "@tanstack/react-query": "^5.17.19",
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
