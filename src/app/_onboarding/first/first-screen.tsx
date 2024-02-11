@@ -10,8 +10,8 @@ type Props = {
 
 export default function FirstScreen({ onClick }: Props) {
   return (
-    <div className="min-h-screen bg-gray-950 px-6 pt-20">
-      <div className="flex justify-center">
+    <div className="min-h-screen bg-gray-950 px-6">
+      <div className="mb-[30px] flex justify-center">
         <Image priority src={OnboardinFirst} alt="온보딩 첫번째 이미지" />
       </div>
 

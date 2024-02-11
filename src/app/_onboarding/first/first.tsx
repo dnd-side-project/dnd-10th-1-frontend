@@ -3,7 +3,7 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
-import { useFlow } from "../onboarding-stackflow"
+import { useFlow } from "../../stackflow"
 import FirstScreen from "./first-screen"
 
 const First: ActivityComponentType = () => {
@@ -13,7 +13,7 @@ const First: ActivityComponentType = () => {
     <AppScreen>
       <FirstScreen
         onClick={() => {
-          push("Second", {})
+          push("OnboardingSecond", {})
         }}
       />
     </AppScreen>

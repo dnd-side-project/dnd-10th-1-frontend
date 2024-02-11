@@ -3,16 +3,16 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
-import { useFlowMachine } from "@/app/flow-machine"
+import { useFlow } from "@/app/stackflow"
 
 import ThirdScreen from "./third-screen"
 
 const Third: ActivityComponentType = () => {
-  const { changeProfile } = useFlowMachine()
+  const { replace } = useFlow()
 
   return (
     <AppScreen>
-      <ThirdScreen onClick={changeProfile} />
+      <ThirdScreen onClick={() => replace("Profile", {}, { animate: false })} />
     </AppScreen>
   )
 }
