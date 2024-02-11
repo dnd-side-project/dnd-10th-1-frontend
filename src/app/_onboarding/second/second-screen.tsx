@@ -26,7 +26,7 @@ export default function SecondScreen({ onClick, onSkipClick }: Props) {
         <div className="h-2 w-2 rounded-full bg-gray-600" />
       </div>
 
-      <p className="h2 mb-10 flex justify-center text-center text-gray-25">
+      <p className="h2 mb-[39px] flex justify-center text-center text-gray-25">
         얼음땡만의 콘텐츠를
         <br />
         경험해보세요

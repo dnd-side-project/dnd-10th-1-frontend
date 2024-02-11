@@ -26,7 +26,7 @@ export default function ThirdScreen({ onClick, onSkipClick }: Props) {
         <div className="h-2 w-2 rounded-full bg-gray-400" />
       </div>
 
-      <p className="h2 mb-[198px] flex justify-center text-center text-gray-25">
+      <p className="h2 mb-[197px] flex justify-center text-center text-gray-25">
         어렵게만 느껴졌던
         <br />
         첫만남의 벽을 깨보세요!
