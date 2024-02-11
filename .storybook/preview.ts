@@ -1,8 +1,9 @@
-import type { Preview } from "@storybook/react";
-import '../src/app/globals.css';
+import type { Preview } from "@storybook/react"
+import "../src/app/globals.css"
 
 const preview: Preview = {
   parameters: {
+    layout: "fullscreen",
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -14,6 +15,6 @@ const preview: Preview = {
       appDirectory: true,
     },
   },
-};
+}
 
-export default preview;
+export default preview
