@@ -5,6 +5,7 @@ import SecondScreen from "./second-screen"
 const meta: Meta<typeof SecondScreen> = {
   title: "Onboarding/SecondScreen",
   component: SecondScreen,
+  argTypes: { onClick: { action: "clicked" }, onSkipClick: { action: "skipClicked" } },
   tags: ["autodocs"],
 }
 
@@ -12,5 +13,5 @@ export default meta
 type Story = StoryObj<typeof SecondScreen>
 
 export const Primary: Story = {
-  render: () => <SecondScreen onClick={() => {}} />,
+  render: args => <SecondScreen {...args} />,
 }

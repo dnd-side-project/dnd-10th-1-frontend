@@ -10,7 +10,7 @@ import SplashLogo from "@/assets/images/splash-logo.png"
 import { useFlow } from "../stackflow"
 
 const Splash: ActivityComponentType = () => {
-  const [isFirstVisit, setIsFirstVisit] = useState(true)
+  const [isFirstVisit] = useState(true)
   const { replace } = useFlow()
 
   useEffect(() => {
