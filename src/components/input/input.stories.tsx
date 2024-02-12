@@ -14,3 +14,7 @@ type Story = StoryObj<typeof Input>
 export const Primary: Story = {
   render: ({ ...args }) => <Input {...args} />,
 }
+
+export const MainInput: Story = {
+  render: ({ ...args }) => <Input {...args} control="main" />,
+}
