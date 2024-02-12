@@ -9,3 +9,27 @@
     margin: 0;
   }
 }
+
+@layer components {
+  .h1 {
+    @apply text-[1.875rem] font-bold !important
+  }
+  .h2 {
+    @apply text-[1.625rem] font-bold !important
+  }
+  .t1 {
+    @apply text-[1.125rem] font-bold !important
+  }
+  .t2 {
+    @apply text-[1rem] font-normal !important
+  }
+  .t3 {
+    @apply text-[0.875rem] font-semibold !important
+  }
+  .t4 {
+    @apply text-[0.75rem] font-normal !important
+  }
+  .t4-bold {
+    @apply text-[0.75rem] font-bold !important
+  }
+}

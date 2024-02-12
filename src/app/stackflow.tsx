@@ -2,6 +2,7 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui"
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic"
 import { stackflow } from "@stackflow/react"
 
+import Main from "./_main/main"
 import OnboardingFirst from "./_onboarding/first/first"
 import OnboardingSecond from "./_onboarding/second/second"
 import OnboardingThird from "./_onboarding/third/third"
@@ -16,6 +17,7 @@ export const { Stack, useFlow } = stackflow({
     OnboardingSecond,
     OnboardingThird,
     Profile,
+    Main,
   },
   plugins: [
     basicRendererPlugin(),

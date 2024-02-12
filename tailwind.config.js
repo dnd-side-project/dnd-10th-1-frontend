@@ -42,36 +42,18 @@ module.exports = {
   plugins: [
     plugin(function ({ addComponents }) {
       addComponents({
-        ".h1": {
-          fontSize: "1.875rem",
-          fontWeight: 700,
+        ".shadow-main": {
+          boxShadow: "0px 4px 18px 0px #4747F4",
         },
-        ".h2": {
-          fontSize: "1.625rem",
-          fontWeight: 700,
+        ".shadow-drop": {
+          boxShadow: "3px 4px 7.6px 0px rgba(0,0,0,0.15)",
         },
-        ".t1": {
-          fontSize: "1.125rem",
-          fontWeight: 700,
+        ".shadow-blue": {
+          boxShadow: "2px 3px 0px 0px #3157DD",
         },
-        ".t2": {
-          fontSize: "1rem",
-          fontWeight: 400,
-          lineHeight: "1.5rem",
-        },
-        ".t3": {
-          fontSize: "0.875rem",
-          fontWeight: 600,
-        },
-        ".t4": {
-          fontSize: "0.75rem",
-          fontWeight: 400,
-          lineHeight: "1.125rem",
-        },
-        ".t4-bold": {
-          fontSize: "0.75rem",
-          fontWeight: 700,
-          lineHeight: "1.125rem",
+        ".phone-size": {
+          width: "360px",
+          height: "800px",
         },
       })
     }),
