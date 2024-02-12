@@ -55,9 +55,6 @@ module.exports = {
           width: "360px",
           height: "800px",
         },
-        ".linear": {
-          background: "linear-gradient(to bottom, #3157DD 0%, #3157DD 100%)",
-        },
       })
     }),
     require("tailwindcss-animate"),
