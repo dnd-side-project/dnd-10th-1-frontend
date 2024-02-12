@@ -29,8 +29,6 @@ export default function MainScreen({ isFirstVisit, userInfo }: Props) {
     const inviteCode = e.get("inviteCode")
 
     if (typeof inviteCode !== "string") throw new Error("옳지 않은 접근입니다.")
-
-    console.log(inviteCode)
   }
 
   function onboardingHandler() {
