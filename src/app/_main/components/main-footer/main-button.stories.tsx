@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import Chip from "@/components/chip"
 
-import MainButton from "."
+import MainButton from "./main-button"
 
 const meta: Meta<typeof MainButton> = {
-  title: "Main/Button",
+  title: "Main/Components/Button",
   component: MainButton,
   tags: ["autodocs"],
 }

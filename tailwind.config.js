@@ -51,6 +51,13 @@ module.exports = {
         ".shadow-blue": {
           boxShadow: "2px 3px 0px 0px #3157DD",
         },
+        ".phone-size": {
+          width: "360px",
+          height: "800px",
+        },
+        ".linear": {
+          background: "linear-gradient(to bottom, #3157DD 0%, #3157DD 100%)",
+        },
       })
     }),
     require("tailwindcss-animate"),

@@ -6,10 +6,10 @@ import { cn } from "@/libs/tailwind/cn"
 type Props = {
   check: boolean
   className: string
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+} & React.ButtonHTMLAttributes<HTMLDivElement>
 export default function Chip({ children, check = false, className, ...props }: PropsWithChildren<Partial<Props>>) {
   return (
-    <button
+    <div
       {...props}
       className={cn("t4-bold items-center rounded bg-mint-100 px-2 py-[2.5px] text-gray-950", className, {
         "flex gap-[5px]": check,
@@ -17,7 +17,6 @@ export default function Chip({ children, check = false, className, ...props }: P
     >
       {check ? <Check size={10} strokeWidth="2" /> : null}
       {children}
-      <div></div>
-    </button>
+    </div>
   )
 }

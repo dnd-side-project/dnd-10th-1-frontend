@@ -5,9 +5,6 @@ import { cn } from "@/libs/tailwind/cn"
 
 type Props = {
   control: "create" | "invite"
-  inLine: string
-  centerLine: string
-  outLine: string
   className?: string
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 export default function MainButton({ control, children, className, ...props }: PropsWithChildren<Props>) {
@@ -33,15 +30,15 @@ export default function MainButton({ control, children, className, ...props }: P
   )
 
   const iconClassName = cn(
-    "text-white flex items-center",
-    { "h2 gap-3": control === "create" },
+    "text-white flex items-center leading-none",
+    { "text-[22px] font-bold gap-3": control === "create" },
     { "t1 gap-5": control === "invite" },
   )
 
   return (
     <button {...props} className={buttonClassName}>
       <div className={iconClassName}>
-        {ButtonComponents?.svg} {ButtonComponents?.title}
+        {ButtonComponents?.svg} <span className="leading-none">{ButtonComponents?.title}</span>
       </div>
       {children}
     </button>

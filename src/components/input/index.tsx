@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "@/libs/tailwind/cn"
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  control: "Default" | "main"
+  control?: "Default" | "main"
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
