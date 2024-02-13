@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 import EditProfile from "@/assets/svgs/profiles/edit-profile.svg"
-import { Avatar, AvatarFallback } from "@/components/avatar/avatar"
+import { Avatar, AvatarFallback } from "@/components/avatar"
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/drawer"
 
 import ProfileInput from "./components/profile-input/profile-input"
