@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import PorifleInput from "./profile-input"
+import ProfileInput from "./profile-input"
 
-const meta: Meta<typeof PorifleInput> = {
-  title: "Profile/Components/PorifleInput",
-  component: PorifleInput,
+const meta: Meta<typeof ProfileInput> = {
+  title: "Profile/Components/ProfileInput",
+  component: ProfileInput,
   tags: ["autodocs"],
 }
 
 export default meta
-type Story = StoryObj<typeof PorifleInput>
+type Story = StoryObj<typeof ProfileInput>
 
 export const Primary: Story = {
-  render: args => <PorifleInput {...args} />,
+  render: args => <ProfileInput {...args} />,
 }
