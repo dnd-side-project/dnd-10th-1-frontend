@@ -7,6 +7,7 @@ import OnboardingFirst from "./_onboarding/first/first"
 import OnboardingSecond from "./_onboarding/second/second"
 import OnboardingThird from "./_onboarding/third/third"
 import Profile from "./_profile/profile"
+import SelectGames from "./_select-games/select-games"
 import Splash from "./_splash/splash"
 
 export const { Stack, useFlow } = stackflow({
@@ -18,6 +19,7 @@ export const { Stack, useFlow } = stackflow({
     OnboardingThird,
     Profile,
     Main,
+    SelectGames,
   },
   plugins: [
     basicRendererPlugin(),
