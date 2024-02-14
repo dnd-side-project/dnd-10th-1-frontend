@@ -1,14 +1,20 @@
-import { ArrowLeft } from "lucide-react"
+import type { RoleType, UserWaitingType } from "@/types/game"
+import { UserInfoType } from "@/types/user"
 
-type Props = {}
+import WaitingBottom from "./components/waiting-bottom"
+import WaitingTop from "./components/waiting-top"
 
-export default function WaitingScreen(_: Props) {
+type Props = {
+  userInfo: UserInfoType
+  userList: UserWaitingType[]
+  role: RoleType
+}
+
+export default function WaitingScreen({ userInfo, userList, role }: Props) {
   return (
     <div className="relative h-full w-full bg-gray-950">
-      <header className="relative p-[28px]">
-        <ArrowLeft className="absolute" stroke="#98A2B3" />
-        <span className="block text-center text-[14px] font-bold text-gray-400">대기방</span>
-      </header>
+      <WaitingTop userInfo={userInfo} />
+      <WaitingBottom role={role} userList={userList} />
     </div>
   )
 }
