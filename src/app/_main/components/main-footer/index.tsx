@@ -1,14 +1,10 @@
 import Chip from "@/components/chip"
 import { DrawerTrigger } from "@/components/drawer"
-import { GameType } from "@/constants/main"
+import { GAME } from "@/constants/main"
 
 import MainButton from "./main-button"
 
-type Props = {
-  game: GameType
-}
-
-export default function MainFooter({ game }: Props) {
+export default function MainFooter() {
   return (
     <footer className="flex flex-col gap-6 px-6">
       <MainButton control="create">
@@ -18,7 +14,7 @@ export default function MainFooter({ game }: Props) {
           팀원들과 게임을 시작하세요
         </div>
         <div className="mt-10 flex gap-[10px]">
-          {game.map(item => (
+          {GAME.map(item => (
             <Chip key={item}>{item}</Chip>
           ))}
         </div>
