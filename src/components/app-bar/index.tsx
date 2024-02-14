@@ -2,11 +2,11 @@ import { ArrowLeft } from "lucide-react"
 
 type Props = {
   title: string
-  isBackButton: boolean
+  isBackButton?: boolean
   callback?: () => void
 }
 
-export default function AppBar({ title, isBackButton, callback }: Props) {
+export default function AppBar({ title, isBackButton = false, callback }: Props) {
   const onClick = () => {
     if (typeof callback !== "undefined") {
       callback()
