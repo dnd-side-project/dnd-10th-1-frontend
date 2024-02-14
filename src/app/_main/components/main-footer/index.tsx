@@ -4,9 +4,7 @@ import { GAME } from "@/constants/main"
 
 import MainButton from "./main-button"
 
-type Props = {}
-
-export default function MainFooter(_: Props) {
+export default function MainFooter() {
   return (
     <footer className="flex flex-col gap-6 px-6">
       <MainButton control="create">
