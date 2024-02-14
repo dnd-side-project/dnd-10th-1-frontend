@@ -1,13 +1,44 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
+import { useState } from "react"
+
+import FallbackProfile from "@/assets/svgs/profiles/fallback-profile.svg"
+
+import { useFlow } from "../stackflow"
+import ProfileScreen from "./profile-screen"
 
 const Profile: ActivityComponentType = () => {
+  const [profile, setProfile] = useState(FallbackProfile)
+  const [nickname, setNickname] = useState("")
+
+  const { replace } = useFlow()
+
+  const onDrawerClick = (profileTheme: any) => {
+    setProfile(profileTheme)
+  }
+
+  const onInputChange = (nickname: string) => {
+    setNickname(nickname)
+  }
+
+  const finish = profile !== FallbackProfile && nickname !== ""
+
   return (
     <AppScreen
       appBar={{
         title: "프로필 설정하기",
         renderRight: () => {
-          return <div className="pr-[27px] text-gray-100">완료</div>
+          return (
+            <button
+              disabled={!finish}
+              onClick={() => {
+                replace("Main", {})
+              }}
+              className="pr-[27px] text-gray-100 disabled:text-gray-600"
+            >
+              완료
+            </button>
+          )
         },
         height: "70px",
         backgroundColor: "#0C111D",
@@ -15,9 +46,12 @@ const Profile: ActivityComponentType = () => {
         borderColor: "#0C111D",
       }}
     >
-      <div className="min-h-full bg-gray-950 px-6">
-        <h1 className="text-white">프로필 페이지</h1>
-      </div>
+      <ProfileScreen
+        profile={profile}
+        nickname={nickname}
+        onDrawerClick={onDrawerClick}
+        onInputChange={onInputChange}
+      />
     </AppScreen>
   )
 }

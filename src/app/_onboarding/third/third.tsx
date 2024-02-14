@@ -8,18 +8,16 @@ import { useFlow } from "@/app/stackflow"
 import ThirdScreen from "./third-screen"
 
 const Third: ActivityComponentType = () => {
-  const { replace, pop } = useFlow()
+  const { replace } = useFlow()
 
   return (
     <AppScreen>
       <ThirdScreen
         onClick={() => {
-          pop()
-          replace("Profile", {}, { animate: false })
+          replace("Profile", {})
         }}
         onSkipClick={() => {
-          pop()
-          replace("Profile", {}, { animate: false })
+          replace("Profile", {})
         }}
       />
     </AppScreen>
