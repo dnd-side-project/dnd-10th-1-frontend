@@ -1,4 +1,4 @@
-import type { RoleType, UserWaitingType } from "@/types/game"
+import type { RoleType, UserWaitingType } from "@/app/_waiting/types/game"
 import { UserInfoType } from "@/types/user"
 
 import WaitingBottom from "./components/waiting-bottom"

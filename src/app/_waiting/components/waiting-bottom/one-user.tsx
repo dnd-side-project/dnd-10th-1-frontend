@@ -1,8 +1,8 @@
 import { useMemo } from "react"
 
+import { UserWaitingType } from "@/app/_waiting/types/game"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 import { cn } from "@/libs/tailwind/cn"
-import { UserWaitingType } from "@/types/game"
 
 type Props = {
   userInfo: UserWaitingType

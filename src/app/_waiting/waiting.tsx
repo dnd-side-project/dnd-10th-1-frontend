@@ -3,7 +3,7 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
-import { UserWaitingType } from "@/types/game"
+import { UserWaitingType } from "@/app/_waiting/types/game"
 import { UserInfoType } from "@/types/user"
 
 import WaitingScreen from "./waiting-screen"

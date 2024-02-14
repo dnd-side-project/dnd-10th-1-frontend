@@ -1,4 +1,4 @@
-import { UserWaitingType } from "@/types/game"
+import { UserWaitingType } from "@/app/_waiting/types/game"
 
 import OneUser from "./one-user"
 

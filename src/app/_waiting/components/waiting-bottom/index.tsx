@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 
+import type { RoleType, UserWaitingType } from "@/app/_waiting/types/game"
 import { cn } from "@/libs/tailwind/cn"
-import type { RoleType, UserWaitingType } from "@/types/game"
 
 import UserList from "./user-list"
 

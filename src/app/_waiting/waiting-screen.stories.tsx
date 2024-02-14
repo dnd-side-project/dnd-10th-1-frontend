@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import React from "react"
 
-import { UserWaitingType } from "@/types/game"
+import { UserWaitingType } from "@/app/_waiting/types/game"
 import { UserInfoType } from "@/types/user"
 
 import WaitingScreen from "./waiting-screen"
