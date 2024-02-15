@@ -7,7 +7,10 @@
 
 import "react-bubble-ui/dist/index.css"
 
+import { useState } from "react"
 import BubbleUI from "react-bubble-ui"
+
+import { cn } from "@/libs/tailwind/cn"
 
 import { mbtiCombinations } from "./mbti-data"
 
@@ -16,6 +19,8 @@ type Props = {
 }
 
 export default function Bubble({ handleClick }: Props) {
+  const [select, setSelect] = useState<string>()
+
   const options = {
     size: 180,
     minSize: 40,
@@ -33,19 +38,28 @@ export default function Bubble({ handleClick }: Props) {
 
   const onClick = (value: string) => {
     handleClick(value)
+    setSelect(value)
   }
 
   return (
     <BubbleUI options={options} className="my-10 h-[500px] w-full rounded-[50px]">
       {mbtiCombinations.map((data, i) => {
         return (
-          <div
+          <button
             key={i}
-            onClick={() => onClick(data)}
-            className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA] text-xl font-semibold text-white"
+            className="foucs:to-[#FF7EFA] flex h-[180px] w-[180px] items-center justify-center rounded-full focus:bg-gradient-to-b focus:from-[#2A61E7] focus:to-[#FF7EFA]"
           >
-            {data}
-          </div>
+            <div onClick={() => onClick(data)} className="relative h-[calc(100%-6px)] w-[calc(100%-6px)]">
+              <div
+                className={cn(
+                  `h2 flex h-full w-full items-center justify-center rounded-full bg-gray-400 text-xl font-semibold text-gray-800`,
+                  select === data && "bg-pink-300",
+                )}
+              >
+                {data}
+              </div>
+            </div>
+          </button>
         )
       })}
     </BubbleUI>
