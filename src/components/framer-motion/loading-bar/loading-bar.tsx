@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 
-export default function HideButton() {
+export default function LoadingBar() {
   return (
     <div className="h-[74px] w-[74px] rounded-full border-[6px] border-white">
       <ul className="flex h-full items-center justify-center gap-1">

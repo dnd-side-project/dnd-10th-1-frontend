@@ -36,7 +36,7 @@ export default function useSlotMachine({ textList, duration }: Props) {
   const variants: Variants = {
     initial: { y: "-20%", opacity: 0 },
     animate: ({ isLast }) => {
-      let props: VariantProps = { y: 0, opacity: 1 }
+      const props: VariantProps = { y: 0, opacity: 1 }
       if (!isLast) props["filter"] = "blur(1.2px)"
       return props
     },
