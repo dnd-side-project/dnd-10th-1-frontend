@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import Loadingbar from "./loadingbar"
+import LoadingBar from "./loading-bar"
 
-const meta: Meta<typeof Loadingbar> = {
+const meta: Meta<typeof LoadingBar> = {
   title: "Motion/LoadingBar",
-  component: Loadingbar,
+  component: LoadingBar,
   tags: ["autodocs"],
 }
 
 export default meta
-type Story = StoryObj<typeof Loadingbar>
+type Story = StoryObj<typeof LoadingBar>
 
 export const Primary: Story = {
   render: () => (
     <div className="phone-size bg-gray-950">
-      <Loadingbar />,
+      <LoadingBar />,
     </div>
   ),
 }
