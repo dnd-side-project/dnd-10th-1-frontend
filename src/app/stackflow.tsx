@@ -29,5 +29,5 @@ export const { Stack, useFlow } = stackflow({
       theme: "cupertino",
     }),
   ],
-  initialActivity: () => "Mbti",
+  initialActivity: () => "Splash",
 })
