@@ -5,7 +5,7 @@ import SlotMachine from "./slot-machine"
 import useSlotMachine from "./slot-machine"
 
 const meta: Meta<typeof SlotMachine> = {
-  title: "Components/SlotMachine",
+  title: "Motion/SlotMachine",
   component: MachineTest,
   tags: ["autodocs"],
 }
