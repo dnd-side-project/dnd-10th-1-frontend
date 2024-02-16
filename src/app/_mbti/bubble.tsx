@@ -12,7 +12,7 @@ import BubbleUI from "react-bubble-ui"
 
 import { cn } from "@/libs/tailwind/cn"
 
-import { mbtiCombinations } from "./mbti-data"
+import { MBTI_COMBINATIONS } from "./mbti-data"
 
 type Props = {
   handleClick: (value: string) => void
@@ -43,7 +43,7 @@ export default function Bubble({ handleClick }: Props) {
 
   return (
     <BubbleUI options={options} className="my-10 h-[500px] w-full rounded-[50px]">
-      {mbtiCombinations.map((data, i) => {
+      {MBTI_COMBINATIONS.map((data, i) => {
         return (
           <button
             key={i}

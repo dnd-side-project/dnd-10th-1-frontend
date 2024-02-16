@@ -1,4 +1,4 @@
-export const mbtiCombinations = [
+export const MBTI_COMBINATIONS = [
   "ISTJ",
   "ISFJ",
   "INFJ",
@@ -15,4 +15,4 @@ export const mbtiCombinations = [
   "ESFJ",
   "ENFJ",
   "ENTJ",
-]
+] as const
