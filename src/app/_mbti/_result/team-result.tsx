@@ -32,9 +32,7 @@ export default function TeamResult() {
 
         <p className="t1 mb-[25px] text-center text-gray-400">꾹 눌러 이미지를 저장해주세요.</p>
 
-        <Button className="h4-bold mt-auto h-full w-full bg-primary-300 py-[12.5px] text-gray-25">
-          테스트 결과 공유하기
-        </Button>
+        <Button className="h4-bold h-full w-full bg-primary-300 py-[12.5px] text-gray-25">테스트 결과 공유하기</Button>
       </div>
     </div>
   )

@@ -41,7 +41,7 @@ export default function MyResult() {
         </div>
       </div>
 
-      <div className="mb-[110px] flex flex-col items-center gap-[13px]">
+      <div className="mb-[79px] flex flex-col items-center gap-[13px]">
         <ul className="t3 flex w-[273px] list-disc flex-col gap-2 rounded-xl bg-gray-25 px-5 py-3 tracking-[-0.5px] text-gray-950">
           <li>{"직장 내 분위기메이커일 확률이 높아요."}</li>
           <li>{"적극적이고 주도적으로 업무를 진행해요."}</li>
@@ -78,9 +78,9 @@ export default function MyResult() {
       <p className="t1 mb-[25px] text-center text-gray-400">꾹 눌러 이미지를 저장해주세요.</p>
       <Button
         onClick={() => {
-          push("Main", {})
+          push("MbtiAllResult", {})
         }}
-        className="h4-bold mt-auto h-full w-full bg-primary-300 py-[12.5px] text-gray-25"
+        className="h4-bold h-full w-full bg-primary-300 py-[12.5px] text-gray-25"
       >
         팀원 전체 결과 보기
       </Button>
