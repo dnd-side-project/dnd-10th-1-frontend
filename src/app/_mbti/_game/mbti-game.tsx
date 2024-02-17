@@ -2,10 +2,10 @@ import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 import { useState } from "react"
 
-import { useFlow } from "../stackflow"
-import MbtiScreen from "./mbti-screen"
+import { useFlow } from "../../stackflow"
+import MbtiScreen from "./mbti-game-screen"
 
-const Mbti: ActivityComponentType = () => {
+const MbtiGame: ActivityComponentType = () => {
   const [isSelected, setIsSelected] = useState(false)
   const [selectedMbti, setSelectedMbti] = useState<string>()
 
@@ -27,4 +27,4 @@ const Mbti: ActivityComponentType = () => {
   )
 }
 
-export default Mbti
+export default MbtiGame
