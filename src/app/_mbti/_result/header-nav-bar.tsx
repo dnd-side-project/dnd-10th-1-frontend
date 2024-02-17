@@ -11,12 +11,12 @@ type Props = {
 
 export default function HeaderNavBar({ selectedTitle, onClick }: Props) {
   return (
-    <header className="bg-gray-950">
-      <nav>
-        <ul className="flex justify-center gap-[70px]">
+    <header className="h-[66px] bg-gray-950">
+      <nav className="h-full">
+        <ul className="flex h-full items-center justify-center gap-[70px]">
           {TITLE_LIST.map((title, index) => (
             <li
-              className={cn("px-5 py-12 text-white transition hover:cursor-pointer", {
+              className={cn(" text-white transition hover:cursor-pointer", {
                 "text-primary-200": title === selectedTitle,
               })}
               onClick={() => onClick(title)}
