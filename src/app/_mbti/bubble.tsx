@@ -47,13 +47,16 @@ export default function Bubble({ handleClick }: Props) {
         return (
           <button
             key={i}
-            className="foucs:to-[#FF7EFA] flex h-[180px] w-[180px] items-center justify-center rounded-full focus:bg-gradient-to-b focus:from-[#2A61E7] focus:to-[#FF7EFA]"
+            className={cn(
+              "flex h-[180px] w-[180px] items-center justify-center rounded-full",
+              select === data && "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]",
+            )}
           >
             <div onClick={() => onClick(data)} className="relative h-[calc(100%-6px)] w-[calc(100%-6px)]">
               <div
                 className={cn(
                   `h2 flex h-full w-full items-center justify-center rounded-full bg-gray-400 text-xl font-semibold text-gray-800`,
-                  select === data && "bg-pink-300",
+                  select === data && "bg-pink-300 text-pink-25",
                 )}
               >
                 {data}
