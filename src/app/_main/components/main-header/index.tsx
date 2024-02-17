@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import characterLogo from "@/assets/images/main-character-logo.png"
 import mainLogo from "@/assets/images/splash-logo.png"
-import MainLinear from "@/assets/svgs/main-linear.svg"
+import MainLinear from "@/assets/svgs/main/main-linear.svg"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 type Props = {
   userProfileImage: string

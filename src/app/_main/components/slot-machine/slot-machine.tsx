@@ -4,11 +4,11 @@ import { useEffect, useState } from "react"
 import { cn } from "@/libs/tailwind/cn"
 
 type Props = {
-  textList: string[]
+  textList: string[] | readonly string[]
   duration: number
 }
 
-interface VariantProps {
+type VariantProps = {
   y: number
   opacity: number
   filter?: string
@@ -55,7 +55,7 @@ export default function useSlotMachine({ textList, duration }: Props) {
 
   return {
     SlotMachine: ({ className }: { className?: string }) => (
-      <div className="flex justify-between">
+      <div className="flex justify-center">
         <AnimatePresence mode="sync">
           {textArr.map((text, i) => {
             const isLast = i === lastIndex

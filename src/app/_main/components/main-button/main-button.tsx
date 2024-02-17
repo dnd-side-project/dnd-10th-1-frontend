@@ -1,6 +1,8 @@
-import { ArrowRightSquare, PlusSquare } from "lucide-react"
+import { PlusSquare } from "lucide-react"
+import Image from "next/image"
 import { PropsWithChildren } from "react"
 
+import MainCreate from "@/assets/svgs/main/main-create.svg"
 import { cn } from "@/libs/tailwind/cn"
 
 type Props = {
@@ -10,7 +12,7 @@ type Props = {
 export default function MainButton({ control, children, className, ...props }: PropsWithChildren<Props>) {
   const ButtonComponents = (() => {
     if (control === "create") {
-      const svg = <ArrowRightSquare size={28} />
+      const svg = <Image src={MainCreate} alt="열림버튼" />
       const title = "방 만들기"
       return { svg, title }
     }
@@ -31,8 +33,8 @@ export default function MainButton({ control, children, className, ...props }: P
 
   const iconClassName = cn(
     "text-white flex items-center leading-none",
-    { "text-[22px] font-bold gap-3": control === "create" },
-    { "t1 gap-5": control === "invite" },
+    { "text-[20px] font-bold gap-3": control === "create" },
+    { "h4-bold gap-5": control === "invite" },
   )
 
   return (

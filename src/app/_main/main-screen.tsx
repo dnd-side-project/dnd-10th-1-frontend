@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Drawer, DrawerClose, DrawerContent } from "@/components/drawer"
 import { Input } from "@/components/input"
 
-import MainDragbar from "./components/main-dragbar"
 import MainFooter from "./components/main-footer"
 import MainHeader from "./components/main-header"
 import MainOnboarding from "./components/main-onboarding"
@@ -38,7 +37,6 @@ export default function MainScreen({ isFirstVisit, userInfo }: Props) {
       <Drawer>
         {isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
         <MainHeader userNickName={userNickName} userProfileImage={userProfileImage} />
-        <MainDragbar />
         <MainFooter />
         <DrawerContent>
           <form action={inviteWithCode} className="p-7">
