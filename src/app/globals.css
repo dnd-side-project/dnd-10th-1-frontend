@@ -38,7 +38,7 @@
   .t3 {
     @apply text-[0.75rem] font-normal leading-[140%] !important
   }
-  .t3 {
+  .t3-bold {
     @apply text-[0.75rem] font-bold leading-[140%] !important
   }
 }
