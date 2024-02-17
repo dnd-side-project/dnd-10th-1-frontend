@@ -12,24 +12,33 @@
 
 @layer components {
   .h1 {
-    @apply text-[1.875rem] font-bold !important
+    @apply text-[1.875rem] font-bold leading-[140%] !important
   }
   .h2 {
-    @apply text-[1.625rem] font-bold !important
+    @apply text-[1.625rem] font-bold leading-[140%] !important
+  }
+  .h3{
+    @apply text-[1.25rem] font-medium leading-[140%] !important
+  }
+  .h4-bold{
+    @apply text-[1.125rem] font-bold leading-[140%] !important
   }
   .t1 {
-    @apply text-[1.125rem] font-bold !important
+    @apply text-[1rem] font-normal leading-[24px] !important
+  }
+  .t1-bold {
+    @apply text-[1rem] font-bold leading-[24px] !important
   }
   .t2 {
-    @apply text-[1rem] font-normal !important
+    @apply text-[0.875rem] font-normal leading-[140%] !important
+  }
+  .t2-sb {
+    @apply text-[0.875rem] font-semibold leading-[140%] !important
   }
   .t3 {
-    @apply text-[0.875rem] font-semibold !important
+    @apply text-[0.75rem] font-normal leading-[140%] !important
   }
-  .t4 {
-    @apply text-[0.75rem] font-normal !important
-  }
-  .t4-bold {
-    @apply text-[0.75rem] font-bold !important
+  .t3 {
+    @apply text-[0.75rem] font-bold leading-[140%] !important
   }
 }
