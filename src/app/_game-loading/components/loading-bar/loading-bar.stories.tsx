@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import LoadingBar from "./loading-bar"
 
 const meta: Meta<typeof LoadingBar> = {
-  title: "Motion/LoadingBar",
+  title: "GameLoading/Components/LoadingBar",
   component: LoadingBar,
   tags: ["autodocs"],
 }
