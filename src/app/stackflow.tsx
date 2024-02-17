@@ -3,7 +3,9 @@ import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic"
 import { stackflow } from "@stackflow/react"
 
 import Main from "./_main/main"
-import Mbti from "./_mbti/mbti"
+import MbtiGame from "./_mbti/_game/mbti-game"
+import MbtiLoading from "./_mbti/_loading/mbti-loading"
+import MbtiResult from "./_mbti/_result/mbti-result"
 import OnboardingFirst from "./_onboarding/first/first"
 import OnboardingSecond from "./_onboarding/second/second"
 import OnboardingThird from "./_onboarding/third/third"
@@ -21,7 +23,9 @@ export const { Stack, useFlow } = stackflow({
     Profile,
     Main,
     SelectGames,
-    Mbti,
+    MbtiGame,
+    MbtiLoading,
+    MbtiResult,
   },
   plugins: [
     basicRendererPlugin(),

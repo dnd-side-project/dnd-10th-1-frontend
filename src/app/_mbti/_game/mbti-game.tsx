@@ -19,7 +19,7 @@ const MbtiGame: ActivityComponentType = () => {
           setSelectedMbti(mbti)
         }}
         onCompleteClick={() => {
-          replace("Splash", { mbti: selectedMbti })
+          replace("MbtiResult", { mbti: selectedMbti })
         }}
         isSelected={isSelected}
       />
