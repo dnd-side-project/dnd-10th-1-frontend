@@ -2,8 +2,8 @@ import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 import { useState } from "react"
 
+import HeaderNavBar from "./components/header-nav-bar"
 import { TITLE_LIST } from "./constants"
-import HeaderNavBar from "./header-nav-bar"
 import MyResult from "./my-result"
 import TeamResult from "./team-result"
 

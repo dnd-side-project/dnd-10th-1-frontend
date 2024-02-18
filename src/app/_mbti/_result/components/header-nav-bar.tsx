@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 import { cn } from "@/libs/tailwind/cn"
 
-import { TITLE_LIST } from "./constants"
+import { TITLE_LIST } from "../constants"
 
 type Props = {
   selectedTitle: (typeof TITLE_LIST)[number]
