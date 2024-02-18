@@ -3,7 +3,7 @@ import { ActivityComponentType } from "@stackflow/react"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
 
-const GameInput: ActivityComponentType = () => {
+const SmallTalkGameInput: ActivityComponentType = () => {
   return (
     <AppScreen>
       <SmallTalkGameInputScreen />
@@ -11,4 +11,4 @@ const GameInput: ActivityComponentType = () => {
   )
 }
 
-export default GameInput
+export default SmallTalkGameInput

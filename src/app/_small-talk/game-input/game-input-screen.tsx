@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 
 import { cn } from "@/libs/tailwind/cn"
 
+import SmallTalkGameHeader from "../components/game-header/game-header"
 import SmallTalkGameBody from "./components/game-body/game-body"
-import SmallTalkGameHeader from "./components/game-header/game-header"
 
 export default function SmallTalkGameInputScreen() {
   const [timer, setTimer] = useState(60)
@@ -37,7 +37,7 @@ export default function SmallTalkGameInputScreen() {
 
   return (
     <div>
-      <SmallTalkGameHeader />
+      <SmallTalkGameHeader isStart />
       <SmallTalkGameBody className="pt-[80px]">
         <form action={formAction} className="flex h-full w-full flex-col items-center">
           <div className="mt-[94px] rounded-xl bg-pink-100 px-[21px] py-[3px] text-[25px] font-bold text-gray-800">

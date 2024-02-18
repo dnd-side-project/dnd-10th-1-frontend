@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import SmallTalkGameInputScreen from "./game-input-screen"
 
 const meta: Meta<typeof SmallTalkGameInputScreen> = {
-  title: "SmallTalk/GameInput",
+  title: "SmallTalk/Screens/GameInput",
   component: SmallTalkGameInputScreen,
   tags: ["autodocs"],
 }
