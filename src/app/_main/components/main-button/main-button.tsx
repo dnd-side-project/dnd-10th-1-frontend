@@ -1,6 +1,7 @@
+import { motion } from "framer-motion"
 import { PlusSquare } from "lucide-react"
 import Image from "next/image"
-import { PropsWithChildren } from "react"
+import { ComponentPropsWithoutRef, PropsWithChildren } from "react"
 
 import MainCreate from "@/assets/svgs/main/main-create.svg"
 import { cn } from "@/libs/tailwind/cn"
@@ -8,7 +9,8 @@ import { cn } from "@/libs/tailwind/cn"
 type Props = {
   control: "create" | "invite"
   className?: string
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+} & ComponentPropsWithoutRef<"button">
+
 export default function MainButton({ control, children, className, ...props }: PropsWithChildren<Props>) {
   const ButtonComponents = (() => {
     if (control === "create") {
@@ -38,11 +40,13 @@ export default function MainButton({ control, children, className, ...props }: P
   )
 
   return (
-    <button {...props} className={buttonClassName}>
-      <div className={iconClassName}>
-        {ButtonComponents?.svg} <span className="leading-none">{ButtonComponents?.title}</span>
-      </div>
-      {children}
+    <button {...props}>
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }} className={buttonClassName}>
+        <div className={iconClassName}>
+          {ButtonComponents?.svg} <span className="leading-none">{ButtonComponents?.title}</span>
+        </div>
+        {children}
+      </motion.div>
     </button>
   )
 }
