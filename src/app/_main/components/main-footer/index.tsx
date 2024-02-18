@@ -3,13 +3,13 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 
-import mainLineArt from "@/assets/images/main-line-art.png"
+import mainLineArt from "@/assets/images/main/line-art.png"
 import Chip from "@/components/chip"
 import { DrawerTrigger } from "@/components/drawer"
 import { GAME, RANDOM_GAME_TITLE } from "@/constants/main"
 
+import useSlotMachine from "../../../../hooks/useSlotMachine"
 import MainButton from "../main-button/main-button"
-import useSlotMachine from "../slot-machine/slot-machine"
 
 export default function MainFooter() {
   const [isOpen, setIsOpen] = useState(false)
@@ -41,7 +41,12 @@ export default function MainFooter() {
       >
         <div className="absolute top-[-28px] h-full w-full rounded-b-[20px] bg-primary-300">
           <div className="absolute bottom-0 mb-[120px] h-[240px] w-full bg-gradient-to-b from-gray-25 to-gray-25/0 drop-shadow " />
-          <Image className="absolute bottom-0" src={mainLineArt} alt={"mainLineArt"} />
+          <Image
+            className="absolute bottom-0 left-1/2 translate-x-[-50%]"
+            width={360}
+            src={mainLineArt}
+            alt={"mainLineArt"}
+          />
           <div className="h4-bold absolute bottom-0 mb-[74px] w-full text-center text-white">
             <SlotMachine />
           </div>
