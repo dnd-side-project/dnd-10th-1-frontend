@@ -11,7 +11,7 @@ import { Button } from "@/components/button"
 import { teamResults } from "./mocks"
 
 const MbtiAllResult: ActivityComponentType = () => {
-  const { pop, push } = useFlow()
+  const { pop, replace } = useFlow()
 
   return (
     <AppScreen>
@@ -46,7 +46,7 @@ const MbtiAllResult: ActivityComponentType = () => {
           <div className="flex h-full gap-5">
             <Button
               onClick={() => {
-                push("Main", {})
+                replace("Main", {})
               }}
               className="h4-bold h-[50px] bg-primary-300 py-[12.5px] text-gray-25"
             >
@@ -55,7 +55,7 @@ const MbtiAllResult: ActivityComponentType = () => {
 
             <Button
               onClick={() => {
-                push("Waiting", {})
+                replace("Waiting", {})
               }}
               className="h4-bold h-full w-full bg-primary-300 py-[12.5px] text-gray-25"
             >
