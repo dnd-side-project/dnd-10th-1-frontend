@@ -50,7 +50,7 @@ module.exports = {
       },
       animation: {
         wiggle: "wiggle 200ms ease-in-out",
-        "last-ping": "ping 1s linear",
+        ping: "ping 1s",
       },
     },
   },

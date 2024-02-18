@@ -43,7 +43,7 @@ const MbtiLoading: ActivityComponentType = () => {
               className={cn(
                 "flex h-full w-full animate-pulse items-center justify-center rounded-full hover:animate-none",
                 count !== 0 && wiggle && "animate-wiggle hover:animate-wiggle",
-                count === 0 && "animate-last-ping hover:animate-last-ping",
+                count === 0 && "animate-ping hover:animate-ping",
               )}
             >
               <Image src={IceBox} alt="얼음땡 상자" />
