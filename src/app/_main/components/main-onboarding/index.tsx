@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-import MainCircle from "@/assets/svgs/main-circle.svg"
-import MainTooltip from "@/assets/svgs/main-tooltip.svg"
+import MainCircle from "@/assets/svgs/main/main-circle.svg"
+import MainTooltip from "@/assets/svgs/main/main-tooltip.svg"
 type Props = {
   onboardingHandler: () => void
 }

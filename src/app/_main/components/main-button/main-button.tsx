@@ -1,16 +1,20 @@
-import { ArrowRightSquare, PlusSquare } from "lucide-react"
-import { PropsWithChildren } from "react"
+import { motion } from "framer-motion"
+import { PlusSquare } from "lucide-react"
+import Image from "next/image"
+import { ComponentPropsWithoutRef, PropsWithChildren } from "react"
 
+import MainCreate from "@/assets/svgs/main/main-create.svg"
 import { cn } from "@/libs/tailwind/cn"
 
 type Props = {
   control: "create" | "invite"
   className?: string
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+} & ComponentPropsWithoutRef<"button">
+
 export default function MainButton({ control, children, className, ...props }: PropsWithChildren<Props>) {
   const ButtonComponents = (() => {
     if (control === "create") {
-      const svg = <ArrowRightSquare size={28} />
+      const svg = <Image src={MainCreate} alt="열림버튼" />
       const title = "방 만들기"
       return { svg, title }
     }
@@ -31,16 +35,18 @@ export default function MainButton({ control, children, className, ...props }: P
 
   const iconClassName = cn(
     "text-white flex items-center leading-none",
-    { "text-[22px] font-bold gap-3": control === "create" },
-    { "t1 gap-5": control === "invite" },
+    { "text-[20px] font-bold gap-3": control === "create" },
+    { "h4-bold gap-5": control === "invite" },
   )
 
   return (
-    <button {...props} className={buttonClassName}>
-      <div className={iconClassName}>
-        {ButtonComponents?.svg} <span className="leading-none">{ButtonComponents?.title}</span>
-      </div>
-      {children}
+    <button {...props}>
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }} className={buttonClassName}>
+        <div className={iconClassName}>
+          {ButtonComponents?.svg} <span className="leading-none">{ButtonComponents?.title}</span>
+        </div>
+        {children}
+      </motion.div>
     </button>
   )
 }

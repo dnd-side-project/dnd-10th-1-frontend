@@ -1,8 +1,7 @@
 import Image from "next/image"
 
-import characterLogo from "@/assets/images/main-character-logo.png"
+import characterLogo from "@/assets/images/main/character.png"
 import mainLogo from "@/assets/images/splash-logo.png"
-import MainLinear from "@/assets/svgs/main-linear.svg"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 type Props = {
   userProfileImage: string
@@ -13,8 +12,8 @@ export default function MainHeader({ userNickName, userProfileImage }: Props) {
   return (
     <header className="relative">
       <div className="relative z-10 flex h-60 justify-center overflow-hidden rounded-b-[20px] bg-[#4747F4]">
-        <div className="bg relative w-full max-w-[360px] overflow-hidden rounded-b-[28px]">
-          <Image src={characterLogo} alt="EZPZ 캐릭터" />
+        <div className="bg relative w-full">
+          <Image className="absolute bottom-0 right-0" src={characterLogo} width={360} alt="EZPZ 캐릭터" />
           <Image className="absolute left-[24px] top-[38px]" height={25} width={68} src={mainLogo} alt="Main 로고" />
           <Avatar className="absolute right-6 top-[34px] h-[34px] w-[34px]">
             <AvatarImage src={userProfileImage} />
@@ -25,7 +24,6 @@ export default function MainHeader({ userNickName, userProfileImage }: Props) {
           </div>
         </div>
       </div>
-      <Image className="absolute bottom-0 z-10 h-[54px] w-full" src={MainLinear} alt="Linear" />
     </header>
   )
 }

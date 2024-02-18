@@ -11,7 +11,7 @@ export default function Chip({ children, check = false, className, ...props }: P
   return (
     <div
       {...props}
-      className={cn("t4-bold items-center rounded bg-mint-100 px-2 py-[2.5px] text-gray-950", className, {
+      className={cn("t3-bold items-center rounded bg-mint-100 px-2 py-[2.5px] text-gray-950", className, {
         "flex gap-[5px]": check,
       })}
     >
