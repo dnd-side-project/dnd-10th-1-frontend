@@ -2,10 +2,14 @@ import { useEffect, useState } from "react"
 
 import { cn } from "@/libs/tailwind/cn"
 
+import SmallTalkGameBody from "../components/game-body/game-body"
 import SmallTalkGameHeader from "../components/game-header/game-header"
-import SmallTalkGameBody from "./components/game-body/game-body"
 
-export default function SmallTalkGameInputScreen() {
+type Props = {
+  question: string
+}
+
+export default function SmallTalkGameInputScreen({ question }: Props) {
   const [timer, setTimer] = useState(60)
   const [isSubmit, setIsSubmit] = useState(false)
 
@@ -36,14 +40,14 @@ export default function SmallTalkGameInputScreen() {
   }
 
   return (
-    <div>
+    <div className="min-h-full bg-gray-950">
       <SmallTalkGameHeader isStart />
       <SmallTalkGameBody className="pt-[80px]">
         <form action={formAction} className="flex h-full w-full flex-col items-center">
           <div className="mt-[94px] rounded-xl bg-pink-100 px-[21px] py-[3px] text-[25px] font-bold text-gray-800">
             {timer === 60 ? "1:00" : `0:${timer}`}
           </div>
-          <span className="h2 mt-6">지하철에서 만난 빌런은</span>
+          <span className="h2 mt-6">{question}</span>
           <label className="h2">
             <input
               disabled={isSubmit}

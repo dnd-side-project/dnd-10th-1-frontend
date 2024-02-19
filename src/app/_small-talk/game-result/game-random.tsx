@@ -13,7 +13,7 @@ const SmallTalkGameResult: ActivityComponentType = () => {
 
   return (
     <AppScreen>
-      <SmallTalkGameResultScreen result={mockResult} question={mockQuestion} />
+      <SmallTalkGameResultScreen isAdmin result={mockResult} question={mockQuestion} />
     </AppScreen>
   )
 }
