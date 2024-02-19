@@ -45,7 +45,7 @@ export default function SmallTalkGameResultScreen({ question, result, isAdmin }:
   return (
     <div className="relative min-h-full bg-gray-950">
       {isAnimationVisible && (
-        <div className="absolute left-1/2 top-0 z-10 w-full translate-x-[-50%]">
+        <div className="w-[360px]] absolute left-1/2 top-0 z-10 translate-x-[-50%]">
           <Lottie loop={false} animationData={animationData} onComplete={handleAnimationComplete} />
         </div>
       )}

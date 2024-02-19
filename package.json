@@ -32,7 +32,6 @@
     "@stackflow/plugin-renderer-basic": "^1.1.7",
     "@stackflow/react": "^1.1.7",
     "@tanstack/react-query": "^5.17.19",
-    "@types/react-lottie": "^1.2.10",
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
