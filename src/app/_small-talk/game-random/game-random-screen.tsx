@@ -1,0 +1,48 @@
+import { Button } from "@/components/button"
+import { cn } from "@/libs/tailwind/cn"
+
+import SmallTalkGameBanner from "../components/game-banner/game-banner"
+import SmallTalkGameHeader from "../components/game-header/game-header"
+import SmallTalkGameResultBox from "../components/game-result-box/game-result-box"
+
+type Props = {
+  isAdmin: boolean
+  question: string
+  talkList: string[]
+}
+
+export default function SmallTalkGameRandomScreen({ question, talkList, isAdmin }: Props) {
+  return (
+    <div className="min-h-full bg-gray-950">
+      <SmallTalkGameHeader isStart />
+      <div className="flex flex-col gap-[23px] px-[23px]">
+        <SmallTalkGameBanner question={question} type="random" className="mt-[85px]" />
+        <SmallTalkGameResultBox
+          backGround="dark"
+          className="flex flex-col items-center overflow-y-scroll px-[40px] scrollbar-hide"
+        >
+          <div className="mt-[34px] flex w-fit items-center justify-center rounded-[5px] bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]">
+            <span className={cn("t3-bold m-[1px] rounded-[5px] bg-gray-800 px-[14px] py-[3px] text-pink-200")}>
+              썰 풀어줄 사람 랜덤 뽑기
+            </span>
+          </div>
+          <ul className="mt-[30px] flex w-full flex-col gap-5">
+            {talkList.map((talk, index) => (
+              <li
+                className={cn("w-full list-none text-gray-25", index % 2 === 0 ? "text-left" : "text-right")}
+                key={index}
+              >
+                {talk}
+              </li>
+            ))}
+          </ul>
+        </SmallTalkGameResultBox>
+        {isAdmin && (
+          <Button variant="full" size="max" className="mt-[15px]">
+            랜덤뽑기
+          </Button>
+        )}
+      </div>
+    </div>
+  )
+}

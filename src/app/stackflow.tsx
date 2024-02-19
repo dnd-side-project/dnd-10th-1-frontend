@@ -2,6 +2,7 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui"
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic"
 import { stackflow } from "@stackflow/react"
 
+import Loading from "./_game-loading/game-loding"
 import Main from "./_main/main"
 import MbtiGame from "./_mbti/_game/mbti-game"
 import MbtiLoading from "./_mbti/_loading/mbti-loading"
@@ -12,6 +13,9 @@ import OnboardingSecond from "./_onboarding/second/second"
 import OnboardingThird from "./_onboarding/third/third"
 import Profile from "./_profile/profile"
 import SelectGames from "./_select-games/select-games"
+import SmallTalkInput from "./_small-talk/game-input"
+import SmallTalkRandom from "./_small-talk/game-random"
+import SmallTalkResult from "./_small-talk/game-result"
 import Splash from "./_splash/splash"
 import Waiting from "./_waiting/waiting"
 
@@ -30,6 +34,10 @@ export const { Stack, useFlow } = stackflow({
     MbtiResult,
     MbtiAllResult,
     Waiting,
+    Loading,
+    SmallTalkInput,
+    SmallTalkRandom,
+    SmallTalkResult,
   },
   plugins: [
     basicRendererPlugin(),
