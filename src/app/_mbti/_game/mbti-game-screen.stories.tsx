@@ -2,10 +2,10 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { useState } from "react"
 
-import MbtiScreen from "./mbti-screen"
+import MbtiScreen from "./mbti-game-screen"
 
 const meta: Meta<typeof MbtiScreen> = {
-  title: "Mbti/MbtiScreen",
+  title: "Mbti/MbtiGameScreen",
   component: MbtiScreen,
   tags: ["autodocs"],
 }
