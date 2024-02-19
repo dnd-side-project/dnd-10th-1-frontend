@@ -38,6 +38,21 @@ module.exports = {
       white: "#FFFFFF",
       black: "#000000",
     },
+    extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        ping: {
+          "75%, 100%": { transform: "scale(2)", opacity: 0 },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 200ms ease-in-out",
+        ping: "ping 1s",
+      },
+    },
   },
   plugins: [
     plugin(function ({ addComponents }) {
