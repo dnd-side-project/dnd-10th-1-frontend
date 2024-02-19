@@ -89,10 +89,12 @@ npm run storybook
 ### ⚙️ 사용한 라이브러리 정리
 **Build tools**
 
-<img src="https://img.shields.io/badge/Next-000000?logo=Next.js&logoColor=ffffff&style=flat"/>
-<img src="https://img.shields.io/badge/React-61DAFB?logo=React&logoColor=000000&style=flat"/>
-<img src="https://img.shields.io/badge/Typescript-3178C6?logo=Typescript&logoColor=ffffff&style=flat"/>
-<img src="https://img.shields.io/badge/Node-68A063?logo=Node.js&logoColor=ffffff&style=flat"/>
+<div style="display: flex; gap: 4px;">
+    <img src="https://img.shields.io/badge/Next-000000?logo=Next.js&logoColor=ffffff&style=flat"/>
+    <img src="https://img.shields.io/badge/React-61DAFB?logo=React&logoColor=000000&style=flat"/>
+    <img src="https://img.shields.io/badge/Typescript-3178C6?logo=Typescript&logoColor=ffffff&style=flat"/>
+    <img src="https://img.shields.io/badge/Node-68A063?logo=Node.js&logoColor=ffffff&style=flat"/>
+</div>
 
 **State Management tools**
 
@@ -100,19 +102,25 @@ npm run storybook
 
 **Api tools**
 
-<img src="https://img.shields.io/badge/Axios-007ACC?logo=Axios&logoColor=ffffff&style=flat"/>
-<img src="https://img.shields.io/badge/Socket.io-010101?logo=socket.io&logoColor=ffffff&style=flat"/>
+<div style="display: flex; gap: 4px;">
+    <img src="https://img.shields.io/badge/Axios-007ACC?logo=Axios&logoColor=ffffff&style=flat"/>
+    <img src="https://img.shields.io/badge/Socket.io-010101?logo=socket.io&logoColor=ffffff&style=flat"/>
+</div>
 
 **Collaboration tools**
 
-<img src="https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=000000&style=flat"/>
-<img src="https://img.shields.io/badge/Eslint-4B32C3?logo=eslint&logoColor=ffffff&style=flat"/>
-<img src="https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=ffffff&style=flat"/>
+<div style="display: flex; gap: 4px;">
+    <img src="https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=000000&style=flat"/>
+    <img src="https://img.shields.io/badge/Eslint-4B32C3?logo=eslint&logoColor=ffffff&style=flat"/>
+    <img src="https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=ffffff&style=flat"/>
+</div>
 
 **Test tools**
 
-<img src="https://img.shields.io/badge/Vitest-000000?logo=vitest&logoColor=6DB33F&style=flat"/>
-<img src="https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=ffffff&style=flat"/>
+<div style="display: flex; gap: 4px;">
+    <img src="https://img.shields.io/badge/Vitest-000000?logo=vitest&logoColor=6DB33F&style=flat"/>
+    <img src="https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=ffffff&style=flat"/>
+</div>
 
 **Used tools**
 
