@@ -1,3 +1,6 @@
+import Lottie, { Options } from "react-lottie"
+
+import animationData from "@/assets/lotties/confetti.json"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 
 import SmallTalkGameBanner from "../components/game-banner/game-banner"
@@ -15,8 +18,18 @@ type Props = {
 
 export default function SmallTalkGameResultScreen({ question, result }: Props) {
   const { userNickName, userProfile } = result
+
+  const LottieOption: Options = {
+    autoplay: true,
+    loop: false,
+    animationData,
+  }
+
   return (
     <div>
+      <div className="fixed top-0 z-10">
+        <Lottie options={LottieOption} />
+      </div>
       <SmallTalkGameHeader isStart={false} />
       <div className="flex flex-col gap-[23px] px-[23px]">
         <SmallTalkGameBanner question={question} className="mt-[85px]" type="result" result={result} />
