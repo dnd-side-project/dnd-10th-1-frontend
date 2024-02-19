@@ -47,10 +47,9 @@ export default function Bubble({ handleClick }: Props) {
         return (
           <button
             key={i}
-            className={cn(
-              "flex h-[180px] w-[180px] items-center justify-center rounded-full",
-              select === data && "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]",
-            )}
+            className={cn("flex h-[180px] w-[180px] items-center justify-center rounded-full", {
+              "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": select === data,
+            })}
           >
             <div onClick={() => onClick(data)} className="relative h-[calc(100%-6px)] w-[calc(100%-6px)]">
               <div
