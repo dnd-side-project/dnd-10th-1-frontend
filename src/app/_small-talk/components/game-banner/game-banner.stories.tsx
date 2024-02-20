@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react"
 import { StoryFn } from "@storybook/react"
 
-import { mockQuestion, mockSelectQuestion } from "@/seeds/small-talk-mock"
+import { mockSelectAnswer, mockTopic } from "@/seeds/small-talk-mock"
 import { mockUserInfo } from "@/seeds/user-mock"
 
 import SmallTalkGameBanner from "./game-banner"
@@ -12,9 +12,9 @@ const meta: Meta<typeof SmallTalkGameBanner> = {
   tags: ["autodocs"],
 }
 
-const selectQuestion = mockSelectQuestion
+const selectAnswer = mockSelectAnswer
 const { userNickName } = mockUserInfo
-const question = mockQuestion
+const topic = mockTopic
 
 const Template: StoryFn<typeof SmallTalkGameBanner> = args => <SmallTalkGameBanner {...args} />
 
@@ -28,8 +28,8 @@ export const Primary = Template.bind({})
 export const PhoneRandom = PhoneSize.bind({})
 export const PhoneResult = PhoneSize.bind({})
 
-Primary.args = { type: "random", question, selectQuestion, userNickName }
-PhoneRandom.args = { type: "random", question, selectQuestion, userNickName }
-PhoneResult.args = { type: "result", question, selectQuestion, userNickName }
+Primary.args = { type: "random", topic, selectAnswer, userNickName }
+PhoneRandom.args = { type: "random", topic, selectAnswer, userNickName }
+PhoneResult.args = { type: "result", topic, selectAnswer, userNickName }
 
 export default meta

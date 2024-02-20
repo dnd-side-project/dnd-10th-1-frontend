@@ -41,12 +41,17 @@ export default function WaitingBottom({ userList, isAdmin }: Props) {
     }
   }, [isAdmin, state])
 
+  const adminWithNotAllReady = isAdmin && !allReady
+  const adminWithAllReady = isAdmin && allReady
+  const userWithReady = !isAdmin && state
+  const userWithNotReady = !isAdmin && !state
+
   const buttonClassName = cn(
     "w-full rounded-[10px] text-white",
-    { "bg-[#878787]": isAdmin && !allReady },
-    { "bg-primary-300": isAdmin && allReady },
-    { "bg-pink-300": !isAdmin && state },
-    { "bg-primary-300": !isAdmin && !state },
+    { "bg-[#878787]": adminWithNotAllReady },
+    { "bg-primary-300": adminWithAllReady },
+    { "bg-pink-300": userWithReady },
+    { "bg-primary-300": userWithNotReady },
   )
 
   return (
