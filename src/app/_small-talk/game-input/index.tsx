@@ -1,19 +1,17 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
-import { useCallback } from "react"
 
-import { useFlow } from "@/app/stackflow"
 import { mockQuestion } from "@/seeds/small-talk-mock"
 import { mockUserInfo } from "@/seeds/user-mock"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
 
 const SmallTalkGameInput: ActivityComponentType = () => {
-  const { push } = useFlow()
+  // const { push } = useFlow()
 
-  const _setRandom = useCallback(() => {
-    push("SmallTalkRandom", {})
-  }, [push])
+  // const _setRandom = useCallback(() => {
+  //   push("SmallTalkRandom", {})
+  // }, [push])
 
   return (
     <AppScreen>

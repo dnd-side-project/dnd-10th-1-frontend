@@ -2,12 +2,11 @@
 
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType, useActivity } from "@stackflow/react"
-import { useCallback, useEffect } from "react"
+import { useEffect } from "react"
 
 import { mockUserInfo, mockUserList } from "@/seeds/user-mock"
 import useAdminStore from "@/store/admin-store"
 
-import { useFlow } from "../stackflow"
 import WaitingScreen from "./waiting-screen"
 
 const Waiting: ActivityComponentType = () => {
@@ -16,15 +15,15 @@ const Waiting: ActivityComponentType = () => {
 
   const roomId = params.roomId
 
-  const { replace } = useFlow()
+  // const { replace } = useFlow()
 
-  const _gameStart = useCallback(() => {
-    if (isAdmin) {
-      replace("SelectGames", {})
-    } else {
-      replace("Loading", {})
-    }
-  }, [replace, isAdmin])
+  // const _gameStart = useCallback(() => {
+  //   if (isAdmin) {
+  //     replace("SelectGames", {})
+  //   } else {
+  //     replace("Loading", {})
+  //   }
+  // }, [replace, isAdmin])
 
   useEffect(() => {
     if (isAdmin) {
