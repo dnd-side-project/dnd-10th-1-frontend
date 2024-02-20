@@ -1,16 +1,32 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
+import { useCallback } from "react"
+
+import { useFlow } from "@/app/stackflow"
+import { mockQuestion, mockSelectQuestion, mockTalkList } from "@/seeds/small-talk-mock"
+import { mockUserInfo } from "@/seeds/user-mock"
+import useAdminStore from "@/store/admin-store"
 
 import SmallTalkGameRandomScreen from "./game-random-screen"
 
 const SmallTalkGameRandom: ActivityComponentType = () => {
-  const mockTalkList = ["단소 빌런", "지하철에서 담배피는 놈", "기계체조 장인", "자르반 84세"]
-  const mockQuestion = "지하철에서 만난 빌런은"
-  const mockIsAdmin = false
+  const isAdmin = useAdminStore(state => state.isAdmin)
+
+  const { push } = useFlow()
+
+  const _getResult = useCallback(() => {
+    push("SmallTalkResult", {})
+  }, [push])
 
   return (
     <AppScreen>
-      <SmallTalkGameRandomScreen isAdmin={mockIsAdmin} question={mockQuestion} talkList={mockTalkList} />
+      <SmallTalkGameRandomScreen
+        isAdmin={isAdmin}
+        selectQuestion={mockSelectQuestion}
+        selectUserInfo={mockUserInfo}
+        question={mockQuestion}
+        talkList={mockTalkList}
+      />
     </AppScreen>
   )
 }

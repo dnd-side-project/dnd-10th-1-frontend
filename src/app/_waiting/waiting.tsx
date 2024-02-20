@@ -1,54 +1,48 @@
 "use client"
 
 import { AppScreen } from "@stackflow/plugin-basic-ui"
-import { ActivityComponentType } from "@stackflow/react"
+import { ActivityComponentType, useActivity } from "@stackflow/react"
+import { useCallback, useEffect } from "react"
 
-import { UserWaitingType } from "@/app/_waiting/types/game"
-import { UserInfoType } from "@/types/user"
+import { mockUserInfo, mockUserList } from "@/seeds/user-mock"
+import useAdminStore from "@/store/admin-store"
 
+import { useFlow } from "../stackflow"
 import WaitingScreen from "./waiting-screen"
 
 const Waiting: ActivityComponentType = () => {
-  const mockInfo: UserInfoType = {
-    userNickName: "현아",
-    userProfileImage: "https://source.unsplash.com/random/?cat",
-  }
+  const isAdmin = useAdminStore()
+  const { params } = useActivity()
 
-  const mockUserList: UserWaitingType[] = [
-    {
-      id: 1,
-      nickName: "얼음공주",
-      profileImage: "https://source.unsplash.com/random/?cat",
-      status: true,
-    },
-    {
-      id: 2,
-      nickName: "얼음공주",
-      profileImage: "https://source.unsplash.com/random/?cat",
-      status: true,
-    },
-    {
-      id: 3,
-      nickName: "얼음공주",
-      profileImage: "https://source.unsplash.com/random/?cat",
-      status: true,
-    },
-    {
-      id: 4,
-      nickName: "얼음공주",
-      profileImage: "https://source.unsplash.com/random/?cat",
-      status: true,
-    },
-    {
-      id: 5,
-      nickName: "얼음공주",
-      profileImage: "https://source.unsplash.com/random/?cat",
-      status: true,
-    },
-  ]
+  const roomId = params.roomId
+
+  const { replace } = useFlow()
+
+  const _gameStart = useCallback(() => {
+    if (isAdmin) {
+      replace("SelectGames", {})
+    } else {
+      replace("Loading", {})
+    }
+  }, [replace, isAdmin])
+
+  useEffect(() => {
+    if (isAdmin) {
+      // 소켓 연결 (방장의 경우)
+      // console.log("만들어용")
+    } else {
+      if (typeof roomId === "string") {
+        // 소켓 연결 (방장이 아닌 경우)
+        // console.log(`${roomId} 들어가용`)
+      }
+    }
+  }, [isAdmin, roomId])
+
+  if (typeof roomId === "undefined" && !isAdmin) return
+
   return (
     <AppScreen>
-      <WaitingScreen userInfo={mockInfo} userList={mockUserList} role="방장" />
+      <WaitingScreen roomId="받아온 초대코드" myInfo={mockUserInfo} userList={mockUserList} />
     </AppScreen>
   )
 }

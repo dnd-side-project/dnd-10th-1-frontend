@@ -1,20 +1,24 @@
+import { Share2 } from "lucide-react"
 import { useMemo, useState } from "react"
 
-import type { RoleType, UserWaitingType } from "@/app/_waiting/types/game"
+import type { UserWaitingType } from "@/app/_waiting/types/game"
+import { Button } from "@/components/button"
+import { DrawerTrigger } from "@/components/drawer"
 import { cn } from "@/libs/tailwind/cn"
 
 import UserList from "./user-list"
 
 type Props = {
   userList: UserWaitingType[]
-  role: RoleType
+  isAdmin: boolean
 }
 
-export default function WaitingBottom({ userList, role }: Props) {
+export default function WaitingBottom({ userList, isAdmin }: Props) {
   const [state, setState] = useState(false)
   const allReady = userList.findIndex(user => !user.status) === -1
+
   const buttonAction = useMemo(() => {
-    if (role === "방장") {
+    if (isAdmin) {
       const buttonTitle = "시작하기"
       const buttonAction = () => {
         // 게임 시작 액션
@@ -35,14 +39,14 @@ export default function WaitingBottom({ userList, role }: Props) {
 
       return { buttonTitle, buttonAction }
     }
-  }, [role, state])
+  }, [isAdmin, state])
 
   const buttonClassName = cn(
-    "w-full h-[50px] rounded-[10px] text-white mt-[22px]",
-    { "bg-[#878787]": role === "방장" && !allReady },
-    { "bg-primary-300": role === "방장" && allReady },
-    { "bg-pink-300": role === "팀원" && state },
-    { "bg-primary-300": role === "팀원" && !state },
+    "w-full rounded-[10px] text-white",
+    { "bg-[#878787]": isAdmin && !allReady },
+    { "bg-primary-300": isAdmin && allReady },
+    { "bg-pink-300": !isAdmin && state },
+    { "bg-primary-300": !isAdmin && !state },
   )
 
   return (
@@ -51,9 +55,16 @@ export default function WaitingBottom({ userList, role }: Props) {
       <div className="mt-[14px]">
         <UserList userList={userList} />
       </div>
-      <button disabled={role === "방장" && !allReady} className={buttonClassName} onClick={buttonAction.buttonAction}>
-        {buttonAction.buttonTitle}
-      </button>
+      <div className="mt-[22px] flex h-[50px] gap-5">
+        <button disabled={isAdmin && !allReady} className={buttonClassName} onClick={buttonAction.buttonAction}>
+          {buttonAction.buttonTitle}
+        </button>
+        <Button className="h4-bold h-full rounded-[10px] bg-primary-300 py-[12.5px] text-gray-25">
+          <DrawerTrigger>
+            <Share2 className="text-gray-25" />
+          </DrawerTrigger>
+        </Button>
+      </div>
     </section>
   )
 }
