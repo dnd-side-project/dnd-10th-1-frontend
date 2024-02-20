@@ -8,10 +8,10 @@ import SmallTalkGameHeader from "../components/game-header/game-header"
 
 type Props = {
   myInfo: UserInfoType
-  question: string
+  topic: string
 }
 
-export default function SmallTalkGameInputScreen({ question, myInfo }: Props) {
+export default function SmallTalkGameInputScreen({ topic, myInfo }: Props) {
   const [timer, setTimer] = useState(60)
   const [isSubmit, setIsSubmit] = useState(false)
 
@@ -49,7 +49,7 @@ export default function SmallTalkGameInputScreen({ question, myInfo }: Props) {
           <div className="mt-[94px] rounded-xl bg-pink-100 px-[21px] py-[3px] text-[25px] font-bold text-gray-800">
             {timer === 60 ? "1:00" : `0:${timer}`}
           </div>
-          <span className="h2 mt-6">{question}</span>
+          <span className="h2 mt-6">{topic}</span>
           <label className="h2">
             <input
               disabled={isSubmit}

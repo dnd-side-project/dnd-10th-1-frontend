@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react"
 
-import { mockQuestion, mockSelectQuestion, mockTalkList } from "@/seeds/small-talk-mock"
+import { mockAnswerList, mockTopic } from "@/seeds/small-talk-mock"
 
 import SmallTalkGameRandomScreen from "./game-random-screen"
 
@@ -12,9 +12,8 @@ const meta: Meta<typeof SmallTalkGameRandomScreen> = {
 
 export default meta
 
-const talkList = mockTalkList
-const question = mockQuestion
-const selectQuestion = mockSelectQuestion
+const answerList = mockAnswerList
+const topic = mockTopic
 
 const Template: StoryFn<typeof SmallTalkGameRandomScreen> = args => <SmallTalkGameRandomScreen {...args} />
 
@@ -27,8 +26,8 @@ const PhoneSize: StoryFn<typeof SmallTalkGameRandomScreen> = args => (
   </div>
 )
 
-export const Phone = PhoneSize.bind({ isAdmin: true, talkList, question })
+export const Phone = PhoneSize.bind({})
 
-Admin.args = { isAdmin: true, selectQuestion, talkList, question }
-User.args = { selectQuestion, talkList, question }
-Phone.args = { selectQuestion, talkList, question }
+Admin.args = { isAdmin: true, answerList, topic }
+User.args = { answerList, topic }
+Phone.args = { answerList, topic }

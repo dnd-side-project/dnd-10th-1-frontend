@@ -16,13 +16,13 @@ import SmallTalkGameHeader from "../components/game-header/game-header"
 import SmallTalkGameResultBox from "../components/game-result-box/game-result-box"
 
 type Props = {
-  question: string
+  topic: string
   selectUserInfo: UserInfoType
-  selectQuestion: string
+  selectAnswer: string
   isAdmin: boolean
 }
 
-export default function SmallTalkGameResultScreen({ question, selectUserInfo, selectQuestion, isAdmin }: Props) {
+export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selectAnswer, isAdmin }: Props) {
   const { userNickName, userProfileImage } = selectUserInfo
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true)
@@ -52,9 +52,9 @@ export default function SmallTalkGameResultScreen({ question, selectUserInfo, se
         <SmallTalkGameBanner
           type="result"
           className="mt-[85px]"
-          question={question}
+          topic={topic}
           userNickName={selectUserInfo.userNickName}
-          selectQuestion={selectQuestion}
+          selectAnswer={selectAnswer}
         />
         <SmallTalkGameResultBox>
           {isAdmin && (

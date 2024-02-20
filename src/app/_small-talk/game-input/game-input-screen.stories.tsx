@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react"
 
-import { mockQuestion } from "@/seeds/small-talk-mock"
+import { mockTopic } from "@/seeds/small-talk-mock"
 import { mockUserInfo } from "@/seeds/user-mock"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
@@ -11,7 +11,7 @@ const meta: Meta<typeof SmallTalkGameInputScreen> = {
   tags: ["autodocs"],
 }
 
-const question = mockQuestion
+const topic = mockTopic
 const myInfo = mockUserInfo
 
 const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => <SmallTalkGameInputScreen {...args} />
@@ -26,7 +26,7 @@ export const Primary = Template.bind({})
 
 export const Phone = PhoneSize.bind({})
 
-Primary.args = { myInfo, question }
-Phone.args = { myInfo, question }
+Primary.args = { myInfo, topic }
+Phone.args = { myInfo, topic }
 
 export default meta

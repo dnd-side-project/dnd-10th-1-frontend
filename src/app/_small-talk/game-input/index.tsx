@@ -1,7 +1,7 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
-import { mockQuestion } from "@/seeds/small-talk-mock"
+import { mockTopic } from "@/seeds/small-talk-mock"
 import { mockUserInfo } from "@/seeds/user-mock"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
@@ -15,7 +15,7 @@ const SmallTalkGameInput: ActivityComponentType = () => {
 
   return (
     <AppScreen>
-      <SmallTalkGameInputScreen myInfo={mockUserInfo} question={mockQuestion} />
+      <SmallTalkGameInputScreen myInfo={mockUserInfo} topic={mockTopic} />
     </AppScreen>
   )
 }

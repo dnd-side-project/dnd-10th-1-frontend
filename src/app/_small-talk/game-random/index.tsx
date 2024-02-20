@@ -1,8 +1,7 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
-import { mockQuestion, mockSelectQuestion, mockTalkList } from "@/seeds/small-talk-mock"
-import { mockUserInfo } from "@/seeds/user-mock"
+import { mockAnswerList, mockTopic } from "@/seeds/small-talk-mock"
 import useAdminStore from "@/store/admin-store"
 
 import SmallTalkGameRandomScreen from "./game-random-screen"
@@ -18,13 +17,7 @@ const SmallTalkGameRandom: ActivityComponentType = () => {
 
   return (
     <AppScreen>
-      <SmallTalkGameRandomScreen
-        isAdmin={isAdmin}
-        selectQuestion={mockSelectQuestion}
-        selectUserInfo={mockUserInfo}
-        question={mockQuestion}
-        talkList={mockTalkList}
-      />
+      <SmallTalkGameRandomScreen isAdmin={isAdmin} answerList={mockAnswerList} topic={mockTopic} />
     </AppScreen>
   )
 }
