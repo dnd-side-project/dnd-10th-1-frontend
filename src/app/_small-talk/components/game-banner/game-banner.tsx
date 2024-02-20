@@ -6,20 +6,18 @@ type Props = {
   type: "random" | "result"
   question: string
   className?: string
-  result?: {
-    userNickName: string
-    talkValue: string
-  }
+  userNickName?: string
+  selectQuestion?: string
 }
 
-export default function SmallTalkGameBanner({ type, question, result, className }: Props) {
+export default function SmallTalkGameBanner({ type, question, selectQuestion, className, userNickName }: Props) {
   const bannerContent = useMemo(() => {
     if (type === "random") {
       return { title: "빈칸 주제", content: "ㅤㅤ?ㅤㅤ" }
     } else {
-      return { title: `${result?.userNickName} 님의 답변`, content: result?.talkValue }
+      return { title: `${userNickName} 님의 답변`, content: selectQuestion }
     }
-  }, [type, result])
+  }, [type, selectQuestion, userNickName])
 
   return (
     <div className={cn("h-[180px] rounded-[14px] bg-gray-100 px-[22px] py-[21px] text-center", className)}>
