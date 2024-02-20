@@ -10,7 +10,7 @@ import LoadingBar from "./components/loading-bar/loading-bar"
 
 export function GameLoadingScreen() {
   return (
-    <div className="relative h-full w-full bg-primary-300">
+    <div className="relative flex min-h-full w-full justify-center bg-primary-300">
       <div className="max-w-[360px]">
         <header className="px-[61px] pt-[84px] text-white">
           <div className="h2  whitespace-pre-wrap text-center">{`방장이\n게임을 고르는 중이에요`}</div>

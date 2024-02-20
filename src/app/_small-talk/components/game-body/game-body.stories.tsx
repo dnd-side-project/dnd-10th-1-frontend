@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
+import { mockUserInfo } from "@/seeds/user-mock"
+
 import GameBody from "./game-body"
 
 const meta: Meta<typeof GameBody> = {
@@ -14,7 +16,7 @@ type Story = StoryObj<typeof GameBody>
 export const Primary: Story = {
   render: () => (
     <div className="phone-size bg-gray-950 pt-20">
-      <GameBody />
+      <GameBody myInfo={mockUserInfo} />
     </div>
   ),
 }

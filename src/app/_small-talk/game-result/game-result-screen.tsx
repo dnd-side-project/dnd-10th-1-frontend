@@ -9,23 +9,21 @@ import resetIcon from "@/assets/svgs/small-talk/reset.svg"
 import resetHint from "@/assets/svgs/small-talk/reset-hint.svg"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 import { Button } from "@/components/button"
+import { UserInfoType } from "@/types/user"
 
 import SmallTalkGameBanner from "../components/game-banner/game-banner"
 import SmallTalkGameHeader from "../components/game-header/game-header"
 import SmallTalkGameResultBox from "../components/game-result-box/game-result-box"
 
 type Props = {
-  question: string
+  topic: string
+  selectUserInfo: UserInfoType
+  selectAnswer: string
   isAdmin: boolean
-  result: {
-    userNickName: string
-    userProfile: string
-    talkValue: string
-  }
 }
 
-export default function SmallTalkGameResultScreen({ question, result, isAdmin }: Props) {
-  const { userNickName, userProfile } = result
+export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selectAnswer, isAdmin }: Props) {
+  const { userNickName, userProfileImage } = selectUserInfo
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true)
   const [isResetHintVisible, setIsResetHintVisible] = useState(true)
@@ -51,7 +49,13 @@ export default function SmallTalkGameResultScreen({ question, result, isAdmin }:
       )}
       <SmallTalkGameHeader isStart={false} />
       <div className="flex flex-col gap-[23px] px-[23px]">
-        <SmallTalkGameBanner question={question} className="mt-[85px]" type="result" result={result} />
+        <SmallTalkGameBanner
+          type="result"
+          className="mt-[85px]"
+          topic={topic}
+          userNickName={selectUserInfo.userNickName}
+          selectAnswer={selectAnswer}
+        />
         <SmallTalkGameResultBox>
           {isAdmin && (
             <div className="relative">
@@ -68,7 +72,7 @@ export default function SmallTalkGameResultScreen({ question, result, isAdmin }:
           )}
           <div className="flex h-full flex-col items-center justify-center">
             <Avatar className="h-[124px] w-[124px]">
-              <AvatarImage src={userProfile} />
+              <AvatarImage src={userProfileImage} />
               <AvatarFallback>{userNickName}</AvatarFallback>
             </Avatar>
             <div className="mt-[20px] text-[18px] font-semibold text-gray-100">{`${userNickName}님 썰을 풀어주세요!`}</div>

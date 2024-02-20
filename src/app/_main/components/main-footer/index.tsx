@@ -9,9 +9,13 @@ import { DrawerTrigger } from "@/components/drawer"
 import { GAME, RANDOM_GAME_TITLE } from "@/constants/main"
 
 import useSlotMachine from "../../../../hooks/useSlotMachine"
-import MainButton from "../main-button/main-button"
+import MainButton from "../main-button"
 
-export default function MainFooter() {
+type Props = {
+  onCreateRoom: () => void
+}
+
+export default function MainFooter({ onCreateRoom }: Props) {
   const [isOpen, setIsOpen] = useState(false)
 
   const variants: Variants = {
@@ -64,7 +68,7 @@ export default function MainFooter() {
         </motion.div>
       </motion.div>
       <div className="flex flex-col gap-6 px-6">
-        <MainButton control="create">
+        <MainButton onClick={onCreateRoom} isCreate>
           <div className="left t2 mt-[10px] flex text-left text-pink-100">
             방을 만들고
             <br />
@@ -77,7 +81,7 @@ export default function MainFooter() {
           </div>
         </MainButton>
         <DrawerTrigger asChild>
-          <MainButton control="invite" />
+          <MainButton isCreate={false} />
         </DrawerTrigger>
       </div>
     </footer>
