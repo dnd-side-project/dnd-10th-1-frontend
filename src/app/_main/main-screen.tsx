@@ -20,7 +20,7 @@ type Props = {
 }
 
 export default function MainScreen({ userInfo, isMainFirst }: Props) {
-  const [isFirst, setIsFirst] = useState(() => isMainFirst)
+  const [isFirst, setIsFirst] = useState(isMainFirst)
   const { userNickName, userProfileImage } = userInfo
 
   const { push } = useFlow()
@@ -47,7 +47,7 @@ export default function MainScreen({ userInfo, isMainFirst }: Props) {
   return (
     <div className="relative h-full w-full bg-gray-950">
       <Drawer>
-        {isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
+        {!isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
         <MainHeader userNickName={userNickName} userProfileImage={userProfileImage} />
         <MainFooter onCreateRoom={onCreateRoom} />
         <MainContent inviteWithCode={inviteWithCode} />
