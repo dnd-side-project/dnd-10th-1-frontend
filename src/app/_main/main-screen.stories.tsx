@@ -1,5 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
+
+import { mockUserInfo } from "@/seeds/user-mock"
 
 import MainScreen from "./main-screen"
 
@@ -9,19 +12,25 @@ const meta: Meta<typeof MainScreen> = {
   tags: ["autodocs"],
 }
 
-export default meta
-type Story = StoryObj<typeof MainScreen>
+const userInfo = mockUserInfo
 
-export const Primary: Story = {
-  render: ({ ...args }) => {
-    const mockInfo = {
-      userNickName: "해지",
-      userProfileImage: "https://source.unsplash.com/random/?cat",
-    }
-    return (
-      <div className="phone-size">
-        <MainScreen {...args} isFirstVisit userInfo={mockInfo} />
-      </div>
-    )
-  },
-}
+const Template: StoryFn<typeof MainScreen> = args => <MainScreen {...args} />
+
+const PhoneSize: StoryFn<typeof MainScreen> = args => (
+  <div className="phone-size">
+    <MainScreen {...args} />
+  </div>
+)
+
+export const Primary = Template.bind({})
+export const PrimaryFirst = Template.bind({})
+
+export const Phone = PhoneSize.bind({})
+export const PhoneFirst = PhoneSize.bind({})
+
+Primary.args = { isMainFirst: false, userInfo }
+PrimaryFirst.args = { isMainFirst: true, userInfo }
+Phone.args = { isMainFirst: false, userInfo }
+PhoneFirst.args = { isMainFirst: true, userInfo }
+
+export default meta
