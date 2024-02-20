@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import Chip from "@/components/chip"
 
-import MainButton from "./main-button"
+import MainButton from "."
 
 const meta: Meta<typeof MainButton> = {
   title: "Main/Components/Button",
@@ -17,7 +17,7 @@ export const Primary: Story = {
   render: ({ ...args }) => {
     const Game = ["MBTI 성향", "빈칸주제"]
     return (
-      <MainButton {...args} control="create">
+      <MainButton {...args} isCreate>
         <div className="left t3 mt-[10px] flex text-left text-pink-100">
           방을 만들고
           <br />
@@ -34,5 +34,5 @@ export const Primary: Story = {
 }
 
 export const InviteRoomButton: Story = {
-  render: ({ ...args }) => <MainButton {...args} control="invite" />,
+  render: ({ ...args }) => <MainButton {...args} isCreate={false} />,
 }
