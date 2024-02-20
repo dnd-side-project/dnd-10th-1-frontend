@@ -1,4 +1,7 @@
-export const BACK_URL = process.env.NEXT_PUBLIC_API_MOCKING === "enable" ? "/apis" : process.env.NEXT_PUBLIC_BACK_URL
+export const BACK_URL =
+  process.env.NEXT_PUBLIC_API_MOCKING === "enable"
+    ? process.env.NEXT_PUBLIC_CLIENT_URL + "/apis"
+    : process.env.NEXT_PUBLIC_BACK_URL
 
 export const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 
