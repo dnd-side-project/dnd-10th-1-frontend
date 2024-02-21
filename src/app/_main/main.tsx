@@ -9,9 +9,10 @@ import MainScreen from "./main-screen"
 
 const Main: ActivityComponentType = () => {
   const myInfo = useMyInfoStore(state => state.myInfo)
-
   if (typeof window === "undefined" || !myInfo) return
-  const isMainFirst = localStorage.getItem("main-first") ? true : false
+
+  const isMainFirst = localStorage.getItem("main-first") ? false : true
+
   return (
     <AppScreen>
       <MainScreen isMainFirst={isMainFirst} myInfo={myInfo} />

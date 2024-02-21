@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react"
 import { StoryFn } from "@storybook/react"
 import React from "react"
 
-import { mockUserInfo } from "@/seeds/user-mock"
+import { mockMyUserInfo } from "@/seeds/user-mock"
 
 import MainScreen from "./main-screen"
 
@@ -12,7 +12,7 @@ const meta: Meta<typeof MainScreen> = {
   tags: ["autodocs"],
 }
 
-const myInfo = mockUserInfo
+const myInfo = mockMyUserInfo
 
 const Template: StoryFn<typeof MainScreen> = args => <MainScreen {...args} />
 
