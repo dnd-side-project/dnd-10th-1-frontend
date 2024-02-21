@@ -1,4 +1,8 @@
 export type UserInfoType = {
-  userNickName: string
-  userProfileImage: string
+  nickName: string
+  profileImage: string
 }
+
+export type UserMyInfoType = {
+  id: number
+} & UserInfoType

@@ -2,20 +2,23 @@ import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType } from "@stackflow/react"
 
 import { mockTopic } from "@/seeds/small-talk-mock"
-import { mockUserInfo } from "@/seeds/user-mock"
+import useMyInfoStore from "@/store/my-info-store"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
 
 const SmallTalkGameInput: ActivityComponentType = () => {
+  const myInfo = useMyInfoStore(state => state.myInfo)
   // const { push } = useFlow()
 
   // const _setRandom = useCallback(() => {
   //   push("SmallTalkRandom", {})
   // }, [push])
 
+  if (!myInfo) return
+
   return (
     <AppScreen>
-      <SmallTalkGameInputScreen myInfo={mockUserInfo} topic={mockTopic} />
+      <SmallTalkGameInputScreen myInfo={myInfo} topic={mockTopic} />
     </AppScreen>
   )
 }

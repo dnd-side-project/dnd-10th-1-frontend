@@ -8,6 +8,8 @@ export const CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 
 export const END_POINT = {
+  temp: "/temp",
+  user: "/user",
   MAIN: {
     INVITE_CODE: "/main/check-code",
   },

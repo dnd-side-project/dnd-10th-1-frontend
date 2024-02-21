@@ -3,25 +3,51 @@ import { ActivityComponentType } from "@stackflow/react"
 import { useState } from "react"
 
 import FallbackProfile from "@/assets/svgs/profiles/fallback-profile.svg"
+import useMyInfoStore from "@/store/my-info-store"
 
 import { useFlow } from "../stackflow"
+import { postProfile } from "./api/post-profile"
 import ProfileScreen from "./profile-screen"
 
 const Profile: ActivityComponentType = () => {
-  const [profile, setProfile] = useState(FallbackProfile)
-  const [nickname, setNickname] = useState("")
+  const [nickName, setNickName] = useState("")
+  const [profileImage, setProfileImage] = useState(FallbackProfile)
+  const setMyInfo = useMyInfoStore(state => state.setMyInfo)
 
   const { replace } = useFlow()
 
-  const onDrawerClick = (profileTheme: any) => {
-    setProfile(profileTheme)
+  const onDrawerClick = (newProfile: string) => {
+    setProfileImage(newProfile)
   }
 
-  const onInputChange = (nickname: string) => {
-    setNickname(nickname)
+  const onInputChange = (newName: string) => {
+    setNickName(newName)
   }
 
-  const finish = profile !== FallbackProfile && nickname !== ""
+  const finish = profileImage !== FallbackProfile && nickName !== ""
+
+  const onSubmit = async () => {
+    try {
+      const urlParams = new URL(location.href).searchParams
+      const roomId = urlParams.get("roomId")
+
+      const res = await postProfile({ nickName, profileImage: profileImage.src }, roomId)
+
+      if (!res) throw new Error("사용자 정보 생성에 실패하였습니다.")
+
+      setMyInfo(res)
+
+      if (roomId) {
+        replace("Waiting", { roomId })
+      } else {
+        replace("Main", {})
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message)
+      }
+    }
+  }
 
   return (
     <AppScreen
@@ -29,13 +55,7 @@ const Profile: ActivityComponentType = () => {
         title: "프로필 설정하기",
         renderRight: () => {
           return (
-            <button
-              disabled={!finish}
-              onClick={() => {
-                replace("Main", {})
-              }}
-              className="pr-[27px] text-gray-100 disabled:text-gray-600"
-            >
+            <button disabled={!finish} onClick={onSubmit} className="pr-[27px] text-gray-100 disabled:text-gray-600">
               완료
             </button>
           )
@@ -47,8 +67,8 @@ const Profile: ActivityComponentType = () => {
       }}
     >
       <ProfileScreen
-        profile={profile}
-        nickname={nickname}
+        nickName={nickName}
+        profile={profileImage}
         onDrawerClick={onDrawerClick}
         onInputChange={onInputChange}
       />

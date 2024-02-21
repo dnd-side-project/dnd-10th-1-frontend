@@ -1,23 +1,23 @@
 import { useMemo } from "react"
 
 import { cn } from "@/libs/tailwind/cn"
+import { UserInfoType } from "@/types/user"
 
 type Props = {
   type: "random" | "result"
   topic: string
   className?: string
-  userNickName?: string
   selectAnswer?: string
-}
+} & Partial<Pick<UserInfoType, "nickName">>
 
-export default function SmallTalkGameBanner({ type, topic, selectAnswer, className, userNickName }: Props) {
+export default function SmallTalkGameBanner({ type, topic, selectAnswer, className, nickName }: Props) {
   const bannerContent = useMemo(() => {
     if (type === "random") {
       return { title: "빈칸 주제", content: "ㅤㅤ?ㅤㅤ" }
     } else {
-      return { title: `${userNickName} 님의 답변`, content: selectAnswer }
+      return { title: `${nickName} 님의 답변`, content: selectAnswer }
     }
-  }, [type, selectAnswer, userNickName])
+  }, [type, selectAnswer, nickName])
 
   return (
     <div className={cn("h-[180px] rounded-[14px] bg-gray-100 px-[22px] py-[21px] text-center", className)}>

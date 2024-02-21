@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react"
 
 import { mockTopic } from "@/seeds/small-talk-mock"
-import { mockUserInfo } from "@/seeds/user-mock"
+import { mockMyUserInfo } from "@/seeds/user-mock"
 
 import SmallTalkGameInputScreen from "./game-input-screen"
 
@@ -12,7 +12,7 @@ const meta: Meta<typeof SmallTalkGameInputScreen> = {
 }
 
 const topic = mockTopic
-const myInfo = mockUserInfo
+const myInfo = mockMyUserInfo
 
 const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => <SmallTalkGameInputScreen {...args} />
 

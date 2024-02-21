@@ -4,8 +4,9 @@ import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType, useActivity } from "@stackflow/react"
 import { useEffect } from "react"
 
-import { mockUserInfo, mockUserList } from "@/seeds/user-mock"
+import { mockUserList } from "@/seeds/user-mock"
 import useAdminStore from "@/store/admin-store"
+import useMyInfoStore from "@/store/my-info-store"
 
 import WaitingScreen from "./waiting-screen"
 
@@ -13,6 +14,7 @@ const Waiting: ActivityComponentType = () => {
   const isAdmin = useAdminStore()
   const { params } = useActivity()
 
+  const myInfo = useMyInfoStore(state => state.myInfo)
   const roomId = params.roomId
 
   // const { replace } = useFlow()
@@ -37,11 +39,13 @@ const Waiting: ActivityComponentType = () => {
     }
   }, [isAdmin, roomId])
 
-  if (typeof roomId === "undefined" && !isAdmin) return
+  const inNotUser = typeof roomId === "undefined" && !isAdmin
+
+  if (inNotUser || !myInfo) return
 
   return (
     <AppScreen>
-      <WaitingScreen roomId="받아온 초대코드" myInfo={mockUserInfo} userList={mockUserList} />
+      <WaitingScreen roomId="받아온 초대코드" myInfo={myInfo} userList={mockUserList} />
     </AppScreen>
   )
 }
