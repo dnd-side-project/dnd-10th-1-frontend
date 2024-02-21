@@ -3,27 +3,30 @@ import { ActivityComponentType } from "@stackflow/react"
 import { useState } from "react"
 
 import FallbackProfile from "@/assets/svgs/profiles/fallback-profile.svg"
+import useMyInfoStore from "@/store/my-info-store"
 
 import { useFlow } from "../stackflow"
 import ProfileScreen from "./profile-screen"
 
 const Profile: ActivityComponentType = () => {
-  const [profile, setProfile] = useState(FallbackProfile)
   const [nickname, setNickname] = useState("")
+  const [profileImage, setProfileImage] = useState(FallbackProfile)
+  const setMyInfo = useMyInfoStore(state => state.setMyInfo)
 
   const { replace } = useFlow()
 
   const onDrawerClick = (profileTheme: any) => {
-    setProfile(profileTheme)
+    setProfileImage(profileTheme)
   }
 
   const onInputChange = (nickname: string) => {
     setNickname(nickname)
   }
 
-  const finish = profile !== FallbackProfile && nickname !== ""
+  const finish = profileImage !== FallbackProfile && nickname !== ""
 
   const onSubmit = () => {
+    setMyInfo({ nickname, profileImage })
     replace("Main", {})
   }
 
@@ -45,8 +48,8 @@ const Profile: ActivityComponentType = () => {
       }}
     >
       <ProfileScreen
-        profile={profile}
         nickname={nickname}
+        profile={profileImage}
         onDrawerClick={onDrawerClick}
         onInputChange={onInputChange}
       />

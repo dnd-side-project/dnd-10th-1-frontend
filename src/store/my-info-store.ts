@@ -4,15 +4,15 @@ import { UserInfoType } from "@/types/user"
 
 type MyInfoStore = {
   myInfo: UserInfoType
-  setUserInfo: (newInfo: UserInfoType) => void
+  setMyInfo: (newInfo: UserInfoType) => void
 }
 
 const useMyInfoStore = create<MyInfoStore>(set => ({
   myInfo: {
-    nickName: "",
+    nickname: "",
     profileImage: "",
   },
-  setUserInfo: (newInfo: UserInfoType) =>
+  setMyInfo: (newInfo: UserInfoType) =>
     set({
       myInfo: newInfo,
     }),

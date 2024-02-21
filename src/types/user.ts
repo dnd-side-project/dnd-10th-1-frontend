@@ -1,4 +1,4 @@
 export type UserInfoType = {
-  nickName: string
+  nickname: string
   profileImage: string
 }

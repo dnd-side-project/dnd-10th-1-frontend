@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function WaitingTop({ myInfo, disConnectRoom }: Props) {
-  const { nickName, profileImage } = myInfo
+  const { nickname, profileImage } = myInfo
   const { pop } = useFlow()
 
   const onBackClick = () => {
@@ -21,10 +21,10 @@ export default function WaitingTop({ myInfo, disConnectRoom }: Props) {
     <>
       <AppBar title="대기방" isBackButton onBackClick={onBackClick} />
       <section className="items-col flex flex-col items-center justify-center gap-[30px]">
-        <span className="whitespace-pre text-center align-text-top text-[26px] font-bold leading-tight text-gray-100">{`${nickName}님,\n팀원들이 들어오고 있어요`}</span>
+        <span className="whitespace-pre text-center align-text-top text-[26px] font-bold leading-tight text-gray-100">{`${nickname}님,\n팀원들이 들어오고 있어요`}</span>
         <Avatar className="h-[106px] w-[106px]">
           <AvatarImage src={profileImage} />
-          <AvatarFallback>{nickName}</AvatarFallback>
+          <AvatarFallback>{nickname}</AvatarFallback>
         </Avatar>
       </section>
     </>
