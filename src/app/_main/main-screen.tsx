@@ -21,7 +21,7 @@ export default function MainScreen({ myInfo, isMainFirst }: Props) {
   const [isFirst, setIsFirst] = useState(isMainFirst)
   const { nickName, profileImage } = myInfo
 
-  const { push } = useFlow()
+  const { replace } = useFlow()
   const createGame = useAdminStore(state => state.createGame)
 
   const inviteWithCode = (e: FormData) => {
@@ -29,7 +29,7 @@ export default function MainScreen({ myInfo, isMainFirst }: Props) {
 
     if (typeof inviteCode !== "string") throw new Error("옳지 않은 접근입니다.")
 
-    push("Waiting", { code: inviteCode })
+    replace("Waiting", { roomId: inviteCode })
   }
 
   const onboardingHandler = () => {
@@ -39,7 +39,7 @@ export default function MainScreen({ myInfo, isMainFirst }: Props) {
 
   const onCreateRoom = () => {
     createGame()
-    push("Waiting", {})
+    replace("Waiting", {})
   }
 
   return (

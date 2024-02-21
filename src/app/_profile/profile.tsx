@@ -28,13 +28,20 @@ const Profile: ActivityComponentType = () => {
 
   const onSubmit = async () => {
     try {
-      const res = await postProfile({ nickName, profileImage: profileImage.src })
+      const urlParams = new URL(location.href).searchParams
+      const roomId = urlParams.get("roomId")
+
+      const res = await postProfile({ nickName, profileImage: profileImage.src }, roomId)
 
       if (!res) throw new Error("사용자 정보 생성에 실패하였습니다.")
 
       setMyInfo(res)
 
-      replace("Main", {})
+      if (roomId) {
+        replace("Waiting", { roomId })
+      } else {
+        replace("Main", {})
+      }
     } catch (err) {
       if (err instanceof Error) {
         console.error(err.message)

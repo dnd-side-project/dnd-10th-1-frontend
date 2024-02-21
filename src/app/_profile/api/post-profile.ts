@@ -8,7 +8,7 @@ export type PostProfileResponse = {
   profileImage: string
 }
 
-export const postProfile = async (BodyData: UserInfoType, roomId?: string) => {
+export const postProfile = async (BodyData: UserInfoType, roomId: string | null) => {
   try {
     const url = END_POINT.user + (roomId ? `?rooId=${roomId}` : "")
     const res = await axiosInstance.post<PostProfileResponse>(url, { ...BodyData })
