@@ -1,7 +1,13 @@
 import { UserWaitingType } from "@/app/_waiting/types/game"
-import { UserInfoType } from "@/types/user"
+import { UserInfoType, UserMyInfoType } from "@/types/user"
 
 export const mockUserInfo: UserInfoType = {
+  nickName: "현아",
+  profileImage: "https://source.unsplash.com/random/?cat",
+}
+
+export const mockMyUserInfo: UserMyInfoType = {
+  id: 10,
   nickName: "현아",
   profileImage: "https://source.unsplash.com/random/?cat",
 }

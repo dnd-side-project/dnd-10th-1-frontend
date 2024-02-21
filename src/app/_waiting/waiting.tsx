@@ -39,7 +39,9 @@ const Waiting: ActivityComponentType = () => {
     }
   }, [isAdmin, roomId])
 
-  if (typeof roomId === "undefined" && !isAdmin) return
+  const inNotUser = typeof roomId === "undefined" && !isAdmin
+
+  if (inNotUser || !myInfo) return
 
   return (
     <AppScreen>

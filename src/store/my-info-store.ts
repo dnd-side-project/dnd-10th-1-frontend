@@ -1,10 +1,10 @@
 import { create } from "zustand"
 
 import { PostProfileResponse } from "@/app/_profile/api/post-profile"
-import { UserInfoType } from "@/types/user"
+import type { UserMyInfoType } from "@/types/user"
 
 type MyInfoStore = {
-  myInfo: (UserInfoType & { id: number }) | null
+  myInfo: UserMyInfoType | null
   setMyInfo: (newInfo: PostProfileResponse) => void
 }
 

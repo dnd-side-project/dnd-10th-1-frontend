@@ -14,6 +14,8 @@ const SmallTalkGameInput: ActivityComponentType = () => {
   //   push("SmallTalkRandom", {})
   // }, [push])
 
+  if (!myInfo) return
+
   return (
     <AppScreen>
       <SmallTalkGameInputScreen myInfo={myInfo} topic={mockTopic} />

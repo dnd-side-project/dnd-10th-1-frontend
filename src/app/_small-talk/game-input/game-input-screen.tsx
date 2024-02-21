@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 
 import { cn } from "@/libs/tailwind/cn"
-import { UserInfoType } from "@/types/user"
+import type { UserMyInfoType } from "@/types/user"
 
 import SmallTalkGameBody from "../components/game-body/game-body"
 import SmallTalkGameHeader from "../components/game-header/game-header"
 
 type Props = {
-  myInfo: UserInfoType
+  myInfo: UserMyInfoType
   topic: string
 }
 
