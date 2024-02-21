@@ -9,7 +9,7 @@ type Props = {
 export default function MainOnboarding({ onboardingHandler }: Props) {
   return (
     <div className="absolute h-full w-full text-white">
-      <div onClick={onboardingHandler} className="absolute z-[14] h-full w-full"></div>
+      <button onClick={onboardingHandler} className="absolute z-[14] h-full w-full" />
       <div className="absolute z-[3] h-full w-full bg-black opacity-50"></div>
       <div className="absolute left-1/2 top-[235px] z-[11] flex w-full translate-x-[-50%] flex-col items-center gap-1">
         <Image src={MainCircle} alt="돋보기" />

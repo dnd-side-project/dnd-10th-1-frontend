@@ -16,8 +16,11 @@ export default function MainContent({ inviteWithCode }: Props) {
           <span className="text-4 font-medium">초대받은 코드를 입력해주세요</span>
         </div>
         <Input name="inviteCode" className="mt-5" control="main" placeholder="여기에 입력해주세요" />
-        <DrawerClose className="mt-6 w-full text-[18px] font-semibold">
-          <button className="h-[50px] w-full rounded-[10px] bg-primary-300 text-white">완료</button>
+        <DrawerClose
+          type="submit"
+          className="mt-6 h-[50px] w-full rounded-[10px] bg-primary-300 text-[18px] font-semibold text-white"
+        >
+          완료
         </DrawerClose>
       </form>
     </DrawerContent>

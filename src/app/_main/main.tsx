@@ -9,7 +9,7 @@ import MainScreen from "./main-screen"
 
 const Main: ActivityComponentType = () => {
   if (typeof window === "undefined") return
-  const isMainFirst = localStorage.getItem("main-first") ? true : false
+  const isMainFirst = localStorage.getItem("main-first") ? false : true
   return (
     <AppScreen>
       <MainScreen isMainFirst={isMainFirst} userInfo={mockUserInfo} />

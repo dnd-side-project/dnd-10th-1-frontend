@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Drawer } from "@/components/drawer"
 import useAdminStore from "@/store/admin-store"
 
+import { checkingInviteCode } from "../actions/main"
 import { useFlow } from "../stackflow"
 import MainContent from "./components/main-content"
 import MainFooter from "./components/main-footer"
@@ -20,18 +21,26 @@ type Props = {
 }
 
 export default function MainScreen({ userInfo, isMainFirst }: Props) {
-  const [isFirst, setIsFirst] = useState(isMainFirst)
+  const [isFirst, setIsFirst] = useState(() => isMainFirst)
   const { userNickName, userProfileImage } = userInfo
 
   const { push } = useFlow()
   const createGame = useAdminStore(state => state.createGame)
 
-  const inviteWithCode = (e: FormData) => {
-    const inviteCode = e.get("inviteCode")
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const inviteCode = formData.get("inviteCode")?.toString()
 
-    if (typeof inviteCode !== "string") throw new Error("옳지 않은 접근입니다.")
+      if (!inviteCode) throw new Error("옳지 않은 접근입니다.")
 
-    push("Waiting", { code: inviteCode })
+      await checkingInviteCode(inviteCode)
+
+      push("Waiting", { code: inviteCode })
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message)
+      }
+    }
   }
 
   const onboardingHandler = () => {
@@ -47,10 +56,10 @@ export default function MainScreen({ userInfo, isMainFirst }: Props) {
   return (
     <div className="relative h-full w-full bg-gray-950">
       <Drawer>
-        {!isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
+        {isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
         <MainHeader userNickName={userNickName} userProfileImage={userProfileImage} />
         <MainFooter onCreateRoom={onCreateRoom} />
-        <MainContent inviteWithCode={inviteWithCode} />
+        <MainContent inviteWithCode={onSubmit} />
       </Drawer>
     </div>
   )

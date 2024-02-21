@@ -2,7 +2,6 @@ import { Share2 } from "lucide-react"
 import { useMemo, useState } from "react"
 
 import type { UserWaitingType } from "@/app/_waiting/types/game"
-import { Button } from "@/components/button"
 import { DrawerTrigger } from "@/components/drawer"
 import { cn } from "@/libs/tailwind/cn"
 
@@ -64,11 +63,11 @@ export default function WaitingBottom({ userList, isAdmin }: Props) {
         <button disabled={isAdmin && !allReady} className={buttonClassName} onClick={buttonAction.buttonAction}>
           {buttonAction.buttonTitle}
         </button>
-        <Button className="h4-bold h-full rounded-[10px] bg-primary-300 py-[12.5px] text-gray-25">
+        <div className="h4-bold flex aspect-square h-[50px] items-center justify-center rounded-[10px] bg-primary-300 text-gray-25">
           <DrawerTrigger>
             <Share2 className="text-gray-25" />
           </DrawerTrigger>
-        </Button>
+        </div>
       </div>
     </section>
   )
