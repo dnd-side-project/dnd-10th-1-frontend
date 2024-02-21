@@ -28,9 +28,9 @@ export const PrimaryFirst = Template.bind({})
 export const Phone = PhoneSize.bind({})
 export const PhoneFirst = PhoneSize.bind({})
 
-Primary.args = { isMainFirst: false, myInfo }
-PrimaryFirst.args = { isMainFirst: true, myInfo }
-Phone.args = { isMainFirst: false, myInfo }
-PhoneFirst.args = { isMainFirst: true, myInfo }
+Primary.args = { myInfo }
+PrimaryFirst.args = { myInfo }
+Phone.args = { myInfo }
+PhoneFirst.args = { myInfo }
 
 export default meta

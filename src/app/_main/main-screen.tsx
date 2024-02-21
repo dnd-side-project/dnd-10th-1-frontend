@@ -14,11 +14,10 @@ import MainOnboarding from "./components/main-onboarding"
 
 type Props = {
   myInfo: UserMyInfoType
-  isMainFirst: boolean
 }
 
-export default function MainScreen({ myInfo, isMainFirst }: Props) {
-  const [isFirst, setIsFirst] = useState(() => isMainFirst)
+export default function MainScreen({ myInfo }: Props) {
+  const [isFirst, setIsFirst] = useState(() => (localStorage.getItem("main-first") ? false : true))
 
   const { replace } = useFlow()
   const createGame = useAdminStore(state => state.createGame)
