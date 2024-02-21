@@ -26,7 +26,7 @@ const Profile: ActivityComponentType = () => {
   const finish = profileImage !== FallbackProfile && nickname !== ""
 
   const onSubmit = () => {
-    setMyInfo({ nickname, profileImage })
+    setMyInfo({ nickname, profileImage: profileImage.src })
     replace("Main", {})
   }
 

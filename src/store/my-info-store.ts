@@ -13,9 +13,9 @@ const useMyInfoStore = create<MyInfoStore>(set => ({
     profileImage: "",
   },
   setMyInfo: (newInfo: UserInfoType) =>
-    set({
+    set(() => ({
       myInfo: newInfo,
-    }),
+    })),
 }))
 
 export default useMyInfoStore

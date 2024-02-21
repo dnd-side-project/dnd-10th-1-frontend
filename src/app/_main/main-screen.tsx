@@ -13,13 +13,13 @@ import MainHeader from "./components/main-header"
 import MainOnboarding from "./components/main-onboarding"
 
 type Props = {
-  userInfo: UserInfoType
+  myInfo: UserInfoType
   isMainFirst: boolean
 }
 
-export default function MainScreen({ userInfo, isMainFirst }: Props) {
+export default function MainScreen({ myInfo, isMainFirst }: Props) {
   const [isFirst, setIsFirst] = useState(isMainFirst)
-  const { nickname, profileImage } = userInfo
+  const { nickname, profileImage } = myInfo
 
   const { push } = useFlow()
   const createGame = useAdminStore(state => state.createGame)

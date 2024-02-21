@@ -12,7 +12,7 @@ const meta: Meta<typeof MainScreen> = {
   tags: ["autodocs"],
 }
 
-const userInfo = mockUserInfo
+const myInfo = mockUserInfo
 
 const Template: StoryFn<typeof MainScreen> = args => <MainScreen {...args} />
 
@@ -28,9 +28,9 @@ export const PrimaryFirst = Template.bind({})
 export const Phone = PhoneSize.bind({})
 export const PhoneFirst = PhoneSize.bind({})
 
-Primary.args = { isMainFirst: false, userInfo }
-PrimaryFirst.args = { isMainFirst: true, userInfo }
-Phone.args = { isMainFirst: false, userInfo }
-PhoneFirst.args = { isMainFirst: true, userInfo }
+Primary.args = { isMainFirst: false, myInfo }
+PrimaryFirst.args = { isMainFirst: true, myInfo }
+Phone.args = { isMainFirst: false, myInfo }
+PhoneFirst.args = { isMainFirst: true, myInfo }
 
 export default meta
