@@ -11,14 +11,14 @@ type Props = {
 }
 
 export default function SmallTalkGameBody({ myInfo, children, className }: PropsWithChildren<Props>) {
-  const { userNickName, userProfileImage } = myInfo
+  const { nickName, profileImage } = myInfo
   return (
     <div className={cn("relative h-[412px] w-full", className)}>
       <div className="relative mx-auto my-0 h-[354px] w-[calc(100%-62px)]">
         <div className="absolute z-[3] flex h-[354px] w-full justify-center rounded-[20px] bg-gray-100">
           <Avatar className="absolute h-[124px] w-[124px] translate-y-[-50%] drop-shadow">
-            <AvatarImage src={userProfileImage} />
-            <AvatarFallback>{userNickName}</AvatarFallback>
+            <AvatarImage src={profileImage} />
+            <AvatarFallback>{nickName}</AvatarFallback>
           </Avatar>
           {children}
         </div>

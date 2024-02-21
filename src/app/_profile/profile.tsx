@@ -23,19 +23,17 @@ const Profile: ActivityComponentType = () => {
 
   const finish = profile !== FallbackProfile && nickname !== ""
 
+  const onSubmit = () => {
+    replace("Main", {})
+  }
+
   return (
     <AppScreen
       appBar={{
         title: "프로필 설정하기",
         renderRight: () => {
           return (
-            <button
-              disabled={!finish}
-              onClick={() => {
-                replace("Main", {})
-              }}
-              className="pr-[27px] text-gray-100 disabled:text-gray-600"
-            >
+            <button disabled={!finish} onClick={onSubmit} className="pr-[27px] text-gray-100 disabled:text-gray-600">
               완료
             </button>
           )

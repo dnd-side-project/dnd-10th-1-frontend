@@ -13,7 +13,7 @@ const meta: Meta<typeof SmallTalkGameBanner> = {
 }
 
 const selectAnswer = mockSelectAnswer
-const { userNickName } = mockUserInfo
+const { nickName } = mockUserInfo
 const topic = mockTopic
 
 const Template: StoryFn<typeof SmallTalkGameBanner> = args => <SmallTalkGameBanner {...args} />
@@ -28,8 +28,8 @@ export const Primary = Template.bind({})
 export const PhoneRandom = PhoneSize.bind({})
 export const PhoneResult = PhoneSize.bind({})
 
-Primary.args = { type: "random", topic, selectAnswer, userNickName }
-PhoneRandom.args = { type: "random", topic, selectAnswer, userNickName }
-PhoneResult.args = { type: "result", topic, selectAnswer, userNickName }
+Primary.args = { type: "random", topic, selectAnswer, nickName }
+PhoneRandom.args = { type: "random", topic, selectAnswer, nickName }
+PhoneResult.args = { type: "result", topic, selectAnswer, nickName }
 
 export default meta

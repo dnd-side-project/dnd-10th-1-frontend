@@ -4,6 +4,7 @@ import { useState } from "react"
 
 import { Drawer } from "@/components/drawer"
 import useAdminStore from "@/store/admin-store"
+import { UserInfoType } from "@/types/user"
 
 import { useFlow } from "../stackflow"
 import MainContent from "./components/main-content"
@@ -12,16 +13,13 @@ import MainHeader from "./components/main-header"
 import MainOnboarding from "./components/main-onboarding"
 
 type Props = {
-  userInfo: {
-    userNickName: string
-    userProfileImage: string
-  }
+  userInfo: UserInfoType
   isMainFirst: boolean
 }
 
 export default function MainScreen({ userInfo, isMainFirst }: Props) {
   const [isFirst, setIsFirst] = useState(isMainFirst)
-  const { userNickName, userProfileImage } = userInfo
+  const { nickName, profileImage } = userInfo
 
   const { push } = useFlow()
   const createGame = useAdminStore(state => state.createGame)
@@ -48,7 +46,7 @@ export default function MainScreen({ userInfo, isMainFirst }: Props) {
     <div className="relative h-full w-full bg-gray-950">
       <Drawer>
         {!isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
-        <MainHeader userNickName={userNickName} userProfileImage={userProfileImage} />
+        <MainHeader userNickName={nickName} userProfileImage={profileImage} />
         <MainFooter onCreateRoom={onCreateRoom} />
         <MainContent inviteWithCode={inviteWithCode} />
       </Drawer>
