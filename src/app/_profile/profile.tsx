@@ -6,28 +6,40 @@ import FallbackProfile from "@/assets/svgs/profiles/fallback-profile.svg"
 import useMyInfoStore from "@/store/my-info-store"
 
 import { useFlow } from "../stackflow"
+import { postProfile } from "./api/post-profile"
 import ProfileScreen from "./profile-screen"
 
 const Profile: ActivityComponentType = () => {
-  const [nickname, setNickname] = useState("")
+  const [nickName, setNickName] = useState("")
   const [profileImage, setProfileImage] = useState(FallbackProfile)
   const setMyInfo = useMyInfoStore(state => state.setMyInfo)
 
   const { replace } = useFlow()
 
-  const onDrawerClick = (profileTheme: any) => {
-    setProfileImage(profileTheme)
+  const onDrawerClick = (newProfile: string) => {
+    setProfileImage(newProfile)
   }
 
-  const onInputChange = (nickname: string) => {
-    setNickname(nickname)
+  const onInputChange = (newName: string) => {
+    setNickName(newName)
   }
 
-  const finish = profileImage !== FallbackProfile && nickname !== ""
+  const finish = profileImage !== FallbackProfile && nickName !== ""
 
-  const onSubmit = () => {
-    setMyInfo({ nickname, profileImage: profileImage.src })
-    replace("Main", {})
+  const onSubmit = async () => {
+    try {
+      const res = await postProfile({ nickName, profileImage: profileImage.src })
+
+      if (!res) throw new Error("사용자 정보 생성에 실패하였습니다.")
+
+      setMyInfo(res)
+
+      replace("Main", {})
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error(err.message)
+      }
+    }
   }
 
   return (
@@ -48,7 +60,7 @@ const Profile: ActivityComponentType = () => {
       }}
     >
       <ProfileScreen
-        nickname={nickname}
+        nickName={nickName}
         profile={profileImage}
         onDrawerClick={onDrawerClick}
         onInputChange={onInputChange}

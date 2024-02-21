@@ -8,16 +8,16 @@ type Props = {
   topic: string
   className?: string
   selectAnswer?: string
-} & Partial<Pick<UserInfoType, "nickname">>
+} & Partial<Pick<UserInfoType, "nickName">>
 
-export default function SmallTalkGameBanner({ type, topic, selectAnswer, className, nickname }: Props) {
+export default function SmallTalkGameBanner({ type, topic, selectAnswer, className, nickName }: Props) {
   const bannerContent = useMemo(() => {
     if (type === "random") {
       return { title: "빈칸 주제", content: "ㅤㅤ?ㅤㅤ" }
     } else {
-      return { title: `${nickname} 님의 답변`, content: selectAnswer }
+      return { title: `${nickName} 님의 답변`, content: selectAnswer }
     }
-  }, [type, selectAnswer, nickname])
+  }, [type, selectAnswer, nickName])
 
   return (
     <div className={cn("h-[180px] rounded-[14px] bg-gray-100 px-[22px] py-[21px] text-center", className)}>

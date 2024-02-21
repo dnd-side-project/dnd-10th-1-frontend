@@ -19,7 +19,7 @@ type Props = {
 
 export default function MainScreen({ myInfo, isMainFirst }: Props) {
   const [isFirst, setIsFirst] = useState(isMainFirst)
-  const { nickname, profileImage } = myInfo
+  const { nickName, profileImage } = myInfo
 
   const { push } = useFlow()
   const createGame = useAdminStore(state => state.createGame)
@@ -46,7 +46,7 @@ export default function MainScreen({ myInfo, isMainFirst }: Props) {
     <div className="relative h-full w-full bg-gray-950">
       <Drawer>
         {!isFirst && <MainOnboarding onboardingHandler={onboardingHandler} />}
-        <MainHeader userNickName={nickname} userProfileImage={profileImage} />
+        <MainHeader userNickName={nickName} userProfileImage={profileImage} />
         <MainFooter onCreateRoom={onCreateRoom} />
         <MainContent inviteWithCode={inviteWithCode} />
       </Drawer>

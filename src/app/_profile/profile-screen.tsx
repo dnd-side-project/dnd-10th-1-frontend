@@ -3,18 +3,18 @@ import Image from "next/image"
 import EditProfile from "@/assets/svgs/profiles/edit-profile.svg"
 import { Avatar, AvatarFallback } from "@/components/avatar"
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/drawer"
+import { UserInfoType } from "@/types/user"
 
 import ProfileInput from "./components/profile-input/profile-input"
 import { PROFILE_THEMES } from "./profile-themes"
 
 type Props = {
   profile: any
-  nickname: string
   onDrawerClick: (profileTheme: any) => void
   onInputChange: (value: string) => void
-}
+} & Pick<UserInfoType, "nickName">
 
-export default function ProfileScreen({ profile, nickname, onDrawerClick, onInputChange }: Props) {
+export default function ProfileScreen({ profile, nickName, onDrawerClick, onInputChange }: Props) {
   return (
     <div className="min-h-full bg-gray-950 px-[49px]">
       <div className="mb-[33px] flex justify-center">
@@ -50,7 +50,7 @@ export default function ProfileScreen({ profile, nickname, onDrawerClick, onInpu
         </Drawer>
       </div>
 
-      <ProfileInput nickname={nickname} onInputChange={onInputChange} />
+      <ProfileInput nickname={nickName} onInputChange={onInputChange} />
 
       <div className="flex flex-col items-center text-sm text-[#F2F4F7]">
         <p>얼음땡에서 사용할 닉네임과 프로필을 설정해주세요.</p>

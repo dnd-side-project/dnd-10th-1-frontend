@@ -23,7 +23,7 @@ type Props = {
 }
 
 export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selectAnswer, isAdmin }: Props) {
-  const { nickname, profileImage } = selectUserInfo
+  const { nickName, profileImage } = selectUserInfo
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true)
   const [isResetHintVisible, setIsResetHintVisible] = useState(true)
@@ -53,7 +53,7 @@ export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selec
           type="result"
           className="mt-[85px]"
           topic={topic}
-          nickname={nickname}
+          nickName={nickName}
           selectAnswer={selectAnswer}
         />
         <SmallTalkGameResultBox>
@@ -73,9 +73,9 @@ export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selec
           <div className="flex h-full flex-col items-center justify-center">
             <Avatar className="h-[124px] w-[124px]">
               <AvatarImage src={profileImage} />
-              <AvatarFallback>{nickname}</AvatarFallback>
+              <AvatarFallback>{nickName}</AvatarFallback>
             </Avatar>
-            <div className="mt-[20px] text-[18px] font-semibold text-gray-100">{`${nickname}님 썰을 풀어주세요!`}</div>
+            <div className="mt-[20px] text-[18px] font-semibold text-gray-100">{`${nickName}님 썰을 풀어주세요!`}</div>
           </div>
         </SmallTalkGameResultBox>
         <div className="flex h-full gap-5">
