@@ -6,11 +6,11 @@ import React from "react"
 import MainCreate from "@/assets/svgs/main/main-create.svg"
 import { cn } from "@/libs/tailwind/cn"
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+type ButtonProps = {
   isCreate: boolean
   className?: string
   asChild?: boolean
-}
+} & React.ComponentPropsWithoutRef<"button">
 
 const MainButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ isCreate, children, className, ...props }, ref) => {
