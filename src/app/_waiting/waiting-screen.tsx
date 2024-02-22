@@ -1,41 +1,57 @@
 import { Layers2 } from "lucide-react"
 
-import type { UserWaitingType } from "@/app/_waiting/types/game"
 import { Drawer, DrawerContent } from "@/components/drawer"
 import { Input } from "@/components/input"
+import { SOCKET_EVENT } from "@/constants/apis"
 import useAdminStore from "@/store/admin-store"
-import { UserInfoType } from "@/types/user"
+import useSocketStore from "@/store/socket-store"
+import { UserMyInfoType } from "@/types/user"
+import { RoomIdType, WaitingUserType } from "@/types/waiting"
 
+import { useFlow } from "../stackflow"
 import WaitingBottom from "./components/waiting-bottom"
 import WaitingTop from "./components/waiting-top"
 
 type Props = {
-  myInfo: UserInfoType
-  userList: UserWaitingType[]
-  roomId: string
+  myInfo: UserMyInfoType
+  userList?: WaitingUserType[]
+  roomId?: RoomIdType
 }
 
-export default function WaitingScreen({ roomId, myInfo, userList }: Props) {
+export default function WaitingScreen({ roomId = "", myInfo, userList = [] }: Props) {
+  const socket = useSocketStore(state => state.socket)
+
+  const { isAdmin, resetAdmin } = useAdminStore(state => state)
+
+  const { replace } = useFlow()
+
   const copyLink = () => {
     navigator.clipboard.writeText(roomId)
   }
 
-  const { isAdmin, endGame } = useAdminStore(state => state)
-
   const disConnectRoom = () => {
-    if (isAdmin) {
-      endGame()
-      // 방장일 때 끊는 로직
-    } else {
-      // 방장이 아닐때 끊는 로직
-    }
+    resetAdmin()
+    socket.emit(SOCKET_EVENT.END_GAME, { roomId })
   }
 
+  const gameStart = () => {
+    replace("SelectGames", { roomId })
+  }
+
+  const updateStatus = (status: boolean) => {
+    if (!socket) return
+
+    if (status) {
+      socket.emit(SOCKET_EVENT.UPDATE_STATUS, { roomId, userId: myInfo.id, status: "준비 완료" })
+    } else {
+      socket.emit(SOCKET_EVENT.UPDATE_STATUS, { roomId, userId: myInfo.id, status: "준비 중" })
+    }
+  }
   return (
     <div className="relative h-full w-full bg-gray-950">
       <Drawer>
         <WaitingTop disConnectRoom={disConnectRoom} myInfo={myInfo} />
-        <WaitingBottom isAdmin={isAdmin} userList={userList} />
+        <WaitingBottom isAdmin={isAdmin} gameStart={gameStart} updateStatus={updateStatus} userList={userList} />
         <DrawerContent className="px-[24px]">
           <div className="h4-bold pt-[34px]">초대링크 보내기</div>
           <div className="relative">

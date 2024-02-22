@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import React from "react"
 
-import { mockUserInfo, mockUserList } from "@/seeds/user-mock"
+import { mockMyUserInfo, mockUserList } from "@/seeds/user-mock"
 
 import WaitingScreen from "./waiting-screen"
 
@@ -18,7 +18,7 @@ export const Primary: Story = {
   render: ({ ...args }) => {
     return (
       <div className="phone-size">
-        <WaitingScreen {...args} myInfo={mockUserInfo} userList={mockUserList} />
+        <WaitingScreen {...args} myInfo={mockMyUserInfo} userList={mockUserList} />
       </div>
     )
   },

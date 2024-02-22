@@ -1,9 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Drawer } from "@/components/drawer"
+import { SOCKET_EVENT } from "@/constants/apis"
 import useAdminStore from "@/store/admin-store"
+import useSocketStore from "@/store/socket-store"
 import { UserMyInfoType } from "@/types/user"
 
 import { useFlow } from "../stackflow"
@@ -18,16 +20,32 @@ type Props = {
 
 export default function MainScreen({ myInfo }: Props) {
   const [isFirst, setIsFirst] = useState(() => (localStorage.getItem("main-first") ? false : true))
-
   const { replace } = useFlow()
-  const createGame = useAdminStore(state => state.createGame)
+  const setAdmin = useAdminStore(state => state.setAdmin)
+  const socket = useSocketStore(state => state.socket)
+
+  useEffect(() => {
+    socket.on(SOCKET_EVENT.MOVE_TO_WAITING_ROOM, res => {
+      if (res.hasOwnProperty("code")) {
+        if (res.code !== 400) {
+          replace("Waiting", { roomId: res.roomId })
+        }
+      } else {
+        replace("Waiting", { roomId: res })
+      }
+    })
+
+    return () => {
+      socket?.off(SOCKET_EVENT.MOVE_TO_WAITING_ROOM)
+    }
+  }, [replace, socket])
 
   const onSubmit = async (formData: FormData) => {
-    const inviteCode = formData.get("inviteCode")?.toString()
+    const inputId = formData.get("inviteCode")?.toString()
 
-    if (!inviteCode) throw new Error("옳지 않은 접근입니다.")
+    if (!inputId) throw new Error("옳지 않은 접근입니다.")
 
-    replace("Waiting", { roomId: inviteCode })
+    socket?.emit(SOCKET_EVENT.JOIN_ROOM, { roomId: inputId, userId: myInfo.id })
   }
 
   const onboardingHandler = () => {
@@ -36,8 +54,8 @@ export default function MainScreen({ myInfo }: Props) {
   }
 
   const onCreateRoom = () => {
-    createGame()
-    replace("Waiting", {})
+    setAdmin()
+    socket?.emit(SOCKET_EVENT.CREATE_ROOM, { userId: myInfo.id })
   }
 
   return (
