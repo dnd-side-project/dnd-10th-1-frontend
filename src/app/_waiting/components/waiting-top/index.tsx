@@ -10,11 +10,11 @@ type Props = {
 
 export default function WaitingTop({ myInfo, disConnectRoom }: Props) {
   const { nickName, profileImage } = myInfo
-  const { pop } = useFlow()
+  const { replace } = useFlow()
 
   const onBackClick = () => {
     disConnectRoom()
-    pop()
+    replace("Main", {})
   }
 
   return (

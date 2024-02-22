@@ -1,26 +1,28 @@
 import { Share2 } from "lucide-react"
 import { useMemo, useState } from "react"
 
-import type { UserWaitingType } from "@/app/_waiting/types/game"
 import { DrawerTrigger } from "@/components/drawer"
 import { cn } from "@/libs/tailwind/cn"
+import { WaitingUserType } from "@/types/waiting"
 
 import UserList from "./user-list"
 
 type Props = {
-  userList: UserWaitingType[]
   isAdmin: boolean
+  userList: WaitingUserType[]
+  gameStart: () => void
+  updateStatus: (status: boolean) => void
 }
 
-export default function WaitingBottom({ userList, isAdmin }: Props) {
+export default function WaitingBottom({ userList, isAdmin, gameStart, updateStatus }: Props) {
   const [state, setState] = useState(false)
-  const allReady = userList.findIndex(user => !user.status) === -1
+  const allReady = userList.findIndex((user, index) => index !== 0 && user.status !== "준비 완료") === -1
 
   const buttonAction = useMemo(() => {
     if (isAdmin) {
       const buttonTitle = "시작하기"
       const buttonAction = () => {
-        // 게임 시작 액션
+        gameStart()
       }
 
       return { buttonTitle, buttonAction }
@@ -29,19 +31,20 @@ export default function WaitingBottom({ userList, isAdmin }: Props) {
       const buttonAction = () => {
         if (state) {
           setState(false)
+          updateStatus(false)
           // 준비 취소 액션
         } else {
           setState(true)
-          // 준비 완료 액션
+          updateStatus(true)
         }
       }
 
       return { buttonTitle, buttonAction }
     }
-  }, [isAdmin, state])
+  }, [gameStart, isAdmin, state, updateStatus])
 
-  const adminWithNotAllReady = isAdmin && !allReady
-  const adminWithAllReady = isAdmin && allReady
+  const adminWithNotAllReady = (isAdmin && !allReady) || userList.length === 1
+  const adminWithAllReady = isAdmin && allReady && userList.length !== 1
   const userWithReady = !isAdmin && state
   const userWithNotReady = !isAdmin && !state
 
@@ -60,7 +63,7 @@ export default function WaitingBottom({ userList, isAdmin }: Props) {
         <UserList userList={userList} />
       </div>
       <div className="mt-[22px] flex h-[50px] gap-5">
-        <button disabled={isAdmin && !allReady} className={buttonClassName} onClick={buttonAction.buttonAction}>
+        <button disabled={adminWithNotAllReady} className={buttonClassName} onClick={buttonAction.buttonAction}>
           {buttonAction.buttonTitle}
         </button>
         <div className="h4-bold flex aspect-square h-[50px] items-center justify-center rounded-[10px] bg-primary-300 text-gray-25">

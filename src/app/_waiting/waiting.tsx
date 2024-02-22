@@ -2,42 +2,44 @@
 
 import { AppScreen } from "@stackflow/plugin-basic-ui"
 import { ActivityComponentType, useActivity } from "@stackflow/react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
-import { mockUserList } from "@/seeds/user-mock"
+import { SOCKET_EVENT } from "@/constants/apis"
 import useAdminStore from "@/store/admin-store"
 import useMyInfoStore from "@/store/my-info-store"
+import useSocketStore from "@/store/socket-store"
+import { WaitingResponseType } from "@/types/waiting"
 
+import { useFlow } from "../stackflow"
 import WaitingScreen from "./waiting-screen"
 
 const Waiting: ActivityComponentType = () => {
-  const isAdmin = useAdminStore()
+  const isAdmin = useAdminStore(state => state.isAdmin)
   const { params } = useActivity()
 
+  const { replace } = useFlow()
+
+  const [waitingResponse, setWaitingResponse] = useState<WaitingResponseType>(null)
+
   const myInfo = useMyInfoStore(state => state.myInfo)
+  const socket = useSocketStore(state => state.socket)
+
   const roomId = params.roomId
 
-  // const { replace } = useFlow()
-
-  // const _gameStart = useCallback(() => {
-  //   if (isAdmin) {
-  //     replace("SelectGames", {})
-  //   } else {
-  //     replace("Loading", {})
-  //   }
-  // }, [replace, isAdmin])
-
   useEffect(() => {
-    if (isAdmin) {
-      // 소켓 연결 (방장의 경우)
-      // console.log("만들어용")
-    } else {
-      if (typeof roomId === "string") {
-        // 소켓 연결 (방장이 아닌 경우)
-        // console.log(`${roomId} 들어가용`)
-      }
+    socket.on(SOCKET_EVENT.LISTEN_ROOM_USER_LIST, res => setWaitingResponse(res))
+    if (!isAdmin) {
+      socket.on(SOCKET_EVENT.MOVE_TO_LOADING_ROOM, () => replace("Loading", {}))
     }
-  }, [isAdmin, roomId])
+    socket.emit(SOCKET_EVENT.LISTEN_ROOM_USER_LIST, { roomId })
+
+    return () => {
+      if (!isAdmin) {
+        socket.off(SOCKET_EVENT.MOVE_TO_LOADING_ROOM)
+      }
+      socket.off(SOCKET_EVENT.LISTEN_ROOM_USER_LIST)
+    }
+  }, [isAdmin, replace, roomId, socket])
 
   const inNotUser = typeof roomId === "undefined" && !isAdmin
 
@@ -45,7 +47,7 @@ const Waiting: ActivityComponentType = () => {
 
   return (
     <AppScreen>
-      <WaitingScreen roomId="받아온 초대코드" myInfo={myInfo} userList={mockUserList} />
+      <WaitingScreen myInfo={myInfo} roomId={roomId} userList={waitingResponse?.userList} />
     </AppScreen>
   )
 }
