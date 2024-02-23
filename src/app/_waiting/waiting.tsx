@@ -28,6 +28,7 @@ const Waiting: ActivityComponentType = () => {
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.LISTEN_ROOM_USER_LIST, res => setWaitingResponse(res))
+    socket.on(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM, () => replace("Main", {}))
     if (!isAdmin) {
       socket.on(SOCKET_EVENT.MOVE_TO_LOADING_ROOM, () => replace("Loading", {}))
     }
@@ -38,6 +39,7 @@ const Waiting: ActivityComponentType = () => {
         socket.off(SOCKET_EVENT.MOVE_TO_LOADING_ROOM)
       }
       socket.off(SOCKET_EVENT.LISTEN_ROOM_USER_LIST)
+      socket.off(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM)
     }
   }, [isAdmin, replace, roomId, socket])
 

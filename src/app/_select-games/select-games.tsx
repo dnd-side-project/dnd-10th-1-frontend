@@ -12,14 +12,31 @@ const SelectGames: ActivityComponentType = () => {
   const { replace } = useFlow()
   const { params } = useActivity()
   const roomId = params.roomId
-  const onCompleteClick = (selected: "mbti" | "blank") => {
-    replace("Splash", { state: selected })
+  const onCompleteClick = (gameId: number) => {
+    socket.emit(SOCKET_EVENT.START_GAME, { roomId, gameId })
   }
   const socket = useSocketStore(state => state.socket)
 
   useEffect(() => {
+    socket.on(SOCKET_EVENT.MOVE_TO_GAME, res => {
+      const { gameId, gameItem } = res
+      switch (gameId) {
+        case 1:
+          replace("SmallTalkInput", { gameItem })
+          break
+        case 2:
+          replace("MbtiGame", { gameItem })
+          break
+        default:
+          break
+      }
+    })
     socket.emit(SOCKET_EVENT.SELECT_GAME, { roomId })
-  }, [roomId, socket])
+
+    return () => {
+      socket.off(SOCKET_EVENT.MOVE_TO_GAME)
+    }
+  }, [replace, roomId, socket])
 
   return (
     <AppScreen>

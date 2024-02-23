@@ -19,7 +19,7 @@ type Props = {
 }
 
 export default function MainScreen({ myInfo }: Props) {
-  const [isFirst, setIsFirst] = useState(() => (localStorage.getItem("main-first") ? false : true))
+  const [isFirst, setIsFirst] = useState(() => !localStorage.getItem("main-first"))
   const { replace } = useFlow()
   const setAdmin = useAdminStore(state => state.setAdmin)
   const socket = useSocketStore(state => state.socket)
@@ -36,7 +36,7 @@ export default function MainScreen({ myInfo }: Props) {
     })
 
     return () => {
-      socket?.off(SOCKET_EVENT.MOVE_TO_WAITING_ROOM)
+      socket.off(SOCKET_EVENT.MOVE_TO_WAITING_ROOM)
     }
   }, [replace, socket])
 
@@ -55,7 +55,7 @@ export default function MainScreen({ myInfo }: Props) {
 
   const onCreateRoom = () => {
     setAdmin()
-    socket?.emit(SOCKET_EVENT.CREATE_ROOM, { userId: myInfo.id })
+    socket.emit(SOCKET_EVENT.CREATE_ROOM, { userId: myInfo.id })
   }
 
   return (

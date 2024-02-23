@@ -31,7 +31,7 @@ export default function WaitingScreen({ roomId = "", myInfo, userList = [] }: Pr
 
   const disConnectRoom = () => {
     resetAdmin()
-    socket.emit(SOCKET_EVENT.END_GAME, { roomId })
+    socket.emit(SOCKET_EVENT.END_GAME, { roomId, userId: myInfo.id })
   }
 
   const gameStart = () => {
