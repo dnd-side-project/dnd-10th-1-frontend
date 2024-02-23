@@ -28,7 +28,7 @@ const MbtiGame: ActivityComponentType = () => {
     return () => {
       socket.off(SOCKET_EVENT.MOVE_TO_MBTI_LOADING)
     }
-  }, [socket, push])
+  }, [socket, push, roomId])
 
   return (
     <AppScreen>
