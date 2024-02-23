@@ -2,7 +2,7 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui"
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic"
 import { stackflow } from "@stackflow/react"
 
-import Loading from "./_game-loading/game-loding"
+import GameLoading from "./_game-loading/game-loding"
 import Main from "./_main/main"
 import MbtiGame from "./_mbti/_game/mbti-game"
 import MbtiLoading from "./_mbti/_loading/mbti-loading"
@@ -34,7 +34,7 @@ export const { Stack, useFlow } = stackflow({
     MbtiResult,
     MbtiAllResult,
     Waiting,
-    Loading,
+    GameLoading,
     SmallTalkInput,
     SmallTalkRandom,
     SmallTalkResult,

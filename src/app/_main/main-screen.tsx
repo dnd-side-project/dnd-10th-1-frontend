@@ -45,7 +45,7 @@ export default function MainScreen({ myInfo }: Props) {
 
     if (!inputId) throw new Error("옳지 않은 접근입니다.")
 
-    socket?.emit(SOCKET_EVENT.JOIN_ROOM, { roomId: inputId, userId: myInfo.id })
+    socket.emit(SOCKET_EVENT.JOIN_ROOM, { roomId: inputId, userId: myInfo.id })
   }
 
   const onboardingHandler = () => {

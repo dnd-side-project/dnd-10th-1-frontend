@@ -9,7 +9,7 @@ import { useFlow } from "../stackflow"
 import SelectGamesScreen from "./select-games-screen"
 
 const SelectGames: ActivityComponentType = () => {
-  const { replace } = useFlow()
+  const { push } = useFlow()
   const { params } = useActivity()
   const roomId = params.roomId
   const onCompleteClick = (gameId: number) => {
@@ -19,15 +19,13 @@ const SelectGames: ActivityComponentType = () => {
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_GAME, res => {
-      const { gameId, gameItem } = res
+      const { gameId, gameInfo } = res
       switch (gameId) {
         case 1:
-          replace("SmallTalkInput", { gameItem })
+          push("SmallTalkInput", { ...gameInfo, roomId })
           break
         case 2:
-          replace("MbtiGame", { gameItem })
-          break
-        default:
+          push("MbtiGame", { ...gameInfo, roomId })
           break
       }
     })
@@ -36,7 +34,7 @@ const SelectGames: ActivityComponentType = () => {
     return () => {
       socket.off(SOCKET_EVENT.MOVE_TO_GAME)
     }
-  }, [replace, roomId, socket])
+  }, [push, roomId, socket])
 
   return (
     <AppScreen>
