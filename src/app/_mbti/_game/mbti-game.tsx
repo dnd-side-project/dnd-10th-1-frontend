@@ -1,6 +1,10 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui"
-import { ActivityComponentType } from "@stackflow/react"
-import { useState } from "react"
+import { ActivityComponentType, useActivity } from "@stackflow/react"
+import { useEffect, useState } from "react"
+
+import { SOCKET_EVENT } from "@/constants/apis"
+import useMyInfoStore from "@/store/my-info-store"
+import useSocketStore from "@/store/socket-store"
 
 import { useFlow } from "../../stackflow"
 import MbtiScreen from "./mbti-game-screen"
@@ -9,7 +13,22 @@ const MbtiGame: ActivityComponentType = () => {
   const [isSelected, setIsSelected] = useState(false)
   const [selectedMbti, setSelectedMbti] = useState<string>()
 
-  const { replace } = useFlow()
+  const { push } = useFlow()
+  const { params } = useActivity()
+  const { roomId } = params
+
+  const socket = useSocketStore(state => state.socket)
+  const { myInfo } = useMyInfoStore()
+
+  useEffect(() => {
+    socket.on(SOCKET_EVENT.MOVE_TO_MBTI_LOADING, () => {
+      push("MbtiLoading", { roomId })
+    })
+
+    return () => {
+      socket.off(SOCKET_EVENT.MOVE_TO_MBTI_LOADING)
+    }
+  }, [socket, push])
 
   return (
     <AppScreen>
@@ -19,7 +38,7 @@ const MbtiGame: ActivityComponentType = () => {
           setSelectedMbti(mbti)
         }}
         onCompleteClick={() => {
-          replace("MbtiLoading", { mbti: selectedMbti })
+          socket.emit(SOCKET_EVENT.SELECT_MBTI, { roomId, userId: myInfo?.id, mbti: selectedMbti })
         }}
         isSelected={isSelected}
       />
