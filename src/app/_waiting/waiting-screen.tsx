@@ -1,4 +1,5 @@
 import { Layers2 } from "lucide-react"
+import { toast, Toaster } from "sonner"
 
 import { Drawer, DrawerContent } from "@/components/drawer"
 import { Input } from "@/components/input"
@@ -27,10 +28,13 @@ export default function WaitingScreen({ roomId = "", myInfo, userList = [] }: Pr
 
   const copyLink = () => {
     navigator.clipboard.writeText(roomId)
+    toast("초대 링크가 복사되었어요!")
   }
 
   const disConnectRoom = () => {
-    resetAdmin()
+    if (isAdmin) {
+      resetAdmin()
+    }
     socket.emit(SOCKET_EVENT.END_GAME, { roomId, userId: myInfo.id })
   }
 
@@ -55,9 +59,10 @@ export default function WaitingScreen({ roomId = "", myInfo, userList = [] }: Pr
         <DrawerContent className="px-[24px]">
           <div className="h4-bold pt-[34px]">초대링크 보내기</div>
           <div className="relative">
-            <Input className="mt-5" control="main" disabled defaultValue={roomId} />
+            <Input className="mt-5 pr-20" control="main" disabled defaultValue={roomId} />
             <Layers2 className="absolute right-[18px] top-1/2  text-gray-600" onClick={copyLink} />
           </div>
+          <Toaster position="top-center" />
         </DrawerContent>
       </Drawer>
     </div>
