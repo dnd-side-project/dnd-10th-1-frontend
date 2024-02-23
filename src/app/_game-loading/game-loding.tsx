@@ -10,29 +10,28 @@ import useSocketStore from "@/store/socket-store"
 import { useFlow } from "../stackflow"
 import { GameLoadingScreen } from "./game-loading-screen"
 
-const Waiting: ActivityComponentType = () => {
+const GameLoading: ActivityComponentType = () => {
   const socket = useSocketStore(state => state.socket)
   const { params } = useActivity()
-  const { replace } = useFlow()
+  const { push } = useFlow()
   const roomId = params.roomId
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_GAME, res => {
-      const { gameId, gameItem } = res
+      const { gameId, gameInfo } = res
       switch (gameId) {
         case 1:
-          replace("SmallTalkInput", { gameItem })
+          push("SmallTalkInput", { ...gameInfo, roomId })
           break
         case 2:
-          replace("MbtiGame", { gameItem })
-          break
-        default:
+          push("MbtiGame", { ...gameInfo, roomId })
           break
       }
     })
+
     return () => {
       socket.off(SOCKET_EVENT.MOVE_TO_GAME)
     }
-  }, [replace, roomId, socket])
+  }, [push, roomId, socket])
   return (
     <AppScreen>
       <GameLoadingScreen />
@@ -40,4 +39,4 @@ const Waiting: ActivityComponentType = () => {
   )
 }
 
-export default Waiting
+export default GameLoading

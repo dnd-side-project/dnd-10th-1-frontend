@@ -13,12 +13,14 @@ type Props = {
 
 export default function SelectGamesScreen({ onCompleteClick }: Props) {
   const [selected, setSelected] = useState<number | null>(null)
+  const selectedBlank = 1
+  const selectedMbti = 2
   const mbtiGameClassName = cn("flex h-[168px] w-full items-center justify-center rounded-[10px]", {
-    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === 2,
+    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === selectedMbti,
   })
 
   const blankGameClassName = cn("flex h-[168px] w-full items-center justify-center rounded-[10px]", {
-    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === 1,
+    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === selectedBlank,
   })
 
   return (

@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react"
 
 import { cn } from "@/libs/tailwind/cn"
+import { UserCountType } from "@/types/small-talk"
 import type { UserMyInfoType } from "@/types/user"
 
 import SmallTalkGameBody from "../components/game-body/game-body"
 import SmallTalkGameHeader from "../components/game-header/game-header"
 
 type Props = {
+  userCount: UserCountType
   myInfo: UserMyInfoType
   topic: string
+  timeOut: (isSubmit: boolean) => void
 }
 
-export default function SmallTalkGameInputScreen({ topic, myInfo }: Props) {
+export default function SmallTalkGameInputScreen({ userCount, topic, myInfo, timeOut }: Props) {
   const [timer, setTimer] = useState(60)
   const [isSubmit, setIsSubmit] = useState(false)
-
+  const { answerCount, unanswerCount } = userCount
   useEffect(() => {
     const countStart = setInterval(() => {
       setTimer(prev => prev - 1)
@@ -22,16 +25,13 @@ export default function SmallTalkGameInputScreen({ topic, myInfo }: Props) {
 
     if (timer === 0) {
       clearInterval(countStart)
-      // timeOut()
+      // timeOut(isSubmit)
     }
 
     return () => {
       clearInterval(countStart)
     }
-  }, [timer])
-
-  // 시간이 끝났을 때 실행이 될 함수
-  // const timeOut = () => {}
+  }, [isSubmit, timeOut, timer])
 
   const formAction = (formData: FormData) => {
     const talkValue = formData.get("talk-value")?.toString()
@@ -45,6 +45,7 @@ export default function SmallTalkGameInputScreen({ topic, myInfo }: Props) {
     <div className="min-h-full bg-gray-950">
       <SmallTalkGameHeader isStart />
       <SmallTalkGameBody myInfo={myInfo} className="pt-[80px]">
+        <div className="absolute right-10 top-4 bg-pink-100 p-2">{`${answerCount}/${answerCount + unanswerCount}`}</div>
         <form action={formAction} className="flex h-full w-full flex-col items-center">
           <div className="mt-[94px] rounded-xl bg-pink-100 px-[21px] py-[3px] text-[25px] font-bold text-gray-800">
             {timer === 60 ? "1:00" : `0:${timer}`}
