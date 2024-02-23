@@ -19,7 +19,7 @@ type Props = {
 }
 
 export default function MainScreen({ myInfo }: Props) {
-  const [isFirst, setIsFirst] = useState(() => (localStorage.getItem("main-first") ? false : true))
+  const [isFirst, setIsFirst] = useState(() => !localStorage.getItem("main-first"))
   const { replace } = useFlow()
   const setAdmin = useAdminStore(state => state.setAdmin)
   const socket = useSocketStore(state => state.socket)
