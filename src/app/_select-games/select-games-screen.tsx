@@ -8,18 +8,17 @@ import { Button } from "@/components/button"
 import { cn } from "@/libs/tailwind/cn"
 
 type Props = {
-  onCompleteClick: (selected: "mbti" | "blank") => void
+  onCompleteClick: (gameId: number) => void
 }
 
 export default function SelectGamesScreen({ onCompleteClick }: Props) {
-  const [selected, setSelected] = useState<"mbti" | "blank">()
-
+  const [selected, setSelected] = useState<number | null>(null)
   const mbtiGameClassName = cn("flex h-[168px] w-full items-center justify-center rounded-[10px]", {
-    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === "mbti",
+    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === 2,
   })
 
   const blankGameClassName = cn("flex h-[168px] w-full items-center justify-center rounded-[10px]", {
-    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === "blank",
+    "bg-gradient-to-b from-[#2A61E7] to-[#FF7EFA]": selected === 1,
   })
 
   return (
@@ -35,24 +34,14 @@ export default function SelectGamesScreen({ onCompleteClick }: Props) {
 
         <div className="mb-[149px] flex flex-col gap-5">
           <div className={mbtiGameClassName}>
-            <Button
-              onClick={() => {
-                setSelected("mbti")
-              }}
-              className="relative h-[162px] w-[calc(100%-6px)]"
-            >
-              <Image priority fill src={MbtiGame} alt="MBTI 게임" />
+            <Button onClick={() => setSelected(2)} className="relative h-[162px] w-[calc(100%-6px)]">
+              <Image priority fill src={MbtiGame} alt={"mbtiGame"} />
             </Button>
           </div>
 
           <div className={blankGameClassName}>
-            <Button
-              onClick={() => {
-                setSelected("blank")
-              }}
-              className="relative h-[162px] w-[calc(100%-6px)]"
-            >
-              <Image priority fill src={BlankGame} alt="빈칸주제 게임" />
+            <Button onClick={() => setSelected(1)} className="relative h-[162px] w-[calc(100%-6px)]">
+              <Image priority fill src={BlankGame} alt={"blankGame"} />
             </Button>
           </div>
         </div>
