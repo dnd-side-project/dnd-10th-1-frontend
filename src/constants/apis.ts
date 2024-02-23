@@ -20,6 +20,7 @@ export const SOCKET_EVENT = {
   LISTEN_ROOM_USER_LIST: "listen-room-user-list",
   MOVE_TO_WAITING_ROOM: "move-to-waiting-room",
   JOIN_ROOM: "join-room",
+  DISCONNECT_ALL_SOCKET: "disconnect-all-socket",
   UPDATE_STATUS: "update-status",
   SELECT_GAME: "select-game",
   GET_GAME_CATEGORY: "get-game-category",
