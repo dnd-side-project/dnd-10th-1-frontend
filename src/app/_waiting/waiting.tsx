@@ -17,20 +17,25 @@ const Waiting: ActivityComponentType = () => {
   const isAdmin = useAdminStore(state => state.isAdmin)
   const { params } = useActivity()
 
-  const { push } = useFlow()
+  const { push, replace } = useFlow()
 
   const [waitingResponse, setWaitingResponse] = useState<WaitingResponseType>(null)
 
   const myInfo = useMyInfoStore(state => state.myInfo)
   const socket = useSocketStore(state => state.socket)
 
-  const roomId = params.roomId
+  const { roomId } = params
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.LISTEN_ROOM_USER_LIST, res => setWaitingResponse(res))
-    socket.on(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM, () => push("Main", {}))
+    socket.on(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM, () => replace("Main", {}))
     if (!isAdmin) {
-      socket.on(SOCKET_EVENT.MOVE_TO_LOADING_ROOM, () => push("GameLoading", { roomId }))
+      socket.on(SOCKET_EVENT.MOVE_TO_LOADING_ROOM, () => {
+        socket.off(SOCKET_EVENT.MOVE_TO_LOADING_ROOM)
+        socket.off(SOCKET_EVENT.LISTEN_ROOM_USER_LIST)
+        socket.off(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM)
+        push("GameLoading", { roomId })
+      })
     }
     socket.emit(SOCKET_EVENT.LISTEN_ROOM_USER_LIST, { roomId })
 
@@ -41,7 +46,7 @@ const Waiting: ActivityComponentType = () => {
       socket.off(SOCKET_EVENT.LISTEN_ROOM_USER_LIST)
       socket.off(SOCKET_EVENT.LEAVE_ALL_USER_FROM_ROOM)
     }
-  }, [isAdmin, push, roomId, socket])
+  }, [isAdmin, replace, roomId, socket, push])
 
   const inNotUser = typeof roomId === "undefined" && !isAdmin
 
