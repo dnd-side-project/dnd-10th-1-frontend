@@ -1,5 +1,6 @@
 import { Button } from "@/components/button"
 import { cn } from "@/libs/tailwind/cn"
+import { AnswerType } from "@/types/small-talk"
 
 import SmallTalkGameBanner from "../components/game-banner/game-banner"
 import SmallTalkGameHeader from "../components/game-header/game-header"
@@ -7,11 +8,12 @@ import SmallTalkGameResultBox from "../components/game-result-box/game-result-bo
 
 type Props = {
   topic: string
-  answerList: string[]
+  answerList: AnswerType[]
   isAdmin: boolean
+  moveResultScreen: () => void
 }
 
-export default function SmallTalkGameRandomScreen({ topic, answerList, isAdmin }: Props) {
+export default function SmallTalkGameResultListScreen({ topic, answerList, isAdmin }: Props) {
   return (
     <div className="min-h-full bg-gray-950">
       <SmallTalkGameHeader isStart />
@@ -27,12 +29,12 @@ export default function SmallTalkGameRandomScreen({ topic, answerList, isAdmin }
             </span>
           </div>
           <ul className="mt-[30px] flex w-full flex-col gap-5">
-            {answerList.map((talk, index) => (
+            {answerList.map((answer, index) => (
               <li
                 className={cn("w-full list-none text-gray-25", index % 2 === 0 ? "text-left" : "text-right")}
-                key={Math.floor(Math.random() * 1000)}
+                key={answer.userId}
               >
-                {talk}
+                {answer.answer}
               </li>
             ))}
           </ul>
