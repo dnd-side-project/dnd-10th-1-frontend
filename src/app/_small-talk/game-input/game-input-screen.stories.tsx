@@ -14,11 +14,13 @@ const meta: Meta<typeof SmallTalkGameInputScreen> = {
 const topic = mockTopic
 const myInfo = mockMyUserInfo
 
-const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => <SmallTalkGameInputScreen {...args} />
+const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => (
+  <SmallTalkGameInputScreen {...args} userCount={{ answerCount: 2, unanswerCount: 2 }} />
+)
 
 const PhoneSize: StoryFn<typeof SmallTalkGameInputScreen> = args => (
   <div className="phone-size">
-    <SmallTalkGameInputScreen {...args} />
+    <SmallTalkGameInputScreen {...args} userCount={{ answerCount: 2, unanswerCount: 2 }} />
   </div>
 )
 
