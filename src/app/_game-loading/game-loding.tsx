@@ -14,7 +14,7 @@ const GameLoading: ActivityComponentType = () => {
   const socket = useSocketStore(state => state.socket)
   const { params } = useActivity()
   const { push } = useFlow()
-  const roomId = params.roomId
+  const { roomId } = params
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_GAME, res => {
       const { gameId, gameInfo } = res

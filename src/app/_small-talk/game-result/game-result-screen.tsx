@@ -20,9 +20,22 @@ type Props = {
   selectUserInfo: UserInfoType
   selectAnswer: string
   isAdmin: boolean
+  isTryAllowed?: "true" | "false"
+  onReset?: () => void
+  moveToWaitingRoom?: () => void
+  moveToMainRoom?: () => void
 }
 
-export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selectAnswer, isAdmin }: Props) {
+export default function SmallTalkGameResultScreen({
+  isTryAllowed,
+  onReset,
+  topic,
+  selectUserInfo,
+  selectAnswer,
+  isAdmin,
+  moveToMainRoom,
+  moveToWaitingRoom,
+}: Props) {
   const { nickName, profileImage } = selectUserInfo
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true)
@@ -34,10 +47,6 @@ export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selec
 
   const hintClose = () => {
     setIsResetHintVisible(false)
-  }
-
-  const onReset = () => {
-    // 새로고침합니다.
   }
 
   return (
@@ -57,7 +66,7 @@ export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selec
           selectAnswer={selectAnswer}
         />
         <SmallTalkGameResultBox>
-          {isAdmin && (
+          {isAdmin && isTryAllowed === "true" && (
             <div className="relative">
               {isResetHintVisible && (
                 <div className="absolute right-[11px] top-[11px] z-[2] flex flex-col items-end">
@@ -79,10 +88,12 @@ export default function SmallTalkGameResultScreen({ topic, selectUserInfo, selec
           </div>
         </SmallTalkGameResultBox>
         <div className="flex h-full gap-5">
-          <Button className="h4-bold h-[50px] bg-primary-300 py-[12.5px] text-gray-25">
+          <Button onClick={moveToMainRoom} className="h4-bold h-[50px] bg-primary-300 py-[12.5px] text-gray-25">
             <Image src={Home} alt="홈" />
           </Button>
-          <Button className="h4-bold h-full w-full bg-primary-300 py-[12.5px] text-gray-25">대기실 가기</Button>
+          <Button onClick={moveToWaitingRoom} className="h4-bold h-full w-full bg-primary-300 py-[12.5px] text-gray-25">
+            대기실 가기
+          </Button>
         </div>
       </div>
     </div>
