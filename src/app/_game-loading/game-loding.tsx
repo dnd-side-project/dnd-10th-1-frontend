@@ -14,13 +14,13 @@ const GameLoading: ActivityComponentType = () => {
   const socket = useSocketStore(state => state.socket)
   const { params } = useActivity()
   const { push } = useFlow()
-  const { roomId, userList } = params
+  const { roomId } = params
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_GAME, res => {
       const { gameId, gameInfo } = res
       switch (gameId) {
         case 1:
-          push("SmallTalkInput", { ...gameInfo, roomId, userList })
+          push("SmallTalkInput", { ...gameInfo, roomId })
           break
         case 2:
           push("MbtiGame", { ...gameInfo, roomId })
@@ -31,7 +31,7 @@ const GameLoading: ActivityComponentType = () => {
     return () => {
       socket.off(SOCKET_EVENT.MOVE_TO_GAME)
     }
-  }, [push, roomId, socket, userList])
+  }, [push, roomId, socket])
   return (
     <AppScreen>
       <GameLoadingScreen />
