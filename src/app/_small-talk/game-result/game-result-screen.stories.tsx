@@ -15,6 +15,7 @@ const Template: StoryFn<typeof SmallTalkGameResultScreen> = args => <SmallTalkGa
 const selectUserInfo = mockUserInfo
 const selectAnswer = mockSelectAnswer
 const topic = mockTopic
+const mockFunction = () => {}
 
 const PhoneSize: StoryFn<typeof SmallTalkGameResultScreen> = args => (
   <div className="phone-size">
@@ -26,8 +27,35 @@ export const Admin = Template.bind({})
 export const User = Template.bind({})
 export const Phone = PhoneSize.bind({})
 
-Admin.args = { isAdmin: true, selectUserInfo, selectAnswer, topic }
-User.args = { isAdmin: false, selectUserInfo, selectAnswer, topic }
-Phone.args = { isAdmin: false, selectUserInfo, selectAnswer, topic }
+Admin.args = {
+  isAdmin: true,
+  selectUserInfo,
+  selectAnswer,
+  topic,
+  moveToMainRoom: mockFunction,
+  moveToWaitingRoom: mockFunction,
+  onReset: mockFunction,
+  isTryAllowed: "true",
+}
+User.args = {
+  isAdmin: false,
+  selectUserInfo,
+  selectAnswer,
+  topic,
+  moveToMainRoom: mockFunction,
+  moveToWaitingRoom: mockFunction,
+  onReset: mockFunction,
+  isTryAllowed: "true",
+}
+Phone.args = {
+  isAdmin: false,
+  selectUserInfo,
+  selectAnswer,
+  topic,
+  moveToMainRoom: mockFunction,
+  moveToWaitingRoom: mockFunction,
+  onReset: mockFunction,
+  isTryAllowed: "true",
+}
 
 export default meta
