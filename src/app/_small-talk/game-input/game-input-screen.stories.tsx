@@ -17,12 +17,12 @@ const userCount = { answerCount: 0, totalCount: 3 }
 const mockFunction = () => {}
 
 const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => (
-  <SmallTalkGameInputScreen {...args} userCount={{ answerCount: 2, unanswerCount: 2 }} />
+  <SmallTalkGameInputScreen {...args} userCount={userCount} />
 )
 
 const PhoneSize: StoryFn<typeof SmallTalkGameInputScreen> = args => (
   <div className="phone-size">
-    <SmallTalkGameInputScreen {...args} userCount={{ answerCount: 2, unanswerCount: 2 }} />
+    <SmallTalkGameInputScreen {...args} userCount={userCount} />
   </div>
 )
 
