@@ -10,6 +10,7 @@ export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 export const END_POINT = {
   temp: "/temp",
   user: "/user",
+  MBTI_RESULT: "/game/mbti/result",
   MAIN: {
     INVITE_CODE: "/main/check-code",
   },
