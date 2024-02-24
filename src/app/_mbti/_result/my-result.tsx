@@ -13,7 +13,7 @@ import { getRandomData } from "./libs/my-result-data"
 export default function MyResult() {
   const { push } = useFlow()
 
-  const [mockMyResult, setMcokMyResult] = useState<{
+  const [mockMyResult, setMockMyResult] = useState<{
     title: string
     partner1Image: any
     partner1Text: string
@@ -29,7 +29,7 @@ export default function MyResult() {
   const longPressEvent = useLongPress(() => downloadImageEvent(resultRef), { isPreventDefault: true, delay: 300 })
 
   useEffect(() => {
-    setMcokMyResult(getRandomData())
+    setMockMyResult(getRandomData())
   }, [])
 
   if (!mockMyResult) {

@@ -10,7 +10,7 @@ import { getRandomData } from "./libs/team-result-data"
 
 export default function TeamResult() {
   const resultRef = useRef<HTMLButtonElement>(null)
-  const [mockTeamResult, setMcokTeamResult] = useState<{
+  const [mockTeamResult, setMockTeamResult] = useState<{
     title: string
     descriptions: string[]
     suggestion: string
@@ -20,7 +20,7 @@ export default function TeamResult() {
   const longPressEvent = useLongPress(() => downloadImageEvent(resultRef), { isPreventDefault: true, delay: 300 })
 
   useEffect(() => {
-    setMcokTeamResult(getRandomData())
+    setMockTeamResult(getRandomData())
   }, [])
 
   if (!mockTeamResult) {
