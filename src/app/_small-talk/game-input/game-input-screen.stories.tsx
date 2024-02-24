@@ -13,6 +13,8 @@ const meta: Meta<typeof SmallTalkGameInputScreen> = {
 
 const topic = mockTopic
 const myInfo = mockMyUserInfo
+const userCount = { answerCount: 0, totalCount: 3 }
+const mockFunction = () => {}
 
 const Template: StoryFn<typeof SmallTalkGameInputScreen> = args => (
   <SmallTalkGameInputScreen {...args} userCount={{ answerCount: 2, unanswerCount: 2 }} />
@@ -28,7 +30,7 @@ export const Primary = Template.bind({})
 
 export const Phone = PhoneSize.bind({})
 
-Primary.args = { myInfo, topic }
-Phone.args = { myInfo, topic }
+Primary.args = { myInfo, topic, userCount, sendAnswer: mockFunction, timeOut: mockFunction }
+Phone.args = { myInfo, topic, userCount }
 
 export default meta

@@ -12,38 +12,55 @@ import SmallTalkGameInputScreen from "./game-input-screen"
 
 const SmallTalkGameInput: ActivityComponentType = () => {
   const myInfo = useMyInfoStore(state => state.myInfo)
-  const [userCount, setUserCount] = useState<UserCountType>({ answerCount: 0, unanswerCount: 0 })
-
-  const { socket } = useSocketStore()
   const { params } = useActivity()
-  const { push } = useFlow()
-  const { description, id: topicId, roomId } = params
+
+  const {
+    description: topic,
+    id: topicId,
+    roomId,
+    totalCount,
+  } = params as typeof params & {
+    description: string
+    id: number
+    roomId: number
+    totalCount: number
+  }
+
+  const [userCount, setUserCount] = useState<UserCountType>({ answerCount: 0, totalCount })
+  const { socket } = useSocketStore()
+  const { replace } = useFlow()
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT, res => setUserCount(res))
-    socket.on(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT, res => push("SmallTalkRandom", { ...res }))
+    socket.on(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT, () => {
+      socket.off(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT)
+      socket.off(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT)
+      replace("SmallTalkGameResultList", { roomId, topic, topicId })
+    })
 
     return () => {
       socket.off(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT)
       socket.off(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT)
     }
-  }, [push, socket])
+  }, [replace, roomId, socket, topic, topicId])
 
-  if (!myInfo || !roomId || !description || !topicId || !userCount) return
+  const badRequest = !myInfo || !roomId || !topic || !topicId || !userCount
+
+  if (badRequest) return
 
   const sendAnswer = (answer: string) => {
     socket.emit(SOCKET_EVENT.SEND_USER_ANSWER, { topicId, answer, userId: myInfo.id, roomId })
   }
 
-  const timeOut = (isSubmit: boolean) => {
-    if (!isSubmit) {
-      sendAnswer("")
-    }
-  }
-
   return (
     <AppScreen>
-      <SmallTalkGameInputScreen userCount={userCount} timeOut={timeOut} myInfo={myInfo} topic={description} />
+      <SmallTalkGameInputScreen
+        sendAnswer={sendAnswer}
+        userCount={userCount}
+        timeOut={() => sendAnswer("")}
+        myInfo={myInfo}
+        topic={topic}
+      />
     </AppScreen>
   )
 }

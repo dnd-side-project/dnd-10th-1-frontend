@@ -32,7 +32,9 @@ export const SOCKET_EVENT = {
   MOVE_TO_MBTI_LOADING: "move-to-mbti-loading",
   MOVE_TO_MBTI_RESULT: "move-to-mbti-result",
   LISTEN_LIVE_USER_COUNT: "listen-live-user-count",
-  MOVE_TO_BLACK_TOPIC_RESULT: "move-to-black-topic-result",
+  MOVE_TO_BLACK_TOPIC_RESULT: "move-to-blank-topic-result",
+  MOVE_TO_SMALL_TALK_RESULT: "move-to-small-talk-result",
   SEND_USER_ANSWER: "send-user-answer",
   GET_USERS_ANSWER: "get-users-answer",
+  GET_SMALL_TALK_RANDOM_ANSWER: "get-small-talk-random-answer",
 } as const

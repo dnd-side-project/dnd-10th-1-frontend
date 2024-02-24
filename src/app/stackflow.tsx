@@ -14,8 +14,8 @@ import OnboardingThird from "./_onboarding/third/third"
 import Profile from "./_profile/profile"
 import SelectGames from "./_select-games/select-games"
 import SmallTalkInput from "./_small-talk/game-input"
-import SmallTalkRandom from "./_small-talk/game-random"
 import SmallTalkResult from "./_small-talk/game-result"
+import SmallTalkGameResultList from "./_small-talk/game-result-list"
 import Splash from "./_splash/splash"
 import Waiting from "./_waiting/waiting"
 
@@ -36,7 +36,7 @@ export const { Stack, useFlow } = stackflow({
     Waiting,
     GameLoading,
     SmallTalkInput,
-    SmallTalkRandom,
+    SmallTalkGameResultList,
     SmallTalkResult,
   },
   plugins: [
