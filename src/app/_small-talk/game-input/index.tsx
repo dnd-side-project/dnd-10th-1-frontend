@@ -28,21 +28,21 @@ const SmallTalkGameInput: ActivityComponentType = () => {
 
   const [userCount, setUserCount] = useState<UserCountType>({ answerCount: 0, totalCount })
   const { socket } = useSocketStore()
-  const { replace } = useFlow()
+  const { push } = useFlow()
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT, res => setUserCount(res))
-    socket.on(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT, () => {
+    socket.on(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT, () => {
       socket.off(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT)
-      socket.off(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT)
-      replace("SmallTalkGameResultList", { roomId, topic, topicId })
+      socket.off(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT)
+      push("SmallTalkGameResultList", { roomId, topic, topicId })
     })
 
     return () => {
       socket.off(SOCKET_EVENT.LISTEN_LIVE_USER_COUNT)
-      socket.off(SOCKET_EVENT.MOVE_TO_BLACK_TOPIC_RESULT)
+      socket.off(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT)
     }
-  }, [replace, roomId, socket, topic, topicId])
+  }, [push, roomId, socket, topic, topicId])
 
   const badRequest = !myInfo || !roomId || !topic || !topicId || !userCount
 

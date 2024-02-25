@@ -12,7 +12,9 @@ export type AnswerType = {
 
 export type SmallTalkResult = {
   userInfo: UserInfoType
-  topic: string
-  selectAnswer: string
-  isTryAllowed: "true" | "false"
+  topic: {
+    id: number
+    description: string
+  }
+  selectAnswer: [{ answer: string }]
 }

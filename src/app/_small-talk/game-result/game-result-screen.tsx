@@ -20,7 +20,7 @@ type Props = {
   selectUserInfo: UserInfoType
   selectAnswer: string
   isAdmin: boolean
-  isTryAllowed?: "true" | "false"
+  isTryAllowed?: boolean
   onReset?: () => void
   moveToWaitingRoom?: () => void
   moveToMainRoom?: () => void
@@ -66,7 +66,7 @@ export default function SmallTalkGameResultScreen({
           selectAnswer={selectAnswer}
         />
         <SmallTalkGameResultBox>
-          {isAdmin && isTryAllowed === "true" && (
+          {isAdmin && isTryAllowed && (
             <div className="relative">
               {isResetHintVisible && (
                 <div className="absolute right-[11px] top-[11px] z-[2] flex flex-col items-end">

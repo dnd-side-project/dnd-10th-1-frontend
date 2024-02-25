@@ -8,28 +8,48 @@ import { SOCKET_EVENT } from "@/constants/apis"
 import useAdminStore from "@/store/admin-store"
 import useMyInfoStore from "@/store/my-info-store"
 import useSocketStore from "@/store/socket-store"
-import { SmallTalkResult } from "@/types/small-talk"
+import { AnswerType, SmallTalkResult } from "@/types/small-talk"
 
 const SmallTalkGameResult: ActivityComponentType = () => {
   const isAdmin = useAdminStore(state => state.isAdmin)
   const { socket } = useSocketStore()
   const { myInfo } = useMyInfoStore()
-  const [smallTalkResult, setSmallTalkResult] = useState<SmallTalkResult | null>(null)
+  const [selectInfo, setSelectInfo] = useState<SmallTalkResult | null>(null)
   const { replace } = useFlow()
   const { params } = useActivity()
-  const { roomId } = params
+  const { roomId, userAnswerList, topicId } = params as typeof params & {
+    roomId: number
+    userAnswerList: AnswerType[]
+    topicId: number
+  }
   useEffect(() => {
-    socket.on(SOCKET_EVENT.GET_SMALL_TALK_RANDOM_ANSWER, res => setSmallTalkResult(res))
-    socket.emit(SOCKET_EVENT.GET_SMALL_TALK_RANDOM_ANSWER)
+    socket.on(SOCKET_EVENT.GET_BLANK_TOPIC_RANDOM_ANSWER, res => setSelectInfo(res))
+    socket.emit(SOCKET_EVENT.GET_BLANK_TOPIC_RANDOM_ANSWER, { userAnswerList, topicId, roomId })
     return () => {
-      socket.off(SOCKET_EVENT.GET_SMALL_TALK_RANDOM_ANSWER)
+      socket.off(SOCKET_EVENT.GET_BLANK_TOPIC_RANDOM_ANSWER)
     }
-  }, [socket])
+  }, [roomId, socket, topicId, userAnswerList])
 
-  if (!myInfo || !smallTalkResult) throw new Error("옳지 않은 접근입니다.")
+  useEffect(() => {
+    socket.on(SOCKET_EVENT.DRAW_AGAIN_USER_ANSWER, () => {
+      if (selectInfo === null) return
+      const selectAnswerList = userAnswerList.filter(answer => answer.answer !== selectInfo.selectAnswer[0].answer)
+      replace("SmallTalkResult", {
+        roomId,
+        userAnswerList: selectAnswerList,
+        topicId,
+      })
+    })
+
+    return () => {
+      socket.off(SOCKET_EVENT.DRAW_AGAIN_USER_ANSWER)
+    }
+  }, [replace, roomId, selectInfo, socket, topicId, userAnswerList])
+
+  if (!myInfo || !selectInfo) return
 
   const onReset = () => {
-    socket.emit(SOCKET_EVENT.MOVE_TO_SMALL_TALK_RESULT)
+    socket.emit(SOCKET_EVENT.DRAW_AGAIN_USER_ANSWER, roomId)
   }
 
   const moveToWaitingRoom = () => {
@@ -40,15 +60,15 @@ const SmallTalkGameResult: ActivityComponentType = () => {
     socket.emit(SOCKET_EVENT.END_GAME, { roomId, userId: myInfo.id })
     replace("Main", {})
   }
-
-  const { isTryAllowed, selectAnswer, topic, userInfo } = smallTalkResult
+  console.log(selectInfo)
+  const { selectAnswer, topic, userInfo } = selectInfo
   return (
     <AppScreen>
       <SmallTalkGameResultScreen
-        isTryAllowed={isTryAllowed}
+        isTryAllowed={userAnswerList.length > 1}
         isAdmin={isAdmin}
-        topic={topic}
-        selectAnswer={selectAnswer}
+        topic={topic.description}
+        selectAnswer={selectAnswer[0].answer}
         selectUserInfo={userInfo}
         onReset={onReset}
         moveToMainRoom={moveToMainRoom}

@@ -22,24 +22,29 @@ const SmallTalkGameResultList: ActivityComponentType = () => {
     topicId: number
     userList: WaitingUserType[]
   }
-  const { replace } = useFlow()
+  const { push } = useFlow()
   useEffect(() => {
     socket.on(SOCKET_EVENT.GET_USERS_ANSWER, res =>
       setAnswerList(() => res.filter((item: AnswerType) => item.answer !== "")),
     )
-    socket.on(SOCKET_EVENT.MOVE_TO_SMALL_TALK_RESULT, () => {
-      replace("SmallTalkResult", { roomId })
-    })
     socket.emit(SOCKET_EVENT.GET_USERS_ANSWER, { roomId, topicId })
 
     return () => {
       socket.off(SOCKET_EVENT.GET_USERS_ANSWER)
-      socket.off(SOCKET_EVENT.MOVE_TO_SMALL_TALK_RESULT)
     }
-  }, [answerList, replace, roomId, socket, topic, topicId, userList])
+  }, [push, roomId, socket, topic, topicId, userList])
+
+  useEffect(() => {
+    socket.on(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT, () =>
+      push("SmallTalkResult", { roomId, userAnswerList: answerList, topicId }),
+    )
+    return () => {
+      socket.off(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT)
+    }
+  }, [answerList, push, roomId, socket, topicId])
 
   const moveResultScreen = () => {
-    socket.emit(SOCKET_EVENT.MOVE_TO_SMALL_TALK_RESULT, { roomId })
+    socket.emit(SOCKET_EVENT.MOVE_TO_BLANK_TOPIC_RESULT, roomId)
   }
 
   return (
