@@ -35,7 +35,7 @@ Admin.args = {
   moveToMainRoom: mockFunction,
   moveToWaitingRoom: mockFunction,
   onReset: mockFunction,
-  isTryAllowed: "true",
+  isTryAllowed: true,
 }
 User.args = {
   isAdmin: false,
@@ -45,7 +45,7 @@ User.args = {
   moveToMainRoom: mockFunction,
   moveToWaitingRoom: mockFunction,
   onReset: mockFunction,
-  isTryAllowed: "true",
+  isTryAllowed: true,
 }
 Phone.args = {
   isAdmin: false,
@@ -55,7 +55,7 @@ Phone.args = {
   moveToMainRoom: mockFunction,
   moveToWaitingRoom: mockFunction,
   onReset: mockFunction,
-  isTryAllowed: "true",
+  isTryAllowed: false,
 }
 
 export default meta
