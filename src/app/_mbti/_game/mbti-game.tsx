@@ -7,6 +7,7 @@ import useMyInfoStore from "@/store/my-info-store"
 import useSocketStore from "@/store/socket-store"
 
 import { useFlow } from "../../stackflow"
+import { getMbtiResult } from "../_loading/api/get-mbti-result"
 import MbtiScreen from "./mbti-game-screen"
 
 const MbtiGame: ActivityComponentType = () => {
@@ -22,13 +23,26 @@ const MbtiGame: ActivityComponentType = () => {
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_MBTI_LOADING, () => {
-      push("MbtiLoading", { roomId })
+      console.log("선택 완료")
     })
 
     return () => {
       socket.off(SOCKET_EVENT.MOVE_TO_MBTI_LOADING)
     }
   }, [socket, push, roomId])
+
+  useEffect(() => {
+    socket.on(SOCKET_EVENT.MOVE_TO_MBTI_RESULT, async () => {
+      const data = await getMbtiResult({ roomId: roomId!, userId: myInfo?.id! })
+      console.log(data)
+      console.log(data.userMbtiResult)
+      push("MbtiLoading", { roomId })
+    })
+
+    return () => {
+      socket.off(SOCKET_EVENT.MOVE_TO_MBTI_RESULT)
+    }
+  }, [socket, roomId, myInfo, push])
 
   return (
     <AppScreen>
