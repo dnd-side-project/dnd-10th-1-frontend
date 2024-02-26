@@ -13,7 +13,7 @@ type Props = {
   moveResultScreen: () => void
 }
 
-export default function SmallTalkGameResultListScreen({ topic, answerList, isAdmin }: Props) {
+export default function SmallTalkGameResultListScreen({ moveResultScreen, topic, answerList, isAdmin }: Props) {
   return (
     <div className="min-h-full bg-gray-950">
       <SmallTalkGameHeader isStart />
@@ -40,7 +40,7 @@ export default function SmallTalkGameResultListScreen({ topic, answerList, isAdm
           </ul>
         </SmallTalkGameResultBox>
         {isAdmin && (
-          <Button variant="full" size="max" className="mt-[15px]">
+          <Button onClick={moveResultScreen} variant="full" size="max" className="mt-[15px]">
             랜덤뽑기
           </Button>
         )}
