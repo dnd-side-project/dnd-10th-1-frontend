@@ -1,8 +1,8 @@
 # dnd-10th-1-frontend
 _온라인에서 처음 만나는 팀원들과 어색하고 어떻게 대화를 시작할 지 어려움을 겪은 경험이 있으신가요?_ **모임의 첫 5분, 대화의 시작을 도와주는 얼음땡 서비스** 🧊🔨
 
-### 🎇 배포주소
-<a href="https://dnd-10th-1-frontend.vercel.app">얼음땡 🧊🔨</a>
+### 🎇 시연영상
+https://github.com/dnd-side-project/dnd-10th-1-frontend/assets/115636461/c0db50a6-100b-43de-be53-e53abe7ce821
 
 ### 👪 개발 인원
 <table>
@@ -28,6 +28,12 @@ _온라인에서 처음 만나는 팀원들과 어색하고 어떻게 대화를 
                     <img src="https://avatars.githubusercontent.com/u/76420055?v=4" width="100px" height="100px"/>
                 </a>  
             </td>
+             <td>
+                <img src="https://github.com/dnd-side-project/dnd-10th-1-frontend/assets/115636461/3f560616-11dc-404f-aeea-b514f27385c5" width="100px" height="100px"/>
+            </td>
+             <td>
+                <img src="https://github.com/dnd-side-project/dnd-10th-1-frontend/assets/115636461/955ca41f-3d69-45ff-be12-bb3771f104fe" width="100px" height="100px"/>
+            </td>
         </tr>
         <tr>
             <th>
@@ -42,6 +48,12 @@ _온라인에서 처음 만나는 팀원들과 어색하고 어떻게 대화를 
             <th>
             김혜빈
             </th>
+            <th>
+            김현아
+            </th>
+            <th>
+            신해지
+            </th>
         </tr>
         <tr>
             <th>
@@ -55,6 +67,12 @@ _온라인에서 처음 만나는 팀원들과 어색하고 어떻게 대화를 
             </th>
             <th>
             BackEnd
+            </th>
+            <th>
+            Designer
+            </th>
+            <th>
+            Designer
             </th>
         </tr>
     </tbody>
