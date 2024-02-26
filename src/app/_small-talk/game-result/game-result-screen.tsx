@@ -9,6 +9,7 @@ import resetIcon from "@/assets/svgs/small-talk/reset.svg"
 import resetHint from "@/assets/svgs/small-talk/reset-hint.svg"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 import { Button } from "@/components/button"
+import useBlankGuideStore from "@/store/blank-guide-store"
 import { UserInfoType } from "@/types/user"
 
 import SmallTalkGameBanner from "../components/game-banner/game-banner"
@@ -39,14 +40,14 @@ export default function SmallTalkGameResultScreen({
   const { nickName, profileImage } = selectUserInfo
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true)
-  const [isResetHintVisible, setIsResetHintVisible] = useState(true)
+  const { isFirst, setNotFirst } = useBlankGuideStore()
 
   const handleAnimationComplete = () => {
     setIsAnimationVisible(false)
   }
 
   const hintClose = () => {
-    setIsResetHintVisible(false)
+    setNotFirst()
   }
 
   return (
@@ -68,7 +69,7 @@ export default function SmallTalkGameResultScreen({
         <SmallTalkGameResultBox>
           {isAdmin && isTryAllowed && (
             <div className="relative">
-              {isResetHintVisible && (
+              {isFirst && (
                 <div className="absolute right-[11px] top-[11px] z-[2] flex flex-col items-end">
                   <div className="h-10 w-10 rounded-full border-2 border-gray-25" />
                   <Image onClick={hintClose} src={resetHint} alt="reset-hint" />

@@ -60,8 +60,9 @@ const SmallTalkGameResult: ActivityComponentType = () => {
     socket.emit(SOCKET_EVENT.END_GAME, { roomId, userId: myInfo.id })
     replace("Main", {})
   }
-  console.log(selectInfo)
+
   const { selectAnswer, topic, userInfo } = selectInfo
+
   return (
     <AppScreen>
       <SmallTalkGameResultScreen
