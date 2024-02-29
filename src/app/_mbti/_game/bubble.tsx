@@ -10,9 +10,8 @@ import "react-bubble-ui/dist/index.css"
 import { useState } from "react"
 import BubbleUI from "react-bubble-ui"
 
+import { MBTI_COMBINATIONS } from "@/constants/mbti"
 import { cn } from "@/libs/tailwind/cn"
-
-import { MBTI_COMBINATIONS } from "./mbti-data"
 
 type Props = {
   handleClick: (value: string) => void

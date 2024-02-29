@@ -18,25 +18,13 @@ const MbtiGame: ActivityComponentType = () => {
   const { params } = useActivity()
   const { roomId } = params
 
-  const socket = useSocketStore(state => state.socket)
+  const { socket } = useSocketStore()
   const { myInfo } = useMyInfoStore()
-
-  useEffect(() => {
-    socket.on(SOCKET_EVENT.MOVE_TO_MBTI_LOADING, () => {
-      console.log("선택 완료")
-    })
-
-    return () => {
-      socket.off(SOCKET_EVENT.MOVE_TO_MBTI_LOADING)
-    }
-  }, [socket, push, roomId])
 
   useEffect(() => {
     socket.on(SOCKET_EVENT.MOVE_TO_MBTI_RESULT, async () => {
       const data = await getMbtiResult({ roomId: roomId!, userId: myInfo?.id! })
-      console.log(data)
-      console.log(data.userMbtiResult)
-      push("MbtiLoading", { roomId })
+      push("MbtiLoading", { roomId, data })
     })
 
     return () => {

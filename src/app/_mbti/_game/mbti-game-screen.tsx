@@ -21,7 +21,6 @@ export default function MbtiScreen({ onBubbleClick, onCompleteClick, isSelected 
       <Bubble handleClick={onBubbleClick} />
 
       <div className="sticky bottom-[24px] px-[24px]">
-        {/* @todo 추후 공통 버튼 컴포넌트로 작업할 예정입니다.*/}
         <Button
           disabled={!isSelected}
           onClick={onCompleteClick}
